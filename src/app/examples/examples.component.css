@@ -1,0 +1,91 @@
+.examples-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 500px 50px 500px;
+  text-align: center;
+}
+
+.examples-header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.examples-content {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+
+.examples-search {
+  margin-right: 20px;
+}
+
+.search-input {
+  width: 600px;
+  height: 40px;
+  font-size: 16px;
+  padding: 1px 1px 1px 1px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  color: #999;
+}
+
+.examples-categories select {
+  width: 300px;
+  padding: 8px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.examples-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.example {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.example-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.example-description {
+  font-size: 16px;
+}
+
+.example-category {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+
+.example:hover {
+  transform: translateY(-5px); /* 根据需要调整移动的距离 */
+}
+
+.example.hovered {
+  transform: translateY(-5px); /* 根据需要调整移动的距离 */
+}

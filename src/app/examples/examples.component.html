@@ -1,0 +1,27 @@
+<div class="examples-page">
+  <div class="examples-header">
+    <div class="examples-title">Examples</div>
+  </div>
+
+  <div class="examples-content">
+    <div class="examples-search">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search examples" class="search-input">
+      <i class="fa fa-search search-icon"></i>
+    </div>
+
+    <div class="examples-categories">
+      <select [(ngModel)]="selectedCategory" (change)="filterExamplesByCategory()">
+        <option value="All">All</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="examples-list">
+    <div class="example" *ngFor="let example of filteredExamples" (mouseenter)="example.hovered = true" (mouseleave)="example.hovered = false" (click)="navigateToSentimentAnalysis()">
+      <div class="example-title">{{ example.title }}</div>
+      <div class="example-description">{{ example.description }}</div>
+      <div class="example-category">Category: {{ example.category }}</div>
+    </div>
+  </div>
+</div>
