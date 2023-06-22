@@ -33,4 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 node.js =v18.16.1
 npm = 9.5.1 
 
+如果版本不对，直接用下面链接安装最新的
+https://nodejs.org/en
+
 
