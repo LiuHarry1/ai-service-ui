@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 500px 50px 500px;
+  padding: 50px 20% 50px 20%;
   text-align: center;
 }
 
@@ -16,17 +16,21 @@
   display: flex;
   align-items: stretch;
   margin-bottom: 30px;
+  width: 100%;
+
 }
 
 .examples-search {
-  margin-right: 20px;
+  margin-right: 3%;
+  text-align: left;
+  width: 74%;
 }
 
 .search-input {
-  width: 600px;
+  width: 96%;
   height: 40px;
   font-size: 16px;
-  padding: 1px 1px 1px 1px;
+  padding: 1px 1% 1px 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -37,10 +41,13 @@
   top: 10px;
   color: #999;
 }
-
+.examples-categories {
+  text-align: right;
+  width: 25%;
+}
 .examples-categories select {
-  width: 300px;
-  padding: 8px 10px;
+  width: 100%;
+  /*padding: 8px 10px;*/
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
