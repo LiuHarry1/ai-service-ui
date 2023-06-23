@@ -18,7 +18,7 @@
   </div>
 
   <div class="examples-list">
-    <div class="example" *ngFor="let example of filteredExamples" (mouseenter)="example.hovered = true" (mouseleave)="example.hovered = false" (click)="navigateToSentimentAnalysis()">
+    <div class="example" *ngFor="let example of filteredExamples" (mouseenter)="example.hovered = true" (mouseleave)="example.hovered = false" (click)="navigateToSentimentAnalysis(example)">
       <div class="example-title">{{ example.title }}</div>
       <div class="example-description">{{ example.description }}</div>
       <div class="example-category">Category: {{ example.category }}</div>

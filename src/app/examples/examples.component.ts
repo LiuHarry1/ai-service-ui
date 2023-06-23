@@ -10,11 +10,11 @@ export class ExamplesComponent {
   selectedCategory: string = 'All';
 
   examples: Example[] = [
-    { title: 'Example 1', description: 'This is the first example.', category: 'Category A', id :'1', hovered:false },
-    { title: 'Example 2', description: 'This is the second example.', category: 'Category B', id :'1' , hovered:false},
-    { title: 'Example 3', description: 'This is the third example.', category: 'Category A', id :'1' , hovered:false},
-    { title: 'Example 4', description: 'This is the four example.', category: 'Category A' , id :'1', hovered:false},
-    { title: 'Example 5', description: 'This is the five example.', category: 'Category A', id :'1' , hovered:false},
+    { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'NLP', id :'1', hovered:false, link:'/sentiment-analysis' },
+    { title: 'Example 2', description: 'This is the second example.', category: 'Category B', id :'1' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Example 3', description: 'This is the third example.', category: 'Category A', id :'1' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Example 4', description: 'This is the four example.', category: 'Category A' , id :'1', hovered:false , link:'/sentiment-analysis'},
+    { title: 'Example 5', description: 'This is the five example.', category: 'Category A', id :'1' , hovered:false , link:'/sentiment-analysis'},
     // Add more examples with categories as needed
   ];
 
@@ -26,8 +26,9 @@ export class ExamplesComponent {
     example.hovered = false;
   }
 
-  navigateToSentimentAnalysis() {
-    this.router.navigate(['/sentiment-analysis']);
+  navigateToSentimentAnalysis(example: any) {
+    // this.router.navigate(['/sentiment-analysis']);
+    this.router.navigate([example.link]);
   }
 
 
@@ -68,4 +69,6 @@ interface Example {
   category: string;
   id : string
   hovered: boolean; // 添加 hovered 属性
+
+  link : string
 }
