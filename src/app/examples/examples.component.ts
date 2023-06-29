@@ -10,11 +10,11 @@ export class ExamplesComponent {
   selectedCategory: string = 'All';
 
   examples: Example[] = [
-    { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'NLP', id :'1', hovered:false, link:'/sentiment-analysis' },
-    { title: 'Example 2', description: 'This is the second example.', category: 'Category B', id :'1' , hovered:false , link:'/sentiment-analysis'},
-    { title: 'Example 3', description: 'This is the third example.', category: 'Category A', id :'1' , hovered:false , link:'/sentiment-analysis'},
-    { title: 'Example 4', description: 'This is the four example.', category: 'Category A' , id :'1', hovered:false , link:'/sentiment-analysis'},
-    { title: 'Example 5', description: 'This is the five example.', category: 'Category A', id :'1' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'Classification', id :'1', hovered:false, link:'/sentiment-analysis' },
+    { title: 'Name Entity Recongition', description: 'This is the second example.', category: 'NER', id :'2' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Text Summarization', description: 'This is the third example.', category: 'Text Summarization', id :'3' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Traditional Machine Learning', description: 'This is the four example.', category: 'ML' , id :'4', hovered:false , link:'/sentiment-analysis'},
+    { title: 'Document Similarity', description: 'This is the five example.', category: 'Document Similarity', id :'5' , hovered:false , link:'/sentiment-analysis'},
     // Add more examples with categories as needed
   ];
 
@@ -72,3 +72,4 @@ interface Example {
 
   link : string
 }
+
