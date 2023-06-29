@@ -12,6 +12,15 @@
   margin-bottom: 30px;
 }
 
+.text-title{
+  margin-bottom: 10px
+}
+
+.text-tagline{
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .examples-content {
   display: flex;
   align-items: stretch;
