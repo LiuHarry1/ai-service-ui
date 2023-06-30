@@ -1,11 +1,22 @@
 <div class="container">
   <h1>Sentiment Analysis</h1>
+  <h2>We trained a verity of neural network models with IMDB dataset. the model using this page is always best one </h2>
+
+  <!-- Examples Section -->
+  <h2>Examples</h2>
+  <div class="example-item" *ngFor="let example of examples">
+    <div class="example-text">Enter: {{ example.text }}</div>
+    <div class="example-result">Result: {{ example.result }}</div>
+  </div>
+
+  <h2>let's test it </h2>
+
   <div class="input-container">
     <textarea [(ngModel)]="textInput" placeholder="Enter text"></textarea>
     <button (click)="analyze()">Analyze</button>
   </div>
   <div *ngIf="sentimentResult" class="result-container">
-    <h2>Sentiment Result:</h2>
+    <h2>Result:</h2>
     <p>{{ sentimentResult }}</p>
   </div>
 </div>

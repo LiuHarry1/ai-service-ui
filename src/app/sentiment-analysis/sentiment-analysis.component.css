@@ -1,7 +1,13 @@
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+
 .container {
-  max-width: 500px;
+  max-width: 60%;
   margin: 0 auto;
-  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
 }
 
 .input-container {
@@ -9,10 +15,10 @@
 }
 
 textarea {
-  width: 100%;
+  width: 97%;
   height: 100px;
   padding: 10px;
-  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 button {
@@ -25,7 +31,11 @@ button {
 
 .result-container {
   background-color: #f5f5f5;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   text-align: left;
+}
+
+.example-item {
+  margin-bottom: 10px;
 }

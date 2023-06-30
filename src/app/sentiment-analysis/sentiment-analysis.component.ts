@@ -10,6 +10,15 @@ export class SentimentAnalysisComponent {
   textInput: string = "";
   sentimentResult: string = "";
 
+  examples = [
+    { text: 'This is good movie', result: 'Positive' },
+    { text: 'This is bad movie', result: 'Negative' },
+    { text: 'This movie is awful' , result: 'Negative' },
+    { text: 'I like this movie very much' , result: 'Positive' },
+    // Add more examples as needed
+  ];
+
+
   constructor(private http: HttpClient) {}
 
   analyze() {
