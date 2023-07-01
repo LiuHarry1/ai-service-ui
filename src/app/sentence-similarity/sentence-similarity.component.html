@@ -1,6 +1,6 @@
 <div class = "page">
   <div  class = "container">
-    <h1>Sentence Similarity demo</h1>
+    <h1>Sentence Similarity Demo</h1>
 
   <h3>Source Sentence</h3>
   <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
@@ -10,7 +10,7 @@
       <li *ngFor="let sentence of sentencesToCompare; let i = index">
         <!-- Use one-way data binding with (ngModel) -->
       <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
-        <input [ngModel]="sentence" (input)="onSentenceInput($event, i)" placeholder="Enter a sentence to compare" />
+        <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
       </li>
     </ul>
     <div class="button-container">
