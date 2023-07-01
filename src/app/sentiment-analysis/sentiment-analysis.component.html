@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Sentiment Analysis</h1>
-  <h2>We trained a verity of neural network models with IMDB dataset. the model using this page is always best one </h2>
+  <h3>We trained a variety of neural network models for multiclass classification with IMDB dataset. the model using this page is always best one </h3>
 
   <!-- Examples Section -->
   <h2>Examples</h2>
@@ -10,9 +10,10 @@
   </div>
 
   <h2>let's test it </h2>
+  <h3>(Result will be either positive or negative based on movie review)</h3>
 
   <div class="input-container">
-    <textarea [(ngModel)]="textInput" placeholder="Enter text"></textarea>
+    <textarea [(ngModel)]="textInput" placeholder="Enter movie review"></textarea>
     <button (click)="analyze()">Analyze</button>
   </div>
   <div *ngIf="sentimentResult" class="result-container">

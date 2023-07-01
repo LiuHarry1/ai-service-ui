@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExamplesComponent } from './examples/examples.component';
+import { SentenceSimilarityComponent } from './sentence-similarity/sentence-similarity.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SentimentAnalysisComponent,
-    ExamplesComponent
+    ExamplesComponent,
+    SentenceSimilarityComponent
   ],
   imports: [
     BrowserModule,
