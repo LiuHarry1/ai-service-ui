@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Named Entity Recognition</h1>
+        </div>
+        <div class="card-body">
+          <textarea class="form-control" [(ngModel)]="text" placeholder="Enter text for NER"></textarea>
+          <button class="btn btn-primary mt-3 btn-block" (click)="processNER()">Process NER</button>
+
+          <div *ngIf="results.length > 0" class="mt-4">
+            <h2 class="text-center">NER Results:</h2>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let result of results">
+                <strong>{{ result.label }}:</strong> {{ result.text }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

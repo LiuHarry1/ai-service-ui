@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExamplesComponent } from './examples/examples.component';
 import { SentenceSimilarityComponent } from './sentence-similarity/sentence-similarity.component';
+import { NerComponent } from './ner/ner.component';
+import { NerService } from './ner/ner.service';
+
 
 
 @NgModule({
@@ -16,7 +19,8 @@ import { SentenceSimilarityComponent } from './sentence-similarity/sentence-simi
     AppComponent,
     SentimentAnalysisComponent,
     ExamplesComponent,
-    SentenceSimilarityComponent
+    SentenceSimilarityComponent,
+    NerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ import { SentenceSimilarityComponent } from './sentence-similarity/sentence-simi
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [NerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
