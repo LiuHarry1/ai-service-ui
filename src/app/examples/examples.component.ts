@@ -12,7 +12,7 @@ export class ExamplesComponent {
   examples: Example[] = [
     { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'Classification', id :'1', hovered:false, link:'/sentiment-analysis' },
     { title: 'Sentence Similarity', description: 'This is the second example.', category: 'Sentence Similarity', id :'2' , hovered:false , link:'/sentence-similarity'},
-    { title: 'Name Entity Recongition', description: 'This is the third example.', category: 'NER', id :'3' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Name Entity Recongition', description: 'This is the third example.', category: 'NER', id :'3' , hovered:false , link:'/ner'},
     { title: 'Text Summarization', description: 'This is the four example.', category: 'Text Summarization', id :'4' , hovered:false , link:'/sentiment-analysis'},
     { title: 'Traditional Machine Learning', description: 'This is the five example.', category: 'ML' , id :'5', hovered:false , link:'/sentiment-analysis'},
 
