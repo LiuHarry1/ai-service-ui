@@ -11,6 +11,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { SentenceSimilarityComponent } from './sentence-similarity/sentence-similarity.component';
 import { NerComponent } from './ner/ner.component';
 import { NerService } from './ner/ner.service';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -20,7 +21,8 @@ import { NerService } from './ner/ner.service';
     SentimentAnalysisComponent,
     ExamplesComponent,
     SentenceSimilarityComponent,
-    NerComponent
+    NerComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

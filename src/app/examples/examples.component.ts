@@ -15,6 +15,7 @@ export class ExamplesComponent {
     { title: 'Name Entity Recongition', description: 'This is the third example.', category: 'NER', id :'3' , hovered:false , link:'/ner'},
     { title: 'Text Summarization', description: 'This is the four example.', category: 'Text Summarization', id :'4' , hovered:false , link:'/sentiment-analysis'},
     { title: 'Traditional Machine Learning', description: 'This is the five example.', category: 'ML' , id :'5', hovered:false , link:'/sentiment-analysis'},
+    { title: 'Chat', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
 
     // Add more examples with categories as needed
   ];

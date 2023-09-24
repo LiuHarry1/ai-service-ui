@@ -4,6 +4,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
 import {SentenceSimilarityComponent} from "./sentence-similarity/sentence-similarity.component";
 import {NerComponent} from "./ner/ner.component";
+import {ChatComponent} from "./chat/chat.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'sentiment-analysis', component: SentimentAnalysisComponent },
   { path: 'sentence-similarity', component: SentenceSimilarityComponent },
   { path: 'ner', component: NerComponent },
+  { path: 'chat', component: ChatComponent },
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 
