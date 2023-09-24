@@ -1,0 +1,28 @@
+<div class="knowledge-base">
+  <div class="qna" *ngFor="let qna of qnas; let i = index">
+    <div class="answer">{{ qna.answer }}</div>
+    <div class="actions">
+      <button (click)="editQnA(i)">Edit</button>
+      <button (click)="deleteQnA(i)">Delete</button>
+      <button (click)="showQuestionsPopup(i)">Show Questions</button>
+    </div>
+  </div>
+  <div class="add-qna">
+    <input [(ngModel)]="newAnswer" placeholder="New Answer">
+    <input [(ngModel)]="newQuestion" placeholder="New Question">
+    <button (click)="addQnA()">Add QnA</button>
+  </div>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+  <h2>Questions</h2>
+  <ul>
+    <li *ngFor="let question of popupQuestions; let i = index" (click)="editPopupQuestion(i)">
+      {{ question }}
+    </li>
+  </ul>
+  <input [(ngModel)]="newQuestion" placeholder="New Question">
+  <button (click)="addQuestionToPopup()">Add Question</button>
+  <button (click)="updatePopupQuestion()">Save</button>
+  <button (click)="closePopup()">Close</button>
+</div>

@@ -12,6 +12,7 @@ import { SentenceSimilarityComponent } from './sentence-similarity/sentence-simi
 import { NerComponent } from './ner/ner.component';
 import { NerService } from './ner/ner.service';
 import { ChatComponent } from './chat/chat.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 
@@ -23,13 +24,14 @@ import { ChatComponent } from './chat/chat.component';
     SentenceSimilarityComponent,
     NerComponent,
     ChatComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [NerService ],
   bootstrap: [AppComponent]

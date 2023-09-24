@@ -1,0 +1,82 @@
+/* Style for the entire FAQ system */
+.faq-system-container {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Style for headings */
+h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+
+
+/* Input field for user messages */
+.user-input {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  margin: 10px 10px 10px 0px
+}
+
+
+/* Send button */
+.send-button {
+  width: 20%;
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: #303f9f;
+}
+.search-area{
+
+}
+
+
+/* Style for FAQ lists */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Style for top FAQs */
+.top-faqs {
+  max-width: 95%;
+}
+
+/* Style for search results */
+.search-results {
+  max-width: 95%;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}

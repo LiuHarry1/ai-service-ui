@@ -2,8 +2,7 @@
 
 /* Container for the chat interface */
 .chat-container {
-  width: 100%;
-  max-width: 400px;
+  max-width: 60%;
   margin: 0 auto;
   padding: 20px;
   background-color: #f7f7f7;
@@ -13,39 +12,52 @@
 
 /* CSS Styles for user and bot bubbles */
 .user-bubble {
-  background-color: #3f51b5;
-  color: #fff;
+  --tw-border-opacity: 1;
+  background-color: white; /* User message background color */
+  border-color: rgba(255,255,255,var(--tw-border-opacity));
   border-radius: 10px;
   padding: 10px 15px;
   margin: 10px 0;
-  max-width: 80%;
+  max-width: 90%;
   align-self: flex-end;
 }
+.chat-message{
+  display: flex;
+
+}
+
 
 .bot-bubble {
-  background-color: #2196f3;
-  color: #fff;
+  --tw-border-opacity: 1;
+  background-color: #ececf1; /* Chatbot message background color */
+  border-collapse: rgba(255,255,255,var(--tw-border-opacity));
   border-radius: 10px;
   padding: 10px 15px;
   margin: 10px 0;
-  max-width: 80%;
+  max-width: 90%;
   align-self: flex-start;
 }
 
 
 /* Input field for user messages */
 .user-input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
   font-size: 16px;
   margin-top: 10px;
+  margin-right: 10px;
+}
+
+.indented-div {
+  margin-right: 10px; /* Adjust this value as needed */
 }
 
 /* Send button */
 .send-button {
+  width: 10%;
   background-color: #3f51b5;
   color: #fff;
   border: none;
@@ -62,6 +74,6 @@
 
 /* Scrollable chat area */
 .chat-area {
-  max-height: 300px;
+  /*max-height: 300px;*/
   overflow-y: auto;
 }

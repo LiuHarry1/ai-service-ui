@@ -1,0 +1,22 @@
+<div class="faq-system-container">
+  <h2>Top FAQs</h2>
+  <ul class="top-faqs">
+    <li *ngFor="let faq of topFaqs">{{ faq.question }}</li>
+  </ul>
+
+  <h2>What's your question?</h2>
+  <div class="clearfix">
+    <div>
+      <input class="user-input" [(ngModel)]="query" placeholder="Search FAQs" />
+    </div>
+    <div class = "search-area">
+      <div class = "send-button-left"></div>
+      <div>
+      <button class = "send-button" (click)="search()">Search</button>
+      </div>
+    </div>
+  </div>
+  <ul class="search-results">
+    <li *ngFor="let result of searchResults">{{ result.answer }}</li>
+  </ul>
+</div>

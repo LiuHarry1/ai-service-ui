@@ -16,6 +16,7 @@ export class ExamplesComponent {
     { title: 'Text Summarization', description: 'This is the four example.', category: 'Text Summarization', id :'4' , hovered:false , link:'/sentiment-analysis'},
     { title: 'Traditional Machine Learning', description: 'This is the five example.', category: 'ML' , id :'5', hovered:false , link:'/sentiment-analysis'},
     { title: 'Chat', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
+    { title: 'faq', description: 'This is the seven example.', category: 'ML' , id :'7', hovered:false , link:'/faq'},
 
     // Add more examples with categories as needed
   ];
