@@ -17,6 +17,10 @@
     </div>
   </div>
   <ul class="search-results">
-    <li *ngFor="let result of searchResults">{{ result }}</li>
+    <li *ngFor="let result of searchResults">
+
+      <div [innerHTML]="result"> </div>
+
+    </li>
   </ul>
 </div>

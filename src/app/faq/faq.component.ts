@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faq',
@@ -11,9 +12,14 @@ export class FaqComponent {
   searchResults: any[] = [];
   topFaqs: any[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
     this.getTopFAQs();
   }
+
+  ngOnInit() {
+    this.sanitizeMessages();
+  }
+
 
   search(): void {
     if (this.query.trim() === '') {
@@ -34,5 +40,13 @@ export class FaqComponent {
       .subscribe((data) => {
         this.topFaqs = data;
       });
+  }
+
+  // Sanitize messages with HTML content
+  sanitizeMessages() {
+    for (let result of this.searchResults) {
+      result = this.sanitizer.bypassSecurityTrustHtml(result);
+
+    }
   }
 }
