@@ -14,6 +14,7 @@ import { NerService } from './ner/ner.service';
 import { ChatComponent } from './chat/chat.component';
 import { FaqComponent } from './faq/faq.component';
 import { AdminComponent } from './admin/admin.component';
+import { EmailCategorizationComponent } from './email-categorization/email-categorization.component';
 
 
 
@@ -27,6 +28,7 @@ import { AdminComponent } from './admin/admin.component';
     ChatComponent,
     FaqComponent,
     AdminComponent,
+    EmailCategorizationComponent,
   ],
   imports: [
     BrowserModule,

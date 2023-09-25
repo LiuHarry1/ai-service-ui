@@ -1,0 +1,24 @@
+<!-- email-categorization.component.html -->
+
+<div class="email-categorization">
+  <h2>Email Categorization</h2>
+  <form (submit)="categorizeEmail()">
+    <div class="form-group">
+      <label for="sender">Sender:</label>
+      <input type="text" id="sender" name="sender" [(ngModel)]="sender" required>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" [(ngModel)]="subject" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" [(ngModel)]="content" required></textarea>
+    </div>
+    <button type="submit">Categorize Email</button>
+  </form>
+  <div *ngIf="emailPriority" class="result">
+    <h3>Email Priority:</h3>
+    <p>{{ emailPriority }}</p>
+  </div>
+</div>

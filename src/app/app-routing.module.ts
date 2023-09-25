@@ -7,6 +7,7 @@ import {NerComponent} from "./ner/ner.component";
 import {ChatComponent} from "./chat/chat.component";
 import {FaqComponent} from "./faq/faq.component";
 import {AdminComponent} from "./admin/admin.component";
+import {EmailCategorizationComponent} from "./email-categorization/email-categorization.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'email_categorization', component: EmailCategorizationComponent },
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 
