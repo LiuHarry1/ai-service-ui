@@ -13,6 +13,7 @@ import { NerComponent } from './ner/ner.component';
 import { NerService } from './ner/ner.service';
 import { ChatComponent } from './chat/chat.component';
 import { FaqComponent } from './faq/faq.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -25,6 +26,7 @@ import { FaqComponent } from './faq/faq.component';
     NerComponent,
     ChatComponent,
     FaqComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

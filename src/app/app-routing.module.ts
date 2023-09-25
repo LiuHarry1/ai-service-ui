@@ -6,6 +6,7 @@ import {SentenceSimilarityComponent} from "./sentence-similarity/sentence-simila
 import {NerComponent} from "./ner/ner.component";
 import {ChatComponent} from "./chat/chat.component";
 import {FaqComponent} from "./faq/faq.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'ner', component: NerComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 

@@ -1,0 +1,14 @@
+<div>
+  <h2>Excel Admin Component</h2>
+
+  <div>
+  <!-- File Upload -->
+    <input type="file" (change)="onFileSelected($event)" />
+    <button (click)="uploadFile()">Upload Excel</button>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  </div>
+  <div>
+  <!-- File Download -->
+     <button (click)="downloadFile()">Download Excel</button>
+  </div>
+</div>
