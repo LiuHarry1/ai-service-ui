@@ -11,13 +11,14 @@ export class ExamplesComponent {
 
   examples: Example[] = [
     { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'Classification', id :'1', hovered:false, link:'/sentiment-analysis' },
-    { title: 'Sentence Similarity', description: 'This is the second example.', category: 'Sentence Similarity', id :'2' , hovered:false , link:'/sentence-similarity'},
-    { title: 'Name Entity Recongition', description: 'This is the third example.', category: 'NER', id :'3' , hovered:false , link:'/ner'},
-    { title: 'Text Summarization', description: 'This is the four example.', category: 'Text Summarization', id :'4' , hovered:false , link:'/sentiment-analysis'},
-    { title: 'Traditional Machine Learning', description: 'This is the five example.', category: 'ML' , id :'5', hovered:false , link:'/sentiment-analysis'},
-    { title: 'Chat', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
-    { title: 'FAQ', description: 'This is the seven example.', category: 'ML' , id :'7', hovered:false , link:'/faq'},
-    { title: 'email categorization', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/email_categorization'},
+    { title: 'Email Categorization', description: 'This is the second example.', category: 'ML' , id :'2', hovered:false , link:'/email_categorization'},
+    { title: 'Sentence Similarity', description: 'This is the third example.', category: 'Sentence Similarity', id :'3' , hovered:false , link:'/sentence-similarity'},
+    { title: 'FAQ', description: 'This is the four example.', category: 'ML' , id :'4', hovered:false , link:'/faq'},
+    { title: 'Name Entity Recongition', description: 'This is the five example.', category: 'NER', id :'5' , hovered:false , link:'/ner'},
+    { title: 'Chat Box', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
+    { title: 'Text Summarization', description: 'This is the seven example.', category: 'Text Summarization', id :'7' , hovered:false , link:'/sentiment-analysis'},
+    { title: 'Traditional Machine Learning', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/sentiment-analysis'},
+
 
 
     // Add more examples with categories as needed
