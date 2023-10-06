@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient , HttpParams } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-similarity',
@@ -12,16 +13,29 @@ export class SentenceSimilarityComponent {
 
   sentencesToCompare1: string[] = [''];
 
+  modelName: string = ''
+
   showResults: boolean = false;
   similarityResults: { sentence: string; score: number }[] = [];
 
-  constructor(private http: HttpClient) {}
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.modelName = params['model'];
+    });
+
+    console.info("modelname:"+this.modelName)
+
+  }
+
+  constructor(private http: HttpClient, private route: ActivatedRoute ) {
+
+  }
 
 
 
   computeSimilarity() {
 
-    const data = { sourceSentence: this.sourceSentence, sentencesToCompare: this.sentencesToCompare1 };
+    const data = { sourceSentence: this.sourceSentence, sentencesToCompare: this.sentencesToCompare1, 'model': this.modelName };
 
     this.http.post<any>('http://localhost:2020/sentence_similarity',data, {  responseType: "json"}).subscribe(
       (response) => {
