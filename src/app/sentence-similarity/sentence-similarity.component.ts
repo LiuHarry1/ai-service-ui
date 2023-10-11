@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient , HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-
+import { host } from '../app-config';
 @Component({
   selector: 'app-similarity',
   templateUrl: './sentence-similarity.component.html',
@@ -36,8 +36,7 @@ export class SentenceSimilarityComponent {
   computeSimilarity() {
 
     const data = { sourceSentence: this.sourceSentence, sentencesToCompare: this.sentencesToCompare1, 'model': this.modelName };
-
-    this.http.post<any>('http://localhost:2020/sentence_similarity',data, {  responseType: "json"}).subscribe(
+    this.http.post<any>(host+'/sentence_similarity',data, {  responseType: "json"}).subscribe(
       (response) => {
         console.info(response);
         this.similarityResults = response;
