@@ -6,15 +6,17 @@
 
   <h2>What's your question?</h2>
   <div class="clearfix">
+    <form (submit)="search()">
     <div>
-      <input class="user-input" [(ngModel)]="query" placeholder="Search FAQs" />
+      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs" />
     </div>
     <div class = "search-area">
       <div class = "send-button-left"></div>
       <div>
-      <button class = "send-button" (click)="search()">Search</button>
+        <button class = "send-button" type="submit">Search</button>
       </div>
     </div>
+    </form>
   </div>
   <ul class="search-results">
     <li *ngFor="let result of searchResults">

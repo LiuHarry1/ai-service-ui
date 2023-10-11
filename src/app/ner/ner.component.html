@@ -1,42 +1,28 @@
-<div class="container">
-        <div class="card-header">
-          <h1 class="text-center">Named Entity Recognition</h1>
-        </div>
+<div class="faq-system-container">
+  <h2>Top FAQs</h2>
+  <ul class="top-faqs">
+    <li *ngFor="let faq of topFaqs">{{ faq.Question }}</li>
+  </ul>
 
-      <h3>We trained a variety of neural network models for NER with conll2003 dataset. the model using this page is always best one </h3>
-
-  <h2>Examples</h2>
-    <div class="mt-4">
-      <div class="example-text">Enter: Hi my name is Harry Liu and I live in Shanghai City of China</div>
-      <ul class="list-group">
-        <div class="text-center">Results:</div>
-        <li class="list-group-item">
-          PER(Person): Harry liu
-        </li>
-        <li class="list-group-item">
-          LOC (Location): Shanghai City
-        </li>
-        <li class="list-group-item">
-          LOC (Location): China
-        </li>
-      </ul>
+  <h2>What's your question?</h2>
+  <div class="clearfix">
+    <form (submit)="search()">
+    <div>
+      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs" />
     </div>
-
-      <h2>let's test it </h2>
-
-       <div class="input-container">
-          <textarea  [(ngModel)]="text" placeholder="Enter text for NER"></textarea>
-          <button  (click)="processNER()">Process NER</button>
-
-        </div>
-
-      <div *ngIf="results.length > 0">
-        <h2 class="text-center">Results:</h2>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let result of results">
-            <strong>{{ result.label }}:</strong> {{ result.text }}
-          </li>
-        </ul>
+    <div class = "search-area">
+      <div class = "send-button-left"></div>
+      <div>
+        <button class = "send-button" type="submit">Search</button>
       </div>
+    </div>
+    </form>
+  </div>
+  <ul class="search-results">
+    <li *ngFor="let result of searchResults">
 
+      <div [innerHTML]="result"> </div>
+
+    </li>
+  </ul>
 </div>
