@@ -1,64 +1,40 @@
-import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { host } from '../app-config';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient , HttpParams } from '@angular/common/http';
 
 @Component({
-  selector: 'app-faq',
-  templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.css'],
+  selector: 'app-ner-ui',
+  templateUrl: './ner.component.html',
+  styleUrls: ['./ner.component.css']
 })
-export class FaqComponent {
-  query: string = '';
-  searchResults: any[] = [];
-  topFaqs: any[] = [];
+export class NerComponent implements OnInit {
+  text: string = '';
+  results: { label: string; text: string }[] = [];
 
-  modelName: string = ''
+  showResults: boolean = false;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute) {
-    this.getTopFAQs();
+
+  constructor( private http: HttpClient) { }
+
+  ngOnInit(): void {
   }
 
-
-  ngOnInit() {
-    this.sanitizeMessages();
-
-    this.route.queryParams.subscribe(params => {
-      this.modelName = params['model'];
-    });
-
-    console.info("modelname:"+this.modelName)
-
-  }
+  processNER() {
 
 
-  search(): void {
-    if (this.query.trim() === '') {
-      this.searchResults = [];
-      return;
-    }
-    this.http
-      .get<any[]>(host+`/search?query=${this.query}&model=${this.modelName}`)
-      .subscribe((data) => {
-        console.info("invoking search method", data)
-        this.searchResults = data;
-      });
-  }
+    this.http.post<any>('http://localhost:2020/ner',{"text":this.text}, {  responseType: "json"}).subscribe(
+      (response) => {
+        console.info(response);
+        this.results = response;
+        console.info('ddd:'+this.results);
 
-  getTopFAQs(): void {
-    this.http
-      .get<any[]>(host+`/top-faqs`)
-      .subscribe((data) => {
-        this.topFaqs = data;
-      });
-  }
+      },
+      (error) => {
+        console.error('获取数据时出错：', error);
+      }
 
-  // Sanitize messages with HTML content
-  sanitizeMessages() {
-    for (let result of this.searchResults) {
-      result = this.sanitizer.bypassSecurityTrustHtml(result);
+    );
 
-    }
+    this.showResults = true;
+
   }
 }

@@ -10,11 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExamplesComponent } from './examples/examples.component';
 import { SentenceSimilarityComponent } from './sentence-similarity/sentence-similarity.component';
 import { NerComponent } from './ner/ner.component';
-import { NerService } from './ner/ner.service';
 import { ChatComponent } from './chat/chat.component';
 import { FaqComponent } from './faq/faq.component';
 import { AdminComponent } from './admin/admin.component';
 import { EmailCategorizationComponent } from './email-categorization/email-categorization.component';
+import { TextSummarizationComponent } from './text-summarization/text-summarization.component';
 
 
 
@@ -29,6 +29,7 @@ import { EmailCategorizationComponent } from './email-categorization/email-categ
     FaqComponent,
     AdminComponent,
     EmailCategorizationComponent,
+    TextSummarizationComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,6 @@ import { EmailCategorizationComponent } from './email-categorization/email-categ
     FormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [NerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
