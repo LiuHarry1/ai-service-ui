@@ -7,11 +7,13 @@
   <h2>What's your question?</h2>
   <div class="clearfix">
     <form (submit)="search()">
-    <div>
-      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs" />
+    <div class="suggestion-container">
+      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"  (input)="onQueryChange()" />
+      <ul  *ngIf="showSuggestions">
+        <li *ngFor="let suggestion of suggestions">{{ suggestion }}</li>
+      </ul>
     </div>
     <div class = "search-area">
-      <div class = "send-button-left"></div>
       <div>
         <button class = "send-button" type="submit">Search</button>
       </div>
