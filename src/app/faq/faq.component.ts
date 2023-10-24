@@ -50,13 +50,13 @@ export class FaqComponent {
 
 
   search(): void {
+
+
     if (this.query.trim() === '') {
       this.searchResults = [];
       return;
     }
-    this.http
-      .get<any[]>(host+`/search?query=${this.query}&model=${this.modelName}`)
-      .subscribe((data) => {
+    this.http.get<any[]>(host+`/search?query=${this.query}&model=${this.modelName}`).subscribe((data) => {
         console.info("invoking search method", data)
         this.searchResults = data;
         this.suggestions = []
@@ -80,10 +80,6 @@ export class FaqComponent {
   }
 
 
-  selectSuggestion(suggestion: string) {
-    this.query = suggestion; // Set the input field value to the selected suggestion
-    this.showSuggestions = false; // Hide the suggestion list
-  }
 
   getTop5SimilarSuggestions(suggestions: string[], query: string): string[] {
     return suggestions

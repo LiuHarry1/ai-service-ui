@@ -1,25 +1,27 @@
 <div class="faq-system-container">
+  <div>
   <h2>Top FAQs</h2>
   <ul class="top-faqs">
     <li *ngFor="let faq of topFaqs">{{ faq.Question }}</li>
   </ul>
 
   <h2>What's your question?</h2>
+  </div>
+
   <div class="clearfix">
-    <form (submit)="search()">
+    <form (submit)="search()" >
     <div class="suggestion-container">
-      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"  (input)="onQueryChange()" />
+      <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"  (input)="onQueryChange()"  autocomplete="off" />
       <ul  *ngIf="showSuggestions">
         <li *ngFor="let suggestion of suggestions">{{ suggestion }}</li>
       </ul>
     </div>
     <div class = "search-area">
-      <div>
         <button class = "send-button" type="submit">Search</button>
-      </div>
     </div>
     </form>
   </div>
+  <div>
   <ul class="search-results">
     <li *ngFor="let result of searchResults">
 
@@ -27,4 +29,5 @@
 
     </li>
   </ul>
+  </div>
 </div>

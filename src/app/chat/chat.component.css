@@ -77,3 +77,34 @@
   /*max-height: 300px;*/
   overflow-y: auto;
 }
+
+/* text-suggestion.component.css */
+.suggestion-container {
+  position: relative;
+}
+
+
+.suggestion-container ul {
+  /*width: 93%;*/
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 82%;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+
+
+}
+
+
+
+.suggestion-container li {
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+.suggestion-container li:hover {
+  background-color: #f2f2f2;
+}

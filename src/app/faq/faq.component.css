@@ -74,12 +74,13 @@ li {
   max-width: 95%;
 }
 
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
+/*!* Clear floats *!*/
+/*.clearfix::after {*/
+/*  content: "";*/
+/*  display: table;*/
+/*  clear: both;*/
+/*}*/
 
 /* text-suggestion.component.css */
 .suggestion-container {

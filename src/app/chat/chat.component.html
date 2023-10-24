@@ -24,7 +24,17 @@
 
       </div>
     </div>
-    <input class="user-input" placeholder="Type your message..." [(ngModel)]="userMessage" />
-    <button class="send-button" (click)="sendMessage()">Send</button>
+   <div >
+     <form (submit)="sendMessage()">
+    <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"    autocomplete="off"/>
+
+    <button class="send-button" >Send</button>
+       <div class="suggestion-container">
+       <ul  *ngIf="showSuggestions">
+         <li *ngFor="let suggestion of suggestions">{{ suggestion }}</li>
+       </ul>
+       </div>
+     </form>
+   </div>
   </div>
 
