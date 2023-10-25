@@ -46,7 +46,7 @@ export class ChatComponent implements AfterViewChecked, OnInit {
 
     this.chatMessages.push({ text: this.userMessage, type: 'user' });
 
-    this.http.post<any>('http://localhost:2020/api/chat', { user_message: this.userMessage }).subscribe(response => {
+    this.http.post<any>(host+'/api/chat', { user_message: this.userMessage }).subscribe(response => {
       this.chatMessages.push({ text: response.bot_response, type: 'bot' });
       this.userMessage = '';
     });
