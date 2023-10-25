@@ -25,6 +25,30 @@
     </div>
   </div>
   <div >
+    <div class="category">
+      <button
+        class="category-button"
+        [class.selected]="selectedCategory === 'general'"
+        (click)="selectCategory('general')"
+      >
+        General
+      </button>
+      <button
+        class="category-button"
+        [class.selected]="selectedCategory === 'tech'"
+        (click)="selectCategory('tech')"
+      >
+        Tech
+      </button>
+      <button
+        class="category-button"
+        [class.selected]="selectedCategory === 'health'"
+        (click)="selectCategory('health')"
+      >
+        Health
+      </button>
+
+    </div>
     <form (submit)="sendMessage()">
       <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"   (keydown)="onKeyDown($event)"   autocomplete="off"/>
 

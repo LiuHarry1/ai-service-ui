@@ -18,6 +18,8 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   showSuggestions = false;
   selectedSuggestionIndex: number = -1;
 
+  selectedCategory: string = 'general'; // Default category
+
   constructor(
     private http: HttpClient,
     private sanitizer: DomSanitizer
@@ -31,6 +33,11 @@ export class ChatComponent implements AfterViewChecked, OnInit {
 
   ngOnInit() {
     this.sanitizeMessages();
+  }
+
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    // Implement category-specific logic or fetching here
   }
 
   ngAfterViewChecked() {
