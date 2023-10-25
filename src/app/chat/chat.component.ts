@@ -16,6 +16,7 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   suggestions: string[] = [];
   allSuggestions: string[] = [];
   showSuggestions = false;
+  selectedSuggestionIndex: number = -1;
 
   constructor(
     private http: HttpClient,
@@ -36,9 +37,37 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     this.scrollToBottom();
   }
 
+  onKeyDown(event: KeyboardEvent) {
+    // console.info("....."+event.key)
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.selectedSuggestionIndex =
+        (this.selectedSuggestionIndex + 1) % this.suggestions.length;
+      this.userMessage = this.suggestions[this.selectedSuggestionIndex];
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.selectedSuggestionIndex =
+        (this.selectedSuggestionIndex - 1 + this.suggestions.length) % this.suggestions.length;
+      this.userMessage = this.suggestions[this.selectedSuggestionIndex];
+
+    }
+    // else if (event.key === 'Enter' && this.selectedSuggestionIndex >= 0) {
+    //   event.preventDefault();
+    //   this.userMessage = this.suggestions[this.selectedSuggestionIndex];
+    //   this.showSuggestions = false;
+    // }
+
+  }
+
+  onSuggestionClick(suggestion: string) {
+    this.userMessage = suggestion;
+    this.showSuggestions = false;
+  }
+
+
 
   sendMessage() {
-    if (this.userMessage.trim() === '') {
+    if (this.userMessage === undefined || this.userMessage.trim() === ''){
       return;
     }
 

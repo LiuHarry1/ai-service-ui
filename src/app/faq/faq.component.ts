@@ -19,6 +19,7 @@ export class FaqComponent {
   suggestions: string[] = [];
   allSuggestions: string[] = [];
   showSuggestions = false;
+  selectedSuggestionIndex: number = -1;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute) {
     this.getTopFAQs();
@@ -46,6 +47,30 @@ export class FaqComponent {
     this.suggestions = this.getTop5SimilarSuggestions(this.allSuggestions, this.query);
 
   }
+
+  onKeyDown(event: KeyboardEvent) {
+    // console.info("....."+event.key)
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      this.selectedSuggestionIndex =
+        (this.selectedSuggestionIndex + 1) % this.suggestions.length;
+      this.query = this.suggestions[this.selectedSuggestionIndex];
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      this.selectedSuggestionIndex =
+        (this.selectedSuggestionIndex - 1 + this.suggestions.length) % this.suggestions.length;
+      this.query = this.suggestions[this.selectedSuggestionIndex];
+
+    }
+
+  }
+
+  onSuggestionClick(suggestion: string) {
+    this.query = suggestion;
+    this.showSuggestions = false;
+  }
+
+
 
 
 

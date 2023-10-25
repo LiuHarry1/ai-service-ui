@@ -11,9 +11,14 @@
   <div class="clearfix">
     <form (submit)="search()">
       <div class="suggestion-container">
-        <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"  (input)="onQueryChange()"  autocomplete="off" />
+        <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"  (input)="onQueryChange()" (keydown)="onKeyDown($event)"   autocomplete="off" />
         <ul  *ngIf="showSuggestions">
-          <li *ngFor="let suggestion of suggestions"  >{{ suggestion }}</li>
+          <li
+            *ngFor="let suggestion of suggestions; let i = index"
+            [class.selected]="i === selectedSuggestionIndex"
+            (click)="onSuggestionClick(suggestion)"
+          >
+            {{ suggestion }}</li>
         </ul>
       </div>
       <div class = "search-area">

@@ -100,6 +100,9 @@ li {
   border: 1px solid #ccc;
 }
 
+.selected {
+  background-color: #f0f0f0; /* Highlight color */
+}
 
 
 .suggestion-container li {
