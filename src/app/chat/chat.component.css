@@ -135,13 +135,13 @@
 }
 
 
-.bot-actions i {
+.chat_right i {
   color: #000;
   transition: color 0.3s;
   cursor: pointer;
 }
 
-.bot-actions i:hover {
+.chat_right i:hover {
   color: darkorange;
 
 }
