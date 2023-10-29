@@ -2,7 +2,7 @@
 
 <div class="chat-container">
   <div class="chat-header">
-    <h1>ChatBot</h1>
+    ChatBot
   </div>
   <div #chatArea class="chat-area">
 
@@ -21,8 +21,8 @@
       </div>
       <div class="bot-actions">
         <div  *ngIf="message.type === 'bot'" >
-          <i (click)="onThumbsUpClick(message)"> <img style = "height: 25px" src = "assets/thumb-up.svg" alt="Bot:"/></i>
-          <i  (click)="onThumbsDownClick(message)">  <img style = "height: 25px" src = "assets/thumb-down.svg" alt="Bot:"/> </i>
+          <i (click)="onThumbsUpClick(message)"> <img style = "height:20px"  src = "assets/thumb-up.svg" alt="ThumbsUp"/></i>
+          <i  (click)="onThumbsDownClick(message)">  <img style = "height:20px"  src = "assets/thumb-down.svg" alt="ThumbsDown"/> </i>
         </div>
       </div>
    </div>
@@ -52,6 +52,8 @@
       </button>
 
     </div>
+
+
     <form (submit)="sendMessage()">
 
       <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"   (keydown)="onKeyDown($event)"   autocomplete="off"/>

@@ -15,6 +15,7 @@ import { FaqComponent } from './faq/faq.component';
 import { AdminComponent } from './admin/admin.component';
 import { EmailCategorizationComponent } from './email-categorization/email-categorization.component';
 import { TextSummarizationComponent } from './text-summarization/text-summarization.component';
+import {ButtonModule} from "primeng/button";
 
 
 
@@ -31,13 +32,14 @@ import { TextSummarizationComponent } from './text-summarization/text-summarizat
     EmailCategorizationComponent,
     TextSummarizationComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        ButtonModule,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
