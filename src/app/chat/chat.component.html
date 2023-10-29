@@ -19,6 +19,10 @@
           <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
         </ng-container>
         <div [innerHTML]="message.text" style = "word-break:break-word"> </div>
+        <div class="bot-actions" *ngIf="message.type === 'bot'" >
+          <i class="fa fa-thumbs-up" (click)="onThumbsUpClick(message)"></i>
+          <i class="fa fa-thumbs-down" (click)="onThumbsDownClick(message)"></i>
+        </div>
 
       </div>
 
@@ -50,6 +54,7 @@
 
     </div>
     <form (submit)="sendMessage()">
+
       <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"   (keydown)="onKeyDown($event)"   autocomplete="off"/>
 
       <button class="send-button" >Send</button>

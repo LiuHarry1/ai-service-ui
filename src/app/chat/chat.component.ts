@@ -33,6 +33,8 @@ export class ChatComponent implements AfterViewChecked, OnInit {
 
   ngOnInit() {
     this.sanitizeMessages();
+    this.chatMessages.push({ text: 'Hello! How can I assist you?', type: 'bot' });
+
   }
 
   selectCategory(category: string) {
@@ -94,6 +96,14 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     } catch (err) {}
   }
 
+  onThumbsUpClick(message: any) {
+    console.log('Thumbs up clicked for the bot message: ', message.text);
+  }
+
+  onThumbsDownClick(message: any) {
+    console.log('Thumbs down clicked for the bot message: ', message.text);
+  }
+
   // Sanitize messages with HTML content
   sanitizeMessages() {
     for (let message of this.chatMessages) {
@@ -114,7 +124,7 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     return suggestions
       .filter(suggestion => suggestion.toLowerCase().includes(query.toLowerCase()))
       .sort((a, b) => this.calculateSimilarity(a, query) - this.calculateSimilarity(b, query))
-      .slice(0, 5);
+      .slice(0, 8);
   }
 
   calculateSimilarity(suggestion: string, query: string): number {
