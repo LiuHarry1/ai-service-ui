@@ -5,28 +5,27 @@
     <h1>ChatBot</h1>
   </div>
   <div #chatArea class="chat-area">
-    <!-- <div *ngFor="let message of chatMessages" [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}">
 
-       <div [innerHTML]="message.text"></div>
-     </div>-->
-
-    <div   *ngFor="let message of chatMessages" [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}">
-      <div class ="chat-message" >
-        <ng-container *ngIf="message.type === 'user'" >
-          <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
-        </ng-container>
-        <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
-          <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
-        </ng-container>
-        <div [innerHTML]="message.text" style = "word-break:break-word"> </div>
-        <div class="bot-actions" *ngIf="message.type === 'bot'" >
-          <i class="fa fa-thumbs-up" (click)="onThumbsUpClick(message)"></i>
-          <i class="fa fa-thumbs-down" (click)="onThumbsDownClick(message)"></i>
-        </div>
-
+<!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
+    <div *ngFor="let message of chatMessages"  style = " justify-content: space-between; display: flex;">
+      <div   [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}">
+         <div class ="chat-message" >
+          <ng-container *ngIf="message.type === 'user'" >
+            <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
+          </ng-container>
+          <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
+            <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
+          </ng-container>
+          <div [innerHTML]="message.text" style = "word-break:break-word"> </div>
+         </div>
       </div>
-
-    </div>
+      <div class="bot-actions">
+        <div  *ngIf="message.type === 'bot'" >
+          <i (click)="onThumbsUpClick(message)"> <img style = "height: 25px" src = "assets/thumb-up.svg" alt="Bot:"/></i>
+          <i  (click)="onThumbsDownClick(message)">  <img style = "height: 25px" src = "assets/thumb-down.svg" alt="Bot:"/> </i>
+        </div>
+      </div>
+   </div>
   </div>
   <div >
     <div class="category">
