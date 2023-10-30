@@ -85,7 +85,6 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     this.chatMessages.push({ text: this.userMessage, type: 'user' });
 
     this.http.post<any>(host+'/api/chat', { user_message: this.userMessage }).subscribe(response => {
-
       this.chatMessages.push({ text: response.bot_response, type: 'bot' });
       this.userMessage = '';
     });
@@ -104,6 +103,7 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   onThumbsDownClick(message: any) {
     console.log('Thumbs down clicked for the bot message: ', message.text);
   }
+
 
   // Sanitize messages with HTML content
   sanitizeMessages() {
@@ -125,7 +125,7 @@ export class ChatComponent implements AfterViewChecked, OnInit {
     return suggestions
       .filter(suggestion => suggestion.toLowerCase().includes(query.toLowerCase()))
       .sort((a, b) => this.calculateSimilarity(a, query) - this.calculateSimilarity(b, query))
-      .slice(0, 8);
+      .slice(0, 5);
   }
 
   calculateSimilarity(suggestion: string, query: string): number {
