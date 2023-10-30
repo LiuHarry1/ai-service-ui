@@ -6,56 +6,64 @@
   </div>
   <div #chatArea class="chat-area">
 
-<!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
+    <!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
     <div *ngFor="let message of chatMessages"  style = "display: flex; justify-content: space-between">
-        <div class="chat_left">
-            <ng-container *ngIf="message.type === 'user'" >
-              <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
-            </ng-container>
-            <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
-              <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
-            </ng-container>
+      <div class="chat_left" style="flex-grow: 1; flex:8">
+        <ng-container *ngIf="message.type === 'user'" >
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
+        </ng-container>
+        <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
+        </ng-container>
+        <div   [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}" style="flex-grow: 1" >
+          <div [innerHTML]="message.text" style = "word-break:break-word"> </div>
+        </div>
+      </div>
 
+      <div class="chat_right" style = "">
+        <div  *ngIf="message.type === 'bot'" >
+          <i (click)="onThumbsUpClick(message)"> <img style = "height:20px"  src = "assets/thumb-up.svg" alt="ThumbsUp"/></i>
+          <i  (click)="onThumbsDownClick(message)">  <img style = "height:20px"  src = "assets/thumb-down.svg" alt="ThumbsDown"/> </i>
         </div>
-          <div   [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}" style="flex-grow: 1;">
-            <div [innerHTML]="message.text" style = "word-break:break-word"> </div>
-          </div>
-        <div class="chat_right">
-          <div  *ngIf="message.type === 'bot'" >
-            <i (click)="onThumbsUpClick(message)"> <img style = "height:20px"  src = "assets/thumb-up.svg" alt="ThumbsUp"/></i>
-            <i  (click)="onThumbsDownClick(message)">  <img style = "height:20px"  src = "assets/thumb-down.svg" alt="ThumbsDown"/> </i>
-          </div>
-        </div>
-   </div>
+      </div>
+    </div>
   </div>
 
   <div class = "chat-foot" >
-      <div class="category">
-        <button class="category-button"  [class.selected]="selectedCategory === 'general'" (click)="selectCategory('general')">
-          General
-        </button>
-        <button class="category-button" [class.selected]="selectedCategory === 'tech'" (click)="selectCategory('tech')">
-          Tech
-        </button>
-        <button class="category-button" [class.selected]="selectedCategory === 'health'" (click)="selectCategory('health')">
-          Health
-        </button>
-      </div>
+    <div class="category">
+      <button class="category-button"  [class.selected]="selectedCategory === 'general'" (click)="selectCategory('general')">
+        General
+      </button>
+      <button class="category-button" [class.selected]="selectedCategory === 'ecs'" (click)="selectCategory('ecs')">
+        ecs
+      </button>
+      <button class="category-button" [class.selected]="selectedCategory === 'jdk17'" (click)="selectCategory('jdk17')">
+        jdk17
+      </button>
+      <button class="category-button" [class.selected]="selectedCategory === 'kafka'" (click)="selectCategory('kafka')">
+        kafka
+      </button>
+      <button class="category-button" [class.selected]="selectedCategory === 'Permission'" (click)="selectCategory('Permission')">
+        Permission
+      </button>
+    </div>
 
-      <div>
-          <form (submit)="sendMessage()">
-            <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"   (keydown)="onKeyDown($event)"   autocomplete="off"/>
+    <div >
+      <form (submit)="sendMessage()">
+        <div class="suggestion-container">
+          <ul  *ngIf="showSuggestions" [style.top.px] = "-suggestions.length*41.3">
+            <li *ngFor="let suggestion of suggestions; let i = index" [class.selected]="i === selectedSuggestionIndex"  (click)="onSuggestionClick(suggestion)">
+              {{ suggestion }}
+            </li>
+          </ul>
+        </div>
+        <div style = "display: flex">
+          <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   (input)="onQueryChange()"   (keydown)="onKeyDown($event)"   autocomplete="off"/>
+          <button class="send-button" >Send</button>
+        </div>
 
-            <button class="send-button" >Send</button>
-            <div class="suggestion-container">
-              <ul  *ngIf="showSuggestions">
-                <li *ngFor="let suggestion of suggestions; let i = index" [class.selected]="i === selectedSuggestionIndex"  (click)="onSuggestionClick(suggestion)">
-                  {{ suggestion }}
-                </li>
-              </ul>
-            </div>
-          </form>
-      </div>
+      </form>
+    </div>
   </div>
 
 </div>
