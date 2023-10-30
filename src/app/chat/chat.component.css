@@ -115,12 +115,6 @@
 }
 
 
-/* text-suggestion.component.css */
-.suggestion-container {
-  position: relative;
-
-}
-
 .chat_left{
   display: flex;
   padding: 0px 0px 0px 10px;
@@ -150,11 +144,20 @@
 
 }
 
+/* text-suggestion.component.css */
+.suggestion-container {
+  position: relative;
+  width: calc(100% - 110px);
+
+}
+
+
 .suggestion-container ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 91.6%;
+/*  width: 91.6%;*/
+  width : 100%;
   position: absolute;
   /*top: -195px; !* Adjust this value to control the distance from the input *!*/
   background-color: #fff; /* Customize this background color */
