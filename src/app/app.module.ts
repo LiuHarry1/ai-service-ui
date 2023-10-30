@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 import { EmailCategorizationComponent } from './email-categorization/email-categorization.component';
 import { TextSummarizationComponent } from './text-summarization/text-summarization.component';
 import {ButtonModule} from "primeng/button";
+import {AutoCompleteModule} from "primeng/autocomplete";
 
 
 
@@ -39,6 +40,7 @@ import {ButtonModule} from "primeng/button";
         FormsModule,
         BrowserAnimationsModule,
         ButtonModule,
+        AutoCompleteModule,
     ],
   bootstrap: [AppComponent]
 })

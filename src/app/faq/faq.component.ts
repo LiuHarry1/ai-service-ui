@@ -21,6 +21,8 @@ export class FaqComponent {
   showSuggestions = false;
   selectedSuggestionIndex: number = -1;
 
+  selectedItem: string = '';
+
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute) {
     this.getTopFAQs();
 
@@ -76,7 +78,8 @@ export class FaqComponent {
 
   search(): void {
 
-
+    console.info("ss" + this.selectedItem)
+    this.query = this.selectedItem
     if (this.query.trim() === '') {
       this.searchResults = [];
       return;
@@ -86,6 +89,19 @@ export class FaqComponent {
         this.searchResults = data;
         this.suggestions = []
       });
+  }
+
+  search_new(): void {
+
+    if (this.selectedItem.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+    this.http.get<any[]>(host+`/search?query=${this.selectedItem}&model=${this.modelName}`).subscribe((data) => {
+      console.info("invoking search method", data)
+      this.searchResults = data;
+      this.suggestions = []
+    });
   }
 
   getTopFAQs(): void {
