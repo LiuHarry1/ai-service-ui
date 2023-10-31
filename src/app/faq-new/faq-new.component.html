@@ -1,0 +1,34 @@
+<div class="faq-system-container">
+  <div>
+    <h2>Top FAQs</h2>
+    <ul class="top-faqs">
+      <li *ngFor="let faq of topFaqs">{{ faq.Question }}</li>
+    </ul>
+
+    <h2>What's your question?</h2>
+  </div>
+
+  <div class="clearfix">
+    <form (submit)="search_new()">
+      <div class="suggestion-container">
+        <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="onQueryChange()" name="selectedItem"  [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"></p-autoComplete>
+      </div>
+      <div class = "search-area">
+        <!--   <button class = "send-button" type="submit">Search</button>-->
+        <p-button label="Search" type = "submit"></p-button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <ul class="search-results">
+      <li *ngFor="let result of searchResults">
+        <div [innerHTML]="result" style = "word-break:break-word"> </div>
+
+      </li>
+    </ul>
+  </div>
+  <div>
+
+
+  </div>
+</div>

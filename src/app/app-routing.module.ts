@@ -6,6 +6,8 @@ import {SentenceSimilarityComponent} from "./sentence-similarity/sentence-simila
 import {NerComponent} from "./ner/ner.component";
 import {ChatComponent} from "./chat/chat.component";
 import {FaqComponent} from "./faq/faq.component";
+import {FaqNewComponent} from "./faq-new/faq-new.component";
+
 import {AdminComponent} from "./admin/admin.component";
 import {EmailCategorizationComponent} from "./email-categorization/email-categorization.component";
 import {TextSummarizationComponent} from "./text-summarization/text-summarization.component";
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'ner', component: NerComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'faq-new', component: FaqNewComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'email_categorization', component: EmailCategorizationComponent },
   { path: 'summarize', component: TextSummarizationComponent },

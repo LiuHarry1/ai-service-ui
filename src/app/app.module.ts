@@ -17,6 +17,7 @@ import { EmailCategorizationComponent } from './email-categorization/email-categ
 import { TextSummarizationComponent } from './text-summarization/text-summarization.component';
 import {ButtonModule} from "primeng/button";
 import {AutoCompleteModule} from "primeng/autocomplete";
+import { FaqNewComponent } from './faq-new/faq-new.component';
 
 
 
@@ -32,6 +33,7 @@ import {AutoCompleteModule} from "primeng/autocomplete";
     AdminComponent,
     EmailCategorizationComponent,
     TextSummarizationComponent,
+    FaqNewComponent,
   ],
     imports: [
         BrowserModule,

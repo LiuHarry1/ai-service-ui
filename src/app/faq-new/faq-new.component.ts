@@ -5,12 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { host } from '../app-config';
 
 @Component({
-  selector: 'app-faq',
-  templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.css'],
+  selector: 'app-faq-new',
+  templateUrl: './faq-new.component.html',
+  styleUrls: ['./faq-new.component.css'],
 })
-export class FaqComponent {
-  query: string = '';
+export class FaqNewComponent {
   searchResults: any[] = [];
   topFaqs: any[] = [];
 
@@ -19,7 +18,6 @@ export class FaqComponent {
   suggestions: string[] = [];
   allSuggestions: string[] = [];
   showSuggestions = false;
-  selectedSuggestionIndex: number = -1;
 
   selectedItem: string = '';
 
@@ -46,49 +44,23 @@ export class FaqComponent {
   }
   onQueryChange() {
     this.showSuggestions = true;
-    this.suggestions = this.getTop5SimilarSuggestions(this.allSuggestions, this.query);
+    this.suggestions = this.getTop5SimilarSuggestions(this.allSuggestions, this.selectedItem);
 
   }
 
-  onKeyDown(event: KeyboardEvent) {
-    // console.info("....."+event.key)
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      this.selectedSuggestionIndex =
-        (this.selectedSuggestionIndex + 1) % this.suggestions.length;
-      this.query = this.suggestions[this.selectedSuggestionIndex];
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      this.selectedSuggestionIndex =
-        (this.selectedSuggestionIndex - 1 + this.suggestions.length) % this.suggestions.length;
-      this.query = this.suggestions[this.selectedSuggestionIndex];
 
-    }
+  search_new(): void {
 
-  }
-
-  onSuggestionClick(suggestion: string) {
-    this.query = suggestion;
-    this.showSuggestions = false;
-  }
-
-
-
-
-
-  search(): void {
-
-    if (this.query.trim() === '') {
+    if (this.selectedItem.trim() === '') {
       this.searchResults = [];
       return;
     }
-    this.http.get<any[]>(host+`/search?query=${this.query}&model=${this.modelName}`).subscribe((data) => {
-        console.info("invoking search method", data)
-        this.searchResults = data;
-        this.suggestions = []
-      });
+    this.http.get<any[]>(host+`/search?query=${this.selectedItem}&model=${this.modelName}`).subscribe((data) => {
+      console.info("invoking search method", data)
+      this.searchResults = data;
+      this.suggestions = []
+    });
   }
-
 
   getTopFAQs(): void {
     this.http
