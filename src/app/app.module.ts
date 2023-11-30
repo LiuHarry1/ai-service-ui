@@ -18,6 +18,7 @@ import { TextSummarizationComponent } from './text-summarization/text-summarizat
 import {ButtonModule} from "primeng/button";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import { FaqNewComponent } from './faq-new/faq-new.component';
+import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection.component';
 
 
 
@@ -34,6 +35,7 @@ import { FaqNewComponent } from './faq-new/faq-new.component';
     EmailCategorizationComponent,
     TextSummarizationComponent,
     FaqNewComponent,
+    AnomalyDetectionComponent,
   ],
     imports: [
         BrowserModule,

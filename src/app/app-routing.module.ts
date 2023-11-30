@@ -11,6 +11,7 @@ import {FaqNewComponent} from "./faq-new/faq-new.component";
 import {AdminComponent} from "./admin/admin.component";
 import {EmailCategorizationComponent} from "./email-categorization/email-categorization.component";
 import {TextSummarizationComponent} from "./text-summarization/text-summarization.component";
+import {AnomalyDetectionComponent} from "./anomaly-detection/anomaly-detection.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'email_categorization', component: EmailCategorizationComponent },
   { path: 'summarize', component: TextSummarizationComponent },
+  { path: 'anomaly-detection', component: AnomalyDetectionComponent },
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 

@@ -17,6 +17,7 @@ export class ExamplesComponent {
     { title: 'Name Entity Recongition', description: 'This is the five example.', category: 'NER', id :'5' , hovered:false , link:'/ner'},
     { title: 'Chat Box', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
     { title: 'Text Summarization', description: 'This is the seven example.', category: 'Text Summarization', id :'7' , hovered:false , link:'/summarize'},
+    { title: 'Anomaly Detection', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/anomaly-detection'},
     { title: 'Traditional Machine Learning', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/sentiment-analysis'},
 
 

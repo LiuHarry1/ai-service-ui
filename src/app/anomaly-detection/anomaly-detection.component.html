@@ -1,0 +1,21 @@
+<div class="prediction-container">
+  <h1>Anomaly Detection</h1>
+
+  <div class="input-section">
+    <label for="column1">Column 1:</label>
+    <input type="text" id="column1" [(ngModel)]="inputData.column1" placeholder="Enter value for column 1">
+
+    <label for="column2">Column 2:</label>
+    <input type="text" id="column2" [(ngModel)]="inputData.column2" placeholder="Enter value for column 2">
+
+    <label for="column3">Column 3:</label>
+    <input type="text" id="column3" [(ngModel)]="inputData.column3" placeholder="Enter value for column 3">
+
+    <button (click)="predictAnomaly()">Predict</button>
+  </div>
+
+  <div class="result-section">
+    <h2>Prediction Result</h2>
+    <p *ngIf="predictionResult">Prediction: {{ predictionResult.prediction }}</p>
+  </div>
+</div>
