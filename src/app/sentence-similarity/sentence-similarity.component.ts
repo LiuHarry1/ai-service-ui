@@ -13,22 +13,31 @@ export class SentenceSimilarityComponent {
 
   sentencesToCompare1: string[] = [''];
 
-  modelName: string = ''
+
 
   showResults: boolean = false;
   similarityResults: { sentence: string; score: number }[] = [];
+
+  modelName: string = ''
+
+  modelOptions: any[] = [
+    { label: 'tf_idf_model', value: 'tf_idf_model' },
+    { label: 'word2vector_model', value: 'word2vector_model' },
+    { label: 'Model 3', value: 'Model 3' },
+    // Add more models as needed
+  ];
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.modelName = params['model'];
     });
-
+    this.modelName = "tf_idf_model"
     console.info("modelname:"+this.modelName)
 
   }
 
   constructor(private http: HttpClient, private route: ActivatedRoute ) {
-
+    this.modelName = "tf_idf_model"
   }
 
 

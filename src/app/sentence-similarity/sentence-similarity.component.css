@@ -1,8 +1,35 @@
+body {
+  height: 100%;
+  margin: 0;
+}
+.left_container{
+  height: 100%;
+  width:10%;
+  margin: 0 auto;
+}
+
+
+.page{
+  max-width: 95%;
+  margin: 0 auto;
+  /*border: 1px solid #ccc;*/
+  border-width: 1px 1px 0px 1px;
+  border-style: solid;
+  border-color: #ccc;
+  height: 100%;
+
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
 .container {
-  max-width: 60%;
+  max-width: 80%;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
+  width: 70%;
 
 }
 

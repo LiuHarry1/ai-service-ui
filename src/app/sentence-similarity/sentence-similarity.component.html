@@ -1,32 +1,39 @@
 <div class = "page">
-  <div  class = "container">
-    <h1>Sentence Similarity Demo</h1>
+  <div class = "main">
+    <div class="left_container"> left div</div>
+    <div  class = "container">
+      <h1>Sentence Similarity Demo</h1>
 
-    <h3>Source Sentence</h3>
-    <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
+      <h3>Source Sentence</h3>
+      <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
 
-    <h3>Sentences to Compare</h3>
-    <ul>
-      <li *ngFor="let sentence of sentencesToCompare; let i = index">
-        <!-- Use one-way data binding with (ngModel) -->
-        <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
-        <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
-      </li>
-    </ul>
-    <div class="button-container">
-      <button (click)="addSentence()">Add Sentence</button>
-    </div>
-    <div class="button-container">
-      <button (click)="computeSimilarity()">Compute</button>
-    </div>
-    <div *ngIf="showResults">
-      <h2>Similarity Scores</h2>
-      <div *ngFor="let result of similarityResults">
-        <p><strong>{{ result.sentence }}</strong>: {{ result.score }}</p>
+      <h3>Sentences to Compare</h3>
+      <ul>
+        <li *ngFor="let sentence of sentencesToCompare; let i = index">
+          <!-- Use one-way data binding with (ngModel) -->
+          <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
+          <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
+        </li>
+      </ul>
+      <div class="button-container">
+        <button (click)="addSentence()">Add Sentence</button>
       </div>
+      <div class="button-container">
+        <button (click)="computeSimilarity()">Compute</button>
+      </div>
+      <div *ngIf="showResults">
+        <h2>Similarity Scores</h2>
+        <div *ngFor="let result of similarityResults">
+          <p><strong>{{ result.sentence }}</strong>: {{ result.score }}</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="left_container">
+      <h2>Model</h2>
+      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name"></p-dropdown>
+
     </div>
 
   </div>
-
-
 </div>

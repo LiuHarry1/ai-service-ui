@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {host} from "../app-config";
 @Component({
   selector: 'app-abnormaly-detection',
   templateUrl: './anomaly-detection.component.html',
@@ -12,7 +13,7 @@ export class AnomalyDetectionComponent {
   constructor(private http: HttpClient) { }
 
   predictAnomaly() {
-    const apiUrl = 'http://localhost:5000/predict'; // Replace with your backend URL
+    const apiUrl =  host+'/predict'; // Replace with your backend URL
     this.http.post<any>(apiUrl, this.inputData)
       .subscribe(result => {
         this.predictionResult = result;
