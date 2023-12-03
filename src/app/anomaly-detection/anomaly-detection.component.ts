@@ -13,10 +13,11 @@ export class AnomalyDetectionComponent {
   constructor(private http: HttpClient) { }
 
   predictAnomaly() {
-    const apiUrl =  host+'/predict'; // Replace with your backend URL
+    const apiUrl =  host+'/anomaly-detection/predict'; // Replace with your backend URL
     this.http.post<any>(apiUrl, this.inputData)
       .subscribe(result => {
-        this.predictionResult = result;
+        console.info(result)
+        this.predictionResult = result.predictionResult;
         // Handle the prediction result as needed
       }, error => {
         console.error('Error occurred:', error);
