@@ -19,6 +19,7 @@ import {ButtonModule} from "primeng/button";
 import {AutoCompleteModule} from "primeng/autocomplete";
 import { FaqNewComponent } from './faq-new/faq-new.component';
 import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 
@@ -37,15 +38,16 @@ import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection
     FaqNewComponent,
     AnomalyDetectionComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        ButtonModule,
-        AutoCompleteModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    AutoCompleteModule,
+    DropdownModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
