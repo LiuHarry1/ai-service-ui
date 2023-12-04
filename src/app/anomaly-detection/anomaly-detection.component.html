@@ -1,21 +1,57 @@
-<div class="prediction-container">
-  <h1>Anomaly Detection</h1>
+<div class="page">
+  <div class="header">Anomaly Detection Playground</div>
+  <div class = "main">
+    <div class="left_container">
+      <p>The following dataset is used by our models</p>
+      <div>
+        <table class="table table-striped">
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+          </tr>
+          <tr *ngFor="let u of data">
+            <td>{{u.column1}}</td>
+            <td>{{u.column2}}</td>
+            <td>{{u.column3}}</td>
+          </tr>
+        </table>
 
-  <div class="input-section">
-    <label for="column1">Column 1:</label>
-    <input type="text" id="column1" [(ngModel)]="inputData.column1" placeholder="Enter value for column 1">
+      </div>
+    </div>
+    <div class="prediction-container">
 
-    <label for="column2">Column 2:</label>
-    <input type="text" id="column2" [(ngModel)]="inputData.column2" placeholder="Enter value for column 2">
+        <h2>let's test it </h2>
+        <h3>(Result will be either normal or anomaly )</h3>
 
-    <label for="column3">Column 3:</label>
-    <input type="text" id="column3" [(ngModel)]="inputData.column3" placeholder="Enter value for column 3">
+        <div class="input-section">
+          <label for="column1">Column 1:</label>
+          <input type="text" id="column1" [(ngModel)]="inputData.column1" placeholder="Enter value for column 1">
 
-    <button (click)="predictAnomaly()">Predict</button>
+          <label for="column2">Column 2:</label>
+          <input type="text" id="column2" [(ngModel)]="inputData.column2" placeholder="Enter value for column 2">
+
+          <label for="column3">Column 3:</label>
+          <input type="text" id="column3" [(ngModel)]="inputData.column3" placeholder="Enter value for column 3">
+
+
+        </div>
+
+        <button (click)="predictAnomaly()">Predict</button>
+
+        <div class="result-section">
+          <h3>Prediction Result</h3>
+          <p *ngIf="predictionResult">Prediction: {{ predictionResult }}</p>
+        </div>
+
+      </div>
+
+    <div class="right_container">
+      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name" [style]="{'width': '200px'}"></p-dropdown>
+
+    </div>
   </div>
 
-  <div class="result-section">
-    <h2>Prediction Result</h2>
-    <p *ngIf="predictionResult">Prediction: {{ predictionResult }}</p>
-  </div>
+  <div class = "footer" style = "display: flex ;justify-content: center">Developed by AI interest group</div>
+
 </div>
