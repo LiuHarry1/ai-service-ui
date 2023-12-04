@@ -1,39 +1,51 @@
 <div class = "page">
+  <div class = "header">  Sentence Similarity Playground</div>
   <div class = "main">
-    <div class="left_container"> left div</div>
-    <div  class = "container">
-      <h1>Sentence Similarity Demo</h1>
-
-      <h3>Source Sentence</h3>
-      <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
-
-      <h3>Sentences to Compare</h3>
-      <ul>
-        <li *ngFor="let sentence of sentencesToCompare; let i = index">
-          <!-- Use one-way data binding with (ngModel) -->
-          <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
-          <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
-        </li>
-      </ul>
-      <div class="button-container">
-        <button (click)="addSentence()">Add Sentence</button>
-      </div>
-      <div class="button-container">
-        <button (click)="computeSimilarity()">Compute</button>
-      </div>
-      <div *ngIf="showResults">
-        <h2>Similarity Scores</h2>
-        <div *ngFor="let result of similarityResults">
-          <p><strong>{{ result.sentence }}</strong>: {{ result.score }}</p>
-        </div>
-      </div>
-
-    </div>
     <div class="left_container">
-      <h2>Model</h2>
-      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name"></p-dropdown>
+     <p><strong>Sentence Similarity</strong> is the task of determining how similar two texts are. </p>
+    </div>
 
+    <div  class = "container">
+
+    <h3>Examples</h3>
+    <div>
+      <div><strong>Source Sentence:</strong> the person wear red T-shirt</div>
+      <div><strong>Sentences to Compare 1:</strong> the person wear red T-shirt  ==> <strong>score: 1</strong></div>
+      <div><strong>Sentences to Compare 2:</strong> this person is walking  ==>  <strong>score:0.7928 </strong> </div>
+      <div><strong>Sentences to Compare 3:</strong> the boy is wearing red T-shirt ==>  <strong>score:0.9678</strong> </div>
+    </div>
+
+    <h2>let's test it </h2>
+
+    <h3>Source Sentence</h3>
+    <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
+
+    <h3>Sentences to Compare</h3>
+    <ul>
+      <li *ngFor="let sentence of sentencesToCompare; let i = index">
+        <!-- Use one-way data binding with (ngModel) -->
+        <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
+        <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
+      </li>
+    </ul>
+    <div class="button-container">
+      <button (click)="addSentence()">Add Sentence</button>
+    </div>
+    <div class="button-container">
+      <button (click)="computeSimilarity()">Compute</button>
+    </div>
+    <div *ngIf="showResults">
+      <h2>Similarity Scores</h2>
+      <div *ngFor="let result of similarityResults">
+        <p><strong>{{ result.sentence }}</strong>: {{ result.score }}</p>
+      </div>
     </div>
 
   </div>
+    <div class="right_container">
+      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name" [style]="{'width': '200px'}"></p-dropdown>
+    </div>
+  </div>
+  <div class = "footer" style = "display: flex ;justify-content: center">Developed by AI interest group</div>
 </div>
+
