@@ -14,30 +14,34 @@ export class SentenceSimilarityComponent {
   sentencesToCompare1: string[] = [''];
 
 
-
   showResults: boolean = false;
   similarityResults: { sentence: string; score: number }[] = [];
 
   modelName: string = ''
 
   modelOptions: any[] = [
-    { label: 'tf_idf_model', value: 'tf_idf_model' },
-    { label: 'word2vector_model', value: 'word2vector_model' },
-    { label: 'Model 3', value: 'Model 3' },
+    { label: 'tf idf', value: 'tf_idf_model' },
+    { label: 'word2vector', value: 'word2vector_model' },
+   /* { label: 'UniversalSentenceEncoder', value: 'UniversalSentenceEncoder_Model' },*/
+    { label: 'HF_MiniM_Model', value: 'HF_MiniM_Model' },
+
     // Add more models as needed
   ];
+
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.modelName = params['model'];
     });
-    this.modelName = "tf_idf_model"
+
+  /*  this.modelName = "tf_idf_model"*/
+
     console.info("modelname:"+this.modelName)
 
   }
 
   constructor(private http: HttpClient, private route: ActivatedRoute ) {
-    this.modelName = "tf_idf_model"
+
   }
 
 
