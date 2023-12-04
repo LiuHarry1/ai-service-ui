@@ -6,12 +6,16 @@ body {
 .page{
   max-width: 90%;
   margin: 0 auto;
-  /*border: 1px solid #ccc;*/
-  border-width: 1px 1px 0px 1px;
-  border-style: solid;
-  border-color: #ccc;
+
   height: 100%;
 
+}
+
+.examples{
+  background-color: var(--gray-50);
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .header{
@@ -20,6 +24,7 @@ body {
   font-size: 27px;
   font-family: Arial, sans-serif;
   border: 1px solid #ddd;
+  background-color: var(--gray-50);
 /*  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
@@ -39,6 +44,7 @@ body {
 /*  border: 1px solid #ddd;*/
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--gray-50);
 }
 
 .right_container{
