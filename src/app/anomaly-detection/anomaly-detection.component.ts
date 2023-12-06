@@ -10,6 +10,8 @@ export class AnomalyDetectionComponent {
   inputData: any = {}; // Store your input data here
   predictionResult: any;
 
+  isLoading: boolean = false;
+
   modelName: string = 'rfc'
 
   modelOptions: any[] = [
@@ -35,15 +37,22 @@ export class AnomalyDetectionComponent {
   constructor(private http: HttpClient) { }
 
   predictAnomaly() {
+
+    this.inputData["model"] = this.modelName
+    console.info( this.inputData)
+    console.info( this.modelName)
+    this.isLoading = true
     const apiUrl = host+'/anomaly-detection/predict'; // Replace with your backend URL
     this.http.post<any>(apiUrl, this.inputData)
       .subscribe(result => {
         console.info(result)
         this.predictionResult = result.predictionResult;
         console.info( result.predictionResult)
+        this.isLoading = false
         // Handle the prediction result as needed
       }, error => {
         console.error('Error occurred:', error);
+        this.isLoading = false
       });
   }
 }
