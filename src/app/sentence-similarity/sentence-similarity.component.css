@@ -4,69 +4,65 @@ body {
 }
 
 .page{
-  max-width: 90%;
+
   margin: 0 auto;
-
-  height: 100%;
-
-}
-
-.examples{
   background-color: var(--gray-50);
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
+
 
 .header{
-/*  margin: 10px 10px;*/
+  display: flex;
+  justify-content: center;
   padding: 10px;
   font-size: 27px;
   font-family: Arial, sans-serif;
   border: 1px solid #ddd;
-  background-color: var(--gray-50);
-/*  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 .main{
   display: flex;
   justify-content: space-between;
   height: 100%;
+
 }
 
 .left_container{
   height: 90vh;
   min-height:90%;
-  width:20%;
+  /*width:20%;*/
+  width:300px;
   /*margin: 20px 0 0 0 ;*/
   padding: 20px;
-/*  border: 1px solid #ddd;*/
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: var(--gray-50);
+  background-clip: content-box, padding-box;
 }
 
 .right_container{
   height: 90vh;
   min-height:90%;
-  width:15%;
-  /*margin: 20px 0 0 0 ;*/
+  width:200px;
   padding: 20px;
-/*  border: 1px solid #ddd;*/
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
 .container {
-  margin: 0 auto;
-  padding: 20px;
-/*  border: 1px solid #ccc;*/
-  width: 70%;
+  margin: 20px auto;
+  padding: 0 0 0 20px ;
+  width:800px;
+  background-color: white;
 
+}
+
+.h2class{
+  margin: 10px auto;
+  font-family: Arial, sans-serif;
+  font-size: 26px;
+}
+
+.h3class{
+  margin: 10px auto;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
 }
 
 h2 {
@@ -105,4 +101,17 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
