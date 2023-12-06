@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient , HttpParams } from '@angular/common/http';
-
+import { host } from '../app-config';
 @Component({
   selector: 'app-ner-ui',
   templateUrl: './ner.component.html',
@@ -13,15 +13,14 @@ export class NerComponent implements OnInit {
   showResults: boolean = false;
 
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   processNER() {
 
-
-    this.http.post<any>('http://localhost:2020/ner',{"text":this.text}, {  responseType: "json"}).subscribe(
+    this.http.post<any>(host+'/ner',{"text":this.text}, {  responseType: "json"}).subscribe(
       (response) => {
         console.info(response);
         this.results = response;
@@ -29,7 +28,7 @@ export class NerComponent implements OnInit {
 
       },
       (error) => {
-        console.error('获取数据时出错：', error);
+        console.error('An error while retrieving data：', error);
       }
 
     );
