@@ -11,14 +11,14 @@ export class ExamplesComponent {
 
   examples: Example[] = [
     { title: 'Sentiment Analysis', description: 'This is the first example.', category: 'Classification', id :'1', hovered:false, link:'/sentiment-analysis' },
-    { title: 'Email Categorization', description: 'This is the second example.', category: 'ML' , id :'2', hovered:false , link:'/email_categorization'},
+    { title: 'Email Categorization', description: 'This is the second example.', category: 'Classification' , id :'2', hovered:false , link:'/email_categorization'},
     { title: 'Sentence Similarity', description: 'This is the third example.', category: 'Sentence Similarity', id :'3' , hovered:false , link:'/sentence-similarity'},
-    { title: 'FAQ', description: 'This is the four example.', category: 'ML' , id :'4', hovered:false , link:'/faq'},
+    { title: 'FAQ', description: 'This is the four example.', category: 'Sentence Similarity' , id :'4', hovered:false , link:'/faq'},
     { title: 'Name Entity Recongition', description: 'This is the five example.', category: 'NER', id :'5' , hovered:false , link:'/ner'},
-    { title: 'Chat Box', description: 'This is the six example.', category: 'ML' , id :'6', hovered:false , link:'/chat'},
-    { title: 'Text Summarization', description: 'This is the seven example.', category: 'Text Summarization', id :'7' , hovered:false , link:'/summarize'},
-    { title: 'Anomaly Detection', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/anomaly-detection'},
-    { title: 'Traditional Machine Learning', description: 'This is the eight example.', category: 'ML' , id :'8', hovered:false , link:'/sentiment-analysis'},
+    { title: 'Chat Box', description: 'This is the six example.', category: 'Sentence Similarity' , id :'6', hovered:false , link:'/chat'},
+    { title: 'English To French Translation', description: 'This is the eight example.', category: 'Seq2Seq' , id :'7', hovered:false , link:'/translation'},
+    { title: 'Anomaly Detection', description: 'This is the eight example.', category: 'Tranditional ML' , id :'8', hovered:false , link:'/anomaly-detection'},
+    { title: 'Text Summarization', description: 'This is the seven example.', category: 'Seq2Seq', id :'9' , hovered:false , link:'/summarize'},
 
 
 
