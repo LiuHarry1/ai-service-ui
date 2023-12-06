@@ -1,24 +1,66 @@
 <!-- email-categorization.component.html -->
+<div class = "header">Email Categorization</div>
+<div class = "page">
 
-<div class="email-categorization">
-  <h2>Email Categorization</h2>
-  <form (submit)="categorizeEmail()">
-    <div class="form-group">
-      <label for="sender">Sender:</label>
-      <input type="text" id="sender" name="sender" [(ngModel)]="sender" required>
+  <div class = "main">
+    <div class="left_container">
+      <div class = "h3class"><strong>Models</strong></div>
+      <p>We trained a variety of neural network models for Email classification with Aspen PROD support dataset. the model using this page is always best on</p>
+      <div class = "h3class"><strong>Dataset</strong></div>
+      <p>Aspen Production Support Email</p>
+
+      <div class = "h3class"><strong>Train Method</strong></div>
+      <p>Two methods: 1. Random Forest in Traditional Machine learning . 2. Transfer leanring based on embedding model in tensorflowhub  </p>
+
     </div>
-    <div class="form-group">
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" [(ngModel)]="subject" required>
+
+    <div class="container">
+      <!-- Examples Section -->
+      <div class="example-dev">
+        <div class = "h2class">Examples</div>
+        <div>
+          <div>Sender: Ops</div>
+          <div>Subject: Unable to Post ledger via Aspen</div>
+          <div>Content: Hi team, Aspen has been extremely slow this morning, can someone look into this? Thanks Jamie Magee</div>
+          <div>Result: Critical</div>
+        </div>
+      </div>
+
+      <div class = "h2class">let's test it</div>
+      <div class = "h3class">(Result will be in Low, Medium, High and Critical)</div>
+
+      <form (submit)="categorizeEmail()">
+        <div class="form-group">
+          <label for="sender">Sender:</label>
+          <input type="text" id="sender" name="sender" [(ngModel)]="sender" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" [(ngModel)]="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <textarea id="content" name="content" [(ngModel)]="content" required></textarea>
+        </div>
+        <button type="submit">Categorize Email</button>
+      </form>
+      <div *ngIf="emailPriority" class="result">
+        <h3>Email Priority:</h3>
+        <p>{{ emailPriority }}</p>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="content">Content:</label>
-      <textarea id="content" name="content" [(ngModel)]="content" required></textarea>
+
+    <div class="right_container">
+
+      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name" [style]="{'width': '200px'}"></p-dropdown>
+
     </div>
-    <button type="submit">Categorize Email</button>
-  </form>
-  <div *ngIf="emailPriority" class="result">
-    <h3>Email Priority:</h3>
-    <p>{{ emailPriority }}</p>
   </div>
+
+
+</div>
+<div class = "footer" style = "display: flex ;justify-content: center; background-color: var(--gray-50)">Developed by AI interest group</div>
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
 </div>
