@@ -1,22 +1,24 @@
+<div class = "header">  Sentence Similarity Playground</div>
 <div class = "page">
-  <div class = "header">  Sentence Similarity Playground</div>
+
   <div class = "main">
     <div class="left_container">
-          <p><strong>Sentence Similarity</strong> is the task of determining how similar two texts are. </p>
+      <div class = "h3class"><strong>Models</strong></div>
+      <p><strong>Sentence Similarity</strong> is the task of determining how similar two texts are. </p>
+      <div>1. TF-IDF,  2. Word2Vecter(Glove), 3. MiniM Model</div>
+
     </div>
 
     <div  class = "container">
-      <h3>Examples</h3>
-      <div class = "examples">
 
-        <div>
-         <!-- <div style = "font-size: 23px; font-family: Arial, sans-serif  ">Examples</div>-->
-          <div><strong>Source Sentence:</strong> the person wear red T-shirt</div>
-          <div><strong>Sentences to Compare 1:</strong> the person wear red T-shirt  ==> <strong>score: 1</strong></div>
-          <div><strong>Sentences to Compare 2:</strong> this person is walking  ==>  <strong>score:0.7928 </strong> </div>
-          <div><strong>Sentences to Compare 3:</strong> the boy is wearing red T-shirt ==>  <strong>score:0.9678</strong> </div>
-        </div>
+      <div class = "h2class">Examples</div>
+      <div>
+        <div><strong>Source Sentence:</strong> the person wear red T-shirt</div>
+        <div><strong>Sentences to Compare 1:</strong> the person wear red T-shirt  ==> <strong>score: 1</strong></div>
+        <div><strong>Sentences to Compare 2:</strong> this person is walking  ==>  <strong>score:0.7928 </strong> </div>
+        <div><strong>Sentences to Compare 3:</strong> the boy is wearing red T-shirt ==>  <strong>score:0.9678</strong> </div>
       </div>
+
     <h2>let's test it </h2>
 
     <h3>Source Sentence</h3>
@@ -48,6 +50,9 @@
       <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name" [style]="{'width': '200px'}"></p-dropdown>
     </div>
   </div>
-  <div class = "footer" style = "display: flex ;justify-content: center">Developed by AI interest group</div>
-</div>
 
+</div>
+<div class = "footer" style = "display: flex ;justify-content: center; background-color: var(--gray-50)">Developed by AI interest group</div>
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
+</div>
