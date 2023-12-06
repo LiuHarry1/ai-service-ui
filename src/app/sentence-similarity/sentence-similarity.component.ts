@@ -13,7 +13,7 @@ export class SentenceSimilarityComponent {
 
   sentencesToCompare1: string[] = [''];
 
-
+  isLoading: boolean = false;
   showResults: boolean = false;
   similarityResults: { sentence: string; score: number }[] = [];
 
@@ -47,17 +47,19 @@ export class SentenceSimilarityComponent {
 
 
   computeSimilarity() {
-
+    this.isLoading = true;
     const data = { sourceSentence: this.sourceSentence, sentencesToCompare: this.sentencesToCompare1, 'model': this.modelName };
     this.http.post<any>(host+'/sentence_similarity',data, {  responseType: "json"}).subscribe(
       (response) => {
         console.info(response);
         this.similarityResults = response;
         console.info('ddd:'+this.similarityResults);
+        this.isLoading = false; // Hide the loading indicator when the response is received
 
       },
       (error) => {
-        console.error('获取数据时出错：', error);
+        console.error('data retrieval error：', error);
+        this.isLoading = false; // Hide the loading indicator when the response is received
       }
 
     );
