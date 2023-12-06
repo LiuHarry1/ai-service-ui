@@ -12,6 +12,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {EmailCategorizationComponent} from "./email-categorization/email-categorization.component";
 import {TextSummarizationComponent} from "./text-summarization/text-summarization.component";
 import {AnomalyDetectionComponent} from "./anomaly-detection/anomaly-detection.component";
+import {TranslationComponent} from "./translation/translation.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'email_categorization', component: EmailCategorizationComponent },
   { path: 'summarize', component: TextSummarizationComponent },
   { path: 'anomaly-detection', component: AnomalyDetectionComponent },
+  { path: 'translation', component: TranslationComponent },
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 
