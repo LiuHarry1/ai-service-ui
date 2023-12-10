@@ -1,0 +1,22 @@
+<div *ngIf="emails && emails.length">
+  <div *ngFor="let email of emails">
+    <div class="email">
+      <p><strong>Subject:</strong> {{ email.subject }}</p>
+      <p><strong>From:</strong> {{ email.from }}</p>
+      <p><strong>Content:</strong> {{ email.content }}</p>
+      <div>
+        <label>Priority:</label>
+        <select [(ngModel)]="email.priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="critical">Critical</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <button (click)="saveLabels()">Save Labels</button>
+</div>
+<div *ngIf="!emails || emails.length === 0">
+  <p>No emails available.</p>
+</div>
