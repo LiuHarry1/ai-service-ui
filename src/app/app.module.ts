@@ -21,6 +21,7 @@ import { FaqNewComponent } from './faq-new/faq-new.component';
 import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection.component';
 import {TranslationComponent} from './translation/translation.component'
 import {DropdownModule} from "primeng/dropdown";
+import { EmailLabelingComponent } from './email-labeling/email-labeling.component';
 
 
 
@@ -39,6 +40,7 @@ import {DropdownModule} from "primeng/dropdown";
     FaqNewComponent,
     AnomalyDetectionComponent,
     TranslationComponent,
+    EmailLabelingComponent,
   ],
   imports: [
     BrowserModule,

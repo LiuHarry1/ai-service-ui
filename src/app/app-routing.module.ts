@@ -13,6 +13,7 @@ import {EmailCategorizationComponent} from "./email-categorization/email-categor
 import {TextSummarizationComponent} from "./text-summarization/text-summarization.component";
 import {AnomalyDetectionComponent} from "./anomaly-detection/anomaly-detection.component";
 import {TranslationComponent} from "./translation/translation.component";
+import {EmailLabelingComponent} from "./email-labeling/email-labeling.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'summarize', component: TextSummarizationComponent },
   { path: 'anomaly-detection', component: AnomalyDetectionComponent },
   { path: 'translation', component: TranslationComponent },
+  { path: 'email_labeling', component: EmailLabelingComponent },
+
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
 
