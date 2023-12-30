@@ -22,6 +22,7 @@ import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection
 import {TranslationComponent} from './translation/translation.component'
 import {DropdownModule} from "primeng/dropdown";
 import { EmailLabelingComponent } from './email-labeling/email-labeling.component';
+import { PsIssueEmailSearcherComponent } from './ps-issue-email-searcher/ps-issue-email-searcher.component';
 
 
 
@@ -41,6 +42,7 @@ import { EmailLabelingComponent } from './email-labeling/email-labeling.componen
     AnomalyDetectionComponent,
     TranslationComponent,
     EmailLabelingComponent,
+    PsIssueEmailSearcherComponent,
   ],
   imports: [
     BrowserModule,
