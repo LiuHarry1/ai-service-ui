@@ -4,6 +4,7 @@
     <form (submit)="search()">
       <div class="suggestion-container">
         <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"   autocomplete="off" />
+       <!-- <textarea name="query" class="user-input" [(ngModel)]="query" placeholder="Search FAQs"   autocomplete="off"></textarea>-->
       </div>
       <div class = "search-area">
         <button class = "send-button" type="submit">Search</button>
@@ -13,12 +14,11 @@
   </div>
   <div>
     <ul class="search-results">
-      <li *ngFor="let result of searchResults">
+      <li *ngFor="let result of searchResults" (click)="openEmailPopup(result)">
 
         <strong>{{result['email_subject']}}</strong>
-        <p>2012-09-12</p>
-        <p>{{result['score']}}</p>
-        <p class="email-content">{{result['email_content']}}</p>
+        <p>Match Score: {{result['score']}}, Received Time: 2012-09-12 </p>
+        <p class="email-content"> {{result['email_content']}}</p>
 
       </li>
     </ul>

@@ -3,10 +3,10 @@
 <div class="email-details">
   <span class="close-btn" (click)="closePopup()">Close</span>
   <div class="email-header">
-    <h2>{{ email.subject }}</h2>
-    <p>{{ email.date }}</p>
+    <h2>{{ email['email_subject'] }}</h2>
+    <p>2012-09-12</p>
   </div>
   <div class="email-content">
-    <p>{{ email.content }}</p>
+    <p>{{ email['email_content'] }}</p>
   </div>
 </div>
