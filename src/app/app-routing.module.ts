@@ -15,6 +15,8 @@ import {AnomalyDetectionComponent} from "./anomaly-detection/anomaly-detection.c
 import {TranslationComponent} from "./translation/translation.component";
 import {EmailLabelingComponent} from "./email-labeling/email-labeling.component";
 import {PsIssueEmailSearcherComponent} from "./ps-issue-email-searcher/ps-issue-email-searcher.component"
+import {EmailComponent} from "./email/email.component";
+
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'translation', component: TranslationComponent },
   { path: 'email_labeling', component: EmailLabelingComponent },
   { path: 'ps-issue-email-searcher', component: PsIssueEmailSearcherComponent },
+  { path: 'email', component: EmailComponent },
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];

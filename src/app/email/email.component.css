@@ -1,0 +1,54 @@
+
+/* email-search.component.css */
+form {
+  /* Style your search form */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* email-details.component.css */
+.email-details {
+  /* Style your email details container */
+}
+
+.email-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  cursor: pointer;
+  /* Style your close button */
+}
+
+
+
+
+li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.email-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 5px;
+  color: #555;
+}
+
+/* email-details.component.css */
+/* ... Your existing styles ... */

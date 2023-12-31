@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SentimentAnalysisComponent } from './sentiment-analysis/sentiment-analysis.component';
@@ -23,6 +23,9 @@ import {TranslationComponent} from './translation/translation.component'
 import {DropdownModule} from "primeng/dropdown";
 import { EmailLabelingComponent } from './email-labeling/email-labeling.component';
 import { PsIssueEmailSearcherComponent } from './ps-issue-email-searcher/ps-issue-email-searcher.component';
+import { EmailComponent } from './email/email.component';
+import { EmailPopupComponent } from './email-popup/email-popup.component';
+
 
 
 
@@ -43,6 +46,8 @@ import { PsIssueEmailSearcherComponent } from './ps-issue-email-searcher/ps-issu
     TranslationComponent,
     EmailLabelingComponent,
     PsIssueEmailSearcherComponent,
+    EmailComponent,
+    EmailPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ import { PsIssueEmailSearcherComponent } from './ps-issue-email-searcher/ps-issu
     ButtonModule,
     AutoCompleteModule,
     DropdownModule,
+    MatDialogModule
   ],
   bootstrap: [AppComponent]
 })

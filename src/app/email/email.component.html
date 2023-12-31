@@ -1,0 +1,15 @@
+<!-- email.component.html -->
+<form (submit)="search()">
+  <input type="text" name="query" [(ngModel)]="searchQuery" placeholder="Search emails" />
+  <button type="submit">Search</button>
+</form>
+
+<div *ngIf="searchResults.length > 0">
+  <ul>
+    <li *ngFor="let email of searchResults" (click)="openEmailPopup(email)">
+      <strong>{{ email.subject }}</strong>
+      <p>{{ email.date }}</p>
+      <p class="email-content">{{ email.content }}</p>
+    </li>
+  </ul>
+</div>
