@@ -17,7 +17,7 @@
       <li *ngFor="let result of searchResults" (click)="openEmailPopup(result)">
 
         <strong>{{result['email_subject']}}</strong>
-        <p>Match Score: {{result['score']}}, Received Time: 2012-09-12 </p>
+        <p>Match Score: {{result['score']}}, Received Time: {{result['received_time']}} </p>
         <p class="email-content"> {{result['email_content']}}</p>
 
       </li>

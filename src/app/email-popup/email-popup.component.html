@@ -6,7 +6,6 @@
     <h2>{{ email['email_subject'] }}</h2>
     <p>2012-09-12</p>
   </div>
-  <div class="email-content">
-    <p>{{ email['email_content'] }}</p>
-  </div>
+  <!--<div class="email-content" [innerHTML]="getSafeContent()"></div>-->
+  <pre>{{ email['whole_email_chain'] }}</pre>
 </div>
