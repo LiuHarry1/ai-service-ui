@@ -27,7 +27,7 @@
 .close-btn {
   position: absolute;
   top: 5px;
-  left: 5px;
+  right: 5px;
   cursor: pointer;
   color: #333;
   font-weight: bold;
