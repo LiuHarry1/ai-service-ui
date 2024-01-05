@@ -7,11 +7,11 @@ import {MatDialog} from "@angular/material/dialog";
 import {EmailPopupComponent} from "../email-popup/email-popup.component";
 
 @Component({
-  selector: 'app-ps-issue-email-searcher',
-  templateUrl: './ps-issue-email-searcher.component.html',
-  styleUrls: ['./ps-issue-email-searcher.component.css']
+  selector: 'app-email-searcher',
+  templateUrl: './email-searcher.component.html',
+  styleUrls: ['./email-searcher.component.css']
 })
-export class PsIssueEmailSearcherComponent {
+export class EmailSearcherComponent {
 
   query: string = '';
   searchResults: any[] = [];
