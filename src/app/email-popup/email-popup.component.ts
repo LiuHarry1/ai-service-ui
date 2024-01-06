@@ -12,6 +12,7 @@ import {HttpClient} from "@angular/common/http";
 export class EmailPopupComponent {
   sanitizedContent: SafeHtml;
   emailData :any
+  isLoading: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<EmailPopupComponent>,
@@ -34,7 +35,9 @@ export class EmailPopupComponent {
 
   downloadFile() {
     console.info(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    this.isLoading = true
     this.http.get(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'], { responseType: 'blob' }).subscribe(response => {
+
       const blob = new Blob([response], );
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -42,6 +45,10 @@ export class EmailPopupComponent {
       a.download = 'knowledge_base.msg';
       a.click();
       window.URL.revokeObjectURL(url);
+      this.isLoading = false
+    }, error => {
+      console.error('Error occurred:', error);
+      this.isLoading = false;
     });
   }
 }
