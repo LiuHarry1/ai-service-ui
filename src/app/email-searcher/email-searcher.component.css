@@ -87,6 +87,25 @@ li {
   border-radius: 5px;
 }
 
+.email-subject{
+  /* This sets the initial bottom border to be transparent and 2px thick */
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease; /* Smooth transition effect */
+  color: #1a0dab; /* This is an example color similar to Google's search result links */
+  /* For font styles similar to Google search results, you can use sans-serif fonts */
+  font-family: Arial, sans-serif; /* Example of sans-serif font */
+  font-size: 16px; /* Example font size */
+
+}
+.email-subject:hover{
+  /*text-decoration: underline;*/
+  border-bottom: 2px solid black;
+  cursor: pointer; /* Change the cursor to a pointer (hand) */
+  border-color:  #1a0dab;;
+  color: #1a0dab;
+
+}
+
 /* Style for search results */
 .search-results {
   /*max-width: 95%;*/

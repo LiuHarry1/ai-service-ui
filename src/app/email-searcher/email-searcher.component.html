@@ -34,9 +34,9 @@
           </form>
         </div>
         <div>
-          <ul class="search-results" #searchResultsElement>
+          <ul class="search-results">
             <li *ngFor="let result of searchResults" >
-              <strong (click)="openEmailPopup(result)">{{result['email_subject']}}</strong>
+              <div><strong (click)="openEmailPopup(result)" class = "email-subject">{{result['email_subject']}}</strong></div>
               <p class="addtional-email-info">Match Score: {{result['score']}}, Time: {{result['received_time']}} </p>
               <p class="email-content"> {{result['email_content']}}</p>
             </li>

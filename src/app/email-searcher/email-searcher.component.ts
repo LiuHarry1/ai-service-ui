@@ -17,7 +17,6 @@ export class EmailSearcherComponent {
   searchResults: any[] = [];
   inputData: any = {};
   isLoading: boolean = false;
-  @ViewChild('searchResultsElement') searchResultsElement!: ElementRef;
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
