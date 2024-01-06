@@ -18,6 +18,8 @@ export class EmailSearcherComponent {
   modelName: string = ''
   selectedEmail: any;
   inputData: any = {};
+  isLoading: boolean = false;
+
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute, public dialog: MatDialog) {
 
   }
@@ -33,13 +35,14 @@ export class EmailSearcherComponent {
 
     this.inputData['pk_email_id'] = `${email['pk_email_id']}`
     console.info("inputdata", this.inputData)
+    this.isLoading = true;
     this.http.post<any>(host+`/get_email`, this.inputData)
       .subscribe(data => {
         console.info("invoking search method", data)
         email['whole_email_chain']= data.wholeEmailchain;
         console.info("invoking search method", email)
         // Handle the prediction result as needed
-
+        this.isLoading = false;
         const dialogRef = this.dialog.open(EmailPopupComponent, {
           width: '600px',
           data: email
@@ -52,14 +55,11 @@ export class EmailSearcherComponent {
 
       }, error => {
         console.error('Error occurred:', error);
+        this.isLoading = false;
       });
 
 
-
-
   }
-
-
 
   search(): void {
 
@@ -67,9 +67,14 @@ export class EmailSearcherComponent {
       this.searchResults = [];
       return;
     }
+    this.isLoading = true;
     this.http.get<any[]>(host+`/email_search?query=${this.query}`).subscribe((data) => {
       console.info("invoking search method", data)
       this.searchResults = data;
+      this.isLoading = false;
+    }, error => {
+      console.error('Error occurred:', error);
+      this.isLoading = false;
     });
   }
 
