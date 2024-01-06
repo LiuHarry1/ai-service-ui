@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {host} from "../app-config";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-email-popup',
@@ -9,12 +11,14 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class EmailPopupComponent {
   sanitizedContent: SafeHtml;
+  emailData :any
 
   constructor(
     public dialogRef: MatDialogRef<EmailPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public email: any,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer, private http: HttpClient
   ) {
+    this.emailData  = email
     console.info("sanitizedContent:"+ email['whole_email_chain'])
     this.sanitizedContent = this.sanitizer.bypassSecurityTrustHtml(email['whole_email_chain']);
   }
@@ -26,5 +30,18 @@ export class EmailPopupComponent {
 
   closePopup(): void {
     this.dialogRef.close();
+  }
+
+  downloadFile() {
+    console.info(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    this.http.get(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'], { responseType: 'blob' }).subscribe(response => {
+      const blob = new Blob([response], );
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'knowledge_base.msg';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
   }
 }
