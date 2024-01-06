@@ -25,19 +25,16 @@
 }
 
 .close-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+
   cursor: pointer;
   color: #333;
   font-weight: bold;
   font-size: 16px;
 }
 
-.email-header {
-  /* Additional styles for email header if needed */
+.header{
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
-.email-content {
-  /* Additional styles for email content if needed */
-}
