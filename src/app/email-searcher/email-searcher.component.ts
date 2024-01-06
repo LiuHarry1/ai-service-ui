@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { host } from '../app-config';
 import {MatDialog} from "@angular/material/dialog";
 import {EmailPopupComponent} from "../email-popup/email-popup.component";
@@ -15,23 +15,19 @@ export class EmailSearcherComponent {
 
   query: string = '';
   searchResults: any[] = [];
-  modelName: string = ''
-  selectedEmail: any;
   inputData: any = {};
   isLoading: boolean = false;
+  @ViewChild('searchResultsElement') searchResultsElement!: ElementRef;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute, public dialog: MatDialog) {
+
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
+              public dialog: MatDialog) {
 
   }
 
 
-  openEmailPopup(email: any): void {
 
-    // this.http.get<any[]>(host+`/get_email?EmailId=${email['pk_email_id']}`).subscribe((data) => {
-    //   console.info("invoking search method", data)
-    //   email['whole_email_chain']= data.wholeEmailchain;
-    //   console.info("invoking search method", email)
-    // });
+  openEmailPopup(email: any): void {
 
     this.inputData['pk_email_id'] = `${email['pk_email_id']}`
     console.info("inputdata", this.inputData)
@@ -62,27 +58,25 @@ export class EmailSearcherComponent {
   }
 
   search(): void {
-
     if (this.query.trim() === '') {
       this.searchResults = [];
       return;
     }
+    this.searchResults = []
     this.isLoading = true;
-    this.http.get<any[]>(host+`/email_search?query=${this.query}`).subscribe((data) => {
-      console.info("invoking search method", data)
+    this.http.get<any[]>(host + `/email_search?query=${this.query}`).subscribe((data) => {
+      console.info("invoking search method", data);
       this.searchResults = data;
       this.isLoading = false;
+
     }, error => {
       console.error('Error occurred:', error);
       this.isLoading = false;
     });
-  }
 
 
 
-
-
-
+}
 
 
 }
