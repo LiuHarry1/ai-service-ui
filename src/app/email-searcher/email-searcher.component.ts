@@ -17,13 +17,16 @@ export class EmailSearcherComponent {
   searchResults: any[] = [];
   inputData: any = {};
   isLoading: boolean = false;
+  recentQueries: string[] = [];
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
 
   }
-
+  ngOnInit() {
+    this.getRecentQueries();
+  }
 
 
   openEmailPopup(email: any): void {
@@ -73,9 +76,23 @@ export class EmailSearcherComponent {
       this.isLoading = false;
     });
 
+    this.getRecentQueries();
+  }
+    getRecentQueries(): void {
+      this.http.get<string[]>(host + '/get_recent_queries').subscribe(
+        queries => {
+          this.recentQueries = queries;
+        },
+        error => {
+          console.error('Error fetching recent queries:', error);
+        }
+      );
+  }
+  searchByQuery(recentQuery :string) : void {
+    this.query = recentQuery
+    this.search()
+  }
 
-
-}
 
 
 }

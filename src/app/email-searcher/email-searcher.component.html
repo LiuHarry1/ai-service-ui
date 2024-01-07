@@ -1,7 +1,7 @@
 <div class = "page">
 
   <div class = "main">
-    <div class="left_container">
+    <div class="left_container" style = "display: None">
       <h3>Aspen Ops issue email searcher</h3>
       <h4>1. What it can do</h4>
       <p>1.1. Prod Support Email Search function</p>
@@ -45,7 +45,12 @@
 
 
      </div>
-
+    <div class = "right_container">
+      <h4>Recent Queries</h4>
+      <ul class="recent-queries">
+        <li *ngFor="let query of recentQueries" (click)="searchByQuery(query)">{{ query }}</li>
+      </ul>
+    </div>
   </div>
 </div>
 
