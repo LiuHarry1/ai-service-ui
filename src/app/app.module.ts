@@ -17,6 +17,7 @@ import { EmailCategorizationComponent } from './email-categorization/email-categ
 import { TextSummarizationComponent } from './text-summarization/text-summarization.component';
 import {ButtonModule} from "primeng/button";
 import {AutoCompleteModule} from "primeng/autocomplete";
+import { InputTextModule } from 'primeng/inputtext';
 import { FaqNewComponent } from './faq-new/faq-new.component';
 import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection.component';
 import {TranslationComponent} from './translation/translation.component'
@@ -58,7 +59,8 @@ import { EmailPopupComponent } from './email-popup/email-popup.component';
     ButtonModule,
     AutoCompleteModule,
     DropdownModule,
-    MatDialogModule
+    MatDialogModule,
+    InputTextModule
   ],
   bootstrap: [AppComponent]
 })

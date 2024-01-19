@@ -21,12 +21,12 @@ export class EmailSearcherComponent {
   emailTimeRange: any = {};
   isQueried = false
   queryTypes: any[] = [
-    { label: 'Email Subject', value: 'email_subject' },
-    { label: 'Email Content', value: 'email_content' },
+    { label: 'Subject', value: 'email_subject' },
+    { label: 'Body', value: 'email_content' },
    /* { label: 'UniversalSentenceEncoder', value: 'UniversalSentenceEncoder_Model' },*/
     { label: 'Both', value: 'both' },
   ];
-  queryType: string = 'email_content'
+  queryType: string = 'email_content';
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
@@ -114,6 +114,16 @@ export class EmailSearcherComponent {
         console.error('Error fetching recent queries:', error);
       }
     );
+  }
+
+  truncateQuery(query: string, maxLength: number): string {
+
+
+    if (query.length > maxLength) {
+      return query.substring(0, maxLength) + '...';
+    } else {
+      return query;
+    }
   }
 
 

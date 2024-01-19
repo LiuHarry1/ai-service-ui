@@ -14,7 +14,7 @@
 .header_title{
   font-size: 26px;
   /*margin-left: 105px;*/
-  margin-left: 1%;
+  margin-left: 0px
 }
 
 .search-form {
@@ -26,6 +26,10 @@
   width:60%;
   /*margin: 0 auto;*/
   margin-left: 10px;
+}
+
+.search-form-dev{
+  margin-bottom: 10px
 }
 
 .search-form form{
@@ -42,7 +46,7 @@
 
 .search-area{
   margin-left: 10px;
-  width: 100px
+ /* width: 100px*/
 }
 
 
@@ -56,6 +60,21 @@
   outline: none;
   font-size: 16px;
   /*margin: 10px 10px 10px 0px*/
+}
+
+:host ::ng-deep .custom-dd .p-dropdown {
+  width: 115px;
+  height: 40px;
+  font-size: 10px;
+}
+
+:host ::ng-deep .p-button{
+  font-size:15px;
+  height: 40px;
+}
+
+:host ::ng-deep .p-inputtext {
+  height: 40px;
 }
 
 

@@ -2,40 +2,24 @@
 
     <div class = "header_wapper" >
       <div class = "header_title"><img style = "height:50px" src = "assets/email_searcher.png" alt="Email Searcher"/></div>
-      <div>
-         <p-dropdown [options]="queryTypes" [(ngModel)]="queryType" placeholder="Model Name" [style]="{'width': '150px'}"></p-dropdown>
-      </div>
-
+      <div>  <p-dropdown class="custom-dd" [options]="queryTypes" [(ngModel)]="queryType"  ></p-dropdown></div>
       <div class="search-form">
-        <form (submit)="search()">
-          <div class="suggestion-container">
-            <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="paste or type user query"   autocomplete="off" />
-          </div>
-          <div class = "search-area">
-            <button class = "send-button" type="submit">Search</button>
-          </div>
-        </form>
+        <div class="search-form-dev">
+          <form (submit)="search()">
+            <div class="suggestion-container">
+              <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Paste or Type a user query"   autocomplete="off" />
+           <!--   <input pInputText type="text"  class="user-input"  placeholder="Paste or Type a user query" [(ngModel)]="query"  />-->
+            </div>
+            <div class = "search-area">
+              <!--<button class = "send-button" type="submit">Search</button>-->
+             <p-button type="submit"  label="Search"></p-button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   <div class = "main">
     <div class="left_container" style = "display: None">
-      <h3>Aspen Ops issue email searcher</h3>
-      <h4>1. What it can do</h4>
-      <p>1.1. Prod Support Email Search function</p>
-      <p>1.2. Match score to check how similar between two emails</p>
-      <p>1.3. Whole Email chain details</p>
-      <h4>2. To get started</h4>
-      <p>2.1. Enter or copy&paste email content in ops isssue email </p>
-      <p>2.2. Go through email details to find out solutio by clicking email subject</p>
-      <h4>3. Examples for searching</h4>
-      <p>3.1. I am unable to refresh security for below event</p>
-      <p>3.2. I can't refresh security for below events</p>
-      <p>3.3. aspen is running very slow</p>
-      <p>3.4. Can you please provide a report for events in ASPEN with PD 12/30/23 – 1/2/24 that have CGMI BR positions with the gross entitlements of the event?</p>
-      <h4>4. Email data</h4>
-      <p>The most recent prod issue email data is from <strong> 2023 of December</strong></p>
-      <h4>5. Tips</h4>
-      <p>if match score is greater than 0.9, it is almost the same</p>
 
     </div>
     <div class="container">
@@ -63,7 +47,7 @@
       <h4>Recent User Queries</h4>
       <ul class="recent-queries">
         <li *ngFor="let query of recentQueries" (click)="searchByQuery(query)">
-          {{ query }}
+          {{ truncateQuery(query, 10) }}
         </li>
       </ul>
     </div>
