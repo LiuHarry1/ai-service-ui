@@ -18,6 +18,15 @@ export class EmailSearcherComponent {
   inputData: any = {};
   isLoading: boolean = false;
   recentQueries: string[] = [];
+  emailTimeRange: any = {};
+  isQueried = false
+  queryTypes: any[] = [
+    { label: 'Email Subject', value: 'email_subject' },
+    { label: 'Email Content', value: 'email_content' },
+   /* { label: 'UniversalSentenceEncoder', value: 'UniversalSentenceEncoder_Model' },*/
+    { label: 'Both', value: 'both' },
+  ];
+  queryType: string = 'email_content'
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
@@ -26,6 +35,7 @@ export class EmailSearcherComponent {
   }
   ngOnInit() {
     this.getRecentQueries();
+    this.getEmailTimeRange()
   }
 
 
@@ -64,9 +74,10 @@ export class EmailSearcherComponent {
       this.searchResults = [];
       return;
     }
+    this.isQueried=true
     this.searchResults = []
     this.isLoading = true;
-    this.http.get<any[]>(host + `/email_search?query=${this.query}`).subscribe((data) => {
+    this.http.get<any[]>(host + `/email_search?query=${this.query}&query_type=email_subject`).subscribe((data) => {
       console.info("invoking search method", data);
       this.searchResults = data;
       this.isLoading = false;
@@ -76,21 +87,33 @@ export class EmailSearcherComponent {
       this.isLoading = false;
     });
 
-    this.getRecentQueries();
+    // this.getRecentQueries();
   }
-    getRecentQueries(): void {
-      this.http.get<string[]>(host + '/get_recent_queries').subscribe(
-        queries => {
-          this.recentQueries = queries;
-        },
-        error => {
-          console.error('Error fetching recent queries:', error);
-        }
-      );
+  getRecentQueries(): void {
+    this.http.get<string[]>(host + '/get_recent_queries').subscribe(
+      queries => {
+        this.recentQueries = queries;
+      },
+      error => {
+        console.error('Error fetching recent queries:', error);
+      }
+    );
   }
   searchByQuery(recentQuery :string) : void {
     this.query = recentQuery
     this.search()
+  }
+
+  getEmailTimeRange(): void {
+    this.http.get<string[]>(host + '/get_email_range').subscribe(
+      result => {
+        this.emailTimeRange = result;
+
+      },
+      error => {
+        console.error('Error fetching recent queries:', error);
+      }
+    );
   }
 
 
