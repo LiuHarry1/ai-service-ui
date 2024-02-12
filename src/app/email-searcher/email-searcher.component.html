@@ -16,6 +16,19 @@
             </div>
           </form>
         </div>
+        <div>
+          <div class="toggle-arrows" (click)="toggleAdditionalOptions()">
+            <i class="fa fa-angle-down" *ngIf="!additionalOptionsVisible"></i>
+            <i class="fa fa-angle-up" *ngIf="additionalOptionsVisible"></i>
+          </div>
+          <!-- 其他按钮 -->
+          <div class="additional-options" *ngIf="additionalOptionsVisible">
+            <div>Position</div>
+            <div>Announcement</div>
+            <div>Notification</div>
+            <div>Alert Component</div>
+          </div>
+        </div>
       </div>
     </div>
   <div class = "main">

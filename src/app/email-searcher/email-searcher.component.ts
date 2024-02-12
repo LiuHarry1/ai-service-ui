@@ -27,12 +27,20 @@ export class EmailSearcherComponent {
     { label: 'Both', value: 'both' },
   ];
   queryType: string = 'email_content';
+  additionalOptionsVisible: boolean = false;
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
 
   }
+
+
+
+  toggleAdditionalOptions() {
+    this.additionalOptionsVisible = !this.additionalOptionsVisible;
+  }
+
   ngOnInit() {
     this.getRecentQueries();
     this.getEmailTimeRange()
