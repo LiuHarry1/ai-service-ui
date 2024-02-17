@@ -28,6 +28,13 @@ export class EmailSearcherComponent {
   ];
   queryType: string = 'email_content';
   additionalOptionsVisible: boolean = false;
+  buttonNames: string[] = ['announcement', 'Position', 'Alert', 'EC','Payment', 'posting']; // Replace with your list of button names
+  highlightedButton: number = -1; // Initialize with an index that doesn't exist
+  keyWords: any[] = [{name: 'cmp', value: "cmp"},
+                        {name: 'user' , value: "user"},
+                        {name: 'alert' , value: "alert"}]
+  selectedKeyWords: string[] = []
+
 
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
@@ -35,6 +42,18 @@ export class EmailSearcherComponent {
 
   }
 
+  onKeyWordsChange(){
+    console.log('key words changed' + this.selectedKeyWords);
+  }
+
+  handleButtonClick(buttonName: string, index: number) {
+    console.log(`Button "${buttonName}" clicked`);
+    // Add your logic here for button click event
+    this.highlightedButton = index;
+  }
+  isHighlighted(index: number): boolean {
+    return this.highlightedButton === index;
+  }
 
 
   toggleAdditionalOptions() {

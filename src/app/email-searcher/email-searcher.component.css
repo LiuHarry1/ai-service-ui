@@ -77,6 +77,13 @@
   height: 40px;
 }
 
+:host ::ng-deep .p-multiSelect {
+  width: 115px;
+  height: 30px;
+  font-size: 5px;
+  border-radius: 20px;
+}
+
 
 /* Send button */
 .send-button {
@@ -193,7 +200,7 @@ li {
 /* Style for the right container */
 .right_container {
   position: absolute;
-  top: 100px;
+  top: 200px;
   left: calc(100% - 27%);
   width: 25%;
   padding: 20px;
@@ -263,3 +270,33 @@ li {
 .fa {
   font-size: 20px; /* Adjust font size of icons */
 }
+
+
+.custom-button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #F6F7F8; /* Green */
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px; /* Adjust the value to change the roundness */
+}
+
+.custom-button:hover {
+  /*background-color: #555; !* Darker Green *!*/
+  color: #00AEEC
+}
+
+.custom-button.highlight {
+  background-color: rgb(232, 240, 254); /* Highlighted background color */
+  color: #00AEEC
+}
+
+.button-list {
+  /*text-align: center;*/
+}
+

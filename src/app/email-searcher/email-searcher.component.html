@@ -23,10 +23,19 @@
           </div>
           <!-- 其他按钮 -->
           <div class="additional-options" *ngIf="additionalOptionsVisible">
-            <div>Position</div>
-            <div>Announcement</div>
-            <div>Notification</div>
-            <div>Alert Component</div>
+            <div class="button-list">
+              <button *ngFor="let buttonName of buttonNames; let i = index"
+                      (click)="handleButtonClick(buttonName, i)"
+                      [class.highlight]="isHighlighted(i)"
+                      class="custom-button">{{ buttonName }}</button>
+
+            </div>
+            <div>
+              <p-multiSelect [options]="keyWords" [(ngModel)]="selectedKeyWords"   display="chip" [showClear]="true"
+                             [style]="{ 'width': '415px', 'border-radius': '20px'}"
+                             optionLabel="name" placeholder="Select key words" (onChange)="onKeyWordsChange()"></p-multiSelect>
+            </div>
+
           </div>
         </div>
       </div>

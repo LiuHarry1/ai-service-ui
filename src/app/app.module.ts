@@ -26,6 +26,7 @@ import { EmailLabelingComponent } from './email-labeling/email-labeling.componen
 import { EmailSearcherComponent } from './email-searcher/email-searcher.component';
 import { EmailComponent } from './email/email.component';
 import { EmailPopupComponent } from './email-popup/email-popup.component';
+import {MultiSelectModule} from "primeng/multiselect";
 
 
 
@@ -50,18 +51,19 @@ import { EmailPopupComponent } from './email-popup/email-popup.component';
     EmailComponent,
     EmailPopupComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    AutoCompleteModule,
-    DropdownModule,
-    MatDialogModule,
-    InputTextModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        ButtonModule,
+        AutoCompleteModule,
+        DropdownModule,
+        MatDialogModule,
+        InputTextModule,
+        MultiSelectModule
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
