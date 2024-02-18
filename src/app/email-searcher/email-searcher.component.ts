@@ -29,62 +29,84 @@ export class EmailSearcherComponent {
   queryType: string = 'email_content';
   additionalOptionsVisible: boolean = false;
   ComponentNames: string[] = ['announcement', 'Position', 'Alert', 'EC','Payment', 'posting']; // Replace with your list of button names
-  selectedComponents: number[] = [];
+  selectedComponents: string[] = [];
   keyWords: any[] = ['CMP','USER','Isin']
-  selectedKeyWords: number[] = []
-
-
+  selectedKeyWords: string[] = []
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
 
   }
 
-  onKeyWordsChange(){
-    console.log('key words changed' + this.selectedKeyWords);
-  }
 
-  handleKeyWordClick(buttonName: string, index: number) {
-    console.log(`Button "${buttonName}" clicked`);
+  handleKeyWordClick(keyword: string, index: number) {
+    console.log(`Button "${keyword}" clicked`);
     // Add your logic here for button click event
-    const isSelected = this.isKeyWordSelected(index);
+    const isSelected = this.isKeyWordSelected(keyword);
     if (isSelected) {
       // If the button is already selected, deselect it
-      this.selectedKeyWords = this.selectedKeyWords.filter(buttonIndex => buttonIndex !== index);
+      this.selectedKeyWords = this.selectedKeyWords.filter(buttonIndex => buttonIndex !== keyword);
     } else {
       // If the button is not selected, select it
-      this.selectedKeyWords.push(index);
+      this.selectedKeyWords.push(keyword);
     }
+    console.log("selected key words:"+ this.selectedKeyWords);
+
+    this.advanced_search()
   }
 
-  isKeyWordHighlighted(index: number): boolean {
-    return this.selectedKeyWords.includes(index);
+  isKeyWordHighlighted(keyword: string): boolean {
+    return this.selectedKeyWords.includes(keyword);
   }
 
-  isKeyWordSelected(index: number): boolean {
-    return this.isKeyWordHighlighted(index);
+  isKeyWordSelected(keyword: string): boolean {
+    return this.isKeyWordHighlighted(keyword);
   }
 
 
-  handleComponentButtonClick(buttonName: string, index: number) {
-    console.log(`Button "${buttonName}" clicked`);
+  handleComponentButtonClick(component: string, index: number) {
+    console.log(`Button "${component}" clicked`);
     // Add your logic here for button click event
-    const isSelected = this.isComponentSelected(index);
+    const isSelected = this.isComponentSelected(component);
     if (isSelected) {
       // If the button is already selected, deselect it
-      this.selectedComponents = this.selectedComponents.filter(buttonIndex => buttonIndex !== index);
+      this.selectedComponents = this.selectedComponents.filter(buttonIndex => buttonIndex !== component);
     } else {
       // If the button is not selected, select it
-      this.selectedComponents.push(index);
+      this.selectedComponents.push(component);
     }
+
+    console.log("selected components:"+ this.selectedComponents);
+    this.advanced_search()
+
   }
 
-  isComponnentHighlighted(index: number): boolean {
-    return this.selectedComponents.includes(index);
+  advanced_search(){
+    if (this.query.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+    this.isQueried=true
+    this.searchResults = []
+    this.isLoading = true;
+    this.http.get<any[]>(host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data) => {
+      console.info("invoking search method", data);
+      this.searchResults = data;
+      this.isLoading = false;
+
+    }, error => {
+      console.error('Error occurred:', error);
+      this.isLoading = false;
+    });
   }
 
-  isComponentSelected(index: number): boolean {
-    return this.isComponnentHighlighted(index);
+
+  isComponnentHighlighted(component: string): boolean {
+    return this.selectedComponents.includes(component);
+  }
+
+  isComponentSelected(component: string): boolean {
+    return this.isComponnentHighlighted(component);
   }
 
 
@@ -146,7 +168,15 @@ export class EmailSearcherComponent {
       this.isLoading = false;
     });
 
-    // this.getRecentQueries();
+    this.http.get<any[]>(host + `/get_key_words?text=${this.query}`).subscribe((data) => {
+      console.info("invoking get_key_words method", data);
+      this.keyWords = data;
+      this.selectedKeyWords = []
+    }, error => {
+      console.error('Error occurred in getting key word:', error);
+    });
+
+
   }
   getRecentQueries(): void {
     this.http.get<string[]>(host + '/get_recent_queries').subscribe(

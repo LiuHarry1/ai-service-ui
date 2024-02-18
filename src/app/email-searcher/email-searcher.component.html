@@ -26,7 +26,7 @@
             <div class="button-list">
               <button *ngFor="let componentName of ComponentNames; let i = index"
                       (click)="handleComponentButtonClick(componentName, i)"
-                      [class.highlight]="isComponnentHighlighted(i)"
+                      [class.highlight]="isComponnentHighlighted(componentName)"
                       class="custom-button">{{ componentName }}</button>
 
             </div>
@@ -34,14 +34,10 @@
               <div class="button-list">
                 <button *ngFor="let keyword of keyWords; let i = index"
                         (click)="handleKeyWordClick(keyword, i)"
-                        [class.highlight]="isKeyWordHighlighted(i)"
+                        [class.highlight]="isKeyWordHighlighted(keyword)"
                         class="custom-button">{{ keyword }}</button>
 
               </div>
-
-<!--              <p-multiSelect [options]="keyWords" [(ngModel)]="selectedKeyWords"   display="chip" [showClear]="true"-->
-<!--                             [style]="{ 'width': '415px'}"-->
-<!--                             optionLabel="name" placeholder="Select key words" (onChange)="onKeyWordsChange()"></p-multiSelect>-->
             </div>
 
           </div>
@@ -63,6 +59,9 @@
             <p class="email-content"> {{result['email_content']}}</p>
           </li>
         </ul>
+        <div *ngIf="searchResults.length === 0 && isQueried ">
+          <p>No results found</p>
+        </div>
       </div>
 
       <div *ngIf="!isQueried" >
