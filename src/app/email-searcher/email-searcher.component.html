@@ -24,16 +24,24 @@
           <!-- 其他按钮 -->
           <div class="additional-options" *ngIf="additionalOptionsVisible">
             <div class="button-list">
-              <button *ngFor="let buttonName of buttonNames; let i = index"
-                      (click)="handleButtonClick(buttonName, i)"
-                      [class.highlight]="isHighlighted(i)"
-                      class="custom-button">{{ buttonName }}</button>
+              <button *ngFor="let componentName of ComponentNames; let i = index"
+                      (click)="handleComponentButtonClick(componentName, i)"
+                      [class.highlight]="isComponnentHighlighted(i)"
+                      class="custom-button">{{ componentName }}</button>
 
             </div>
             <div>
-              <p-multiSelect [options]="keyWords" [(ngModel)]="selectedKeyWords"   display="chip" [showClear]="true"
-                             [style]="{ 'width': '415px', 'border-radius': '20px'}"
-                             optionLabel="name" placeholder="Select key words" (onChange)="onKeyWordsChange()"></p-multiSelect>
+              <div class="button-list">
+                <button *ngFor="let keyword of keyWords; let i = index"
+                        (click)="handleKeyWordClick(keyword, i)"
+                        [class.highlight]="isKeyWordHighlighted(i)"
+                        class="custom-button">{{ keyword }}</button>
+
+              </div>
+
+<!--              <p-multiSelect [options]="keyWords" [(ngModel)]="selectedKeyWords"   display="chip" [showClear]="true"-->
+<!--                             [style]="{ 'width': '415px'}"-->
+<!--                             optionLabel="name" placeholder="Select key words" (onChange)="onKeyWordsChange()"></p-multiSelect>-->
             </div>
 
           </div>

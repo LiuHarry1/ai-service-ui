@@ -28,12 +28,10 @@ export class EmailSearcherComponent {
   ];
   queryType: string = 'email_content';
   additionalOptionsVisible: boolean = false;
-  buttonNames: string[] = ['announcement', 'Position', 'Alert', 'EC','Payment', 'posting']; // Replace with your list of button names
-  highlightedButton: number = -1; // Initialize with an index that doesn't exist
-  keyWords: any[] = [{name: 'cmp', value: "cmp"},
-                        {name: 'user' , value: "user"},
-                        {name: 'alert' , value: "alert"}]
-  selectedKeyWords: string[] = []
+  ComponentNames: string[] = ['announcement', 'Position', 'Alert', 'EC','Payment', 'posting']; // Replace with your list of button names
+  selectedComponents: number[] = [];
+  keyWords: any[] = ['CMP','USER','Isin']
+  selectedKeyWords: number[] = []
 
 
 
@@ -46,13 +44,47 @@ export class EmailSearcherComponent {
     console.log('key words changed' + this.selectedKeyWords);
   }
 
-  handleButtonClick(buttonName: string, index: number) {
+  handleKeyWordClick(buttonName: string, index: number) {
     console.log(`Button "${buttonName}" clicked`);
     // Add your logic here for button click event
-    this.highlightedButton = index;
+    const isSelected = this.isKeyWordSelected(index);
+    if (isSelected) {
+      // If the button is already selected, deselect it
+      this.selectedKeyWords = this.selectedKeyWords.filter(buttonIndex => buttonIndex !== index);
+    } else {
+      // If the button is not selected, select it
+      this.selectedKeyWords.push(index);
+    }
   }
-  isHighlighted(index: number): boolean {
-    return this.highlightedButton === index;
+
+  isKeyWordHighlighted(index: number): boolean {
+    return this.selectedKeyWords.includes(index);
+  }
+
+  isKeyWordSelected(index: number): boolean {
+    return this.isKeyWordHighlighted(index);
+  }
+
+
+  handleComponentButtonClick(buttonName: string, index: number) {
+    console.log(`Button "${buttonName}" clicked`);
+    // Add your logic here for button click event
+    const isSelected = this.isComponentSelected(index);
+    if (isSelected) {
+      // If the button is already selected, deselect it
+      this.selectedComponents = this.selectedComponents.filter(buttonIndex => buttonIndex !== index);
+    } else {
+      // If the button is not selected, select it
+      this.selectedComponents.push(index);
+    }
+  }
+
+  isComponnentHighlighted(index: number): boolean {
+    return this.selectedComponents.includes(index);
+  }
+
+  isComponentSelected(index: number): boolean {
+    return this.isComponnentHighlighted(index);
   }
 
 
