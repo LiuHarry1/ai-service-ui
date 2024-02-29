@@ -16,7 +16,9 @@ export class TextComparisonComponent {
 
   compareText() {
     const dmp = new DiffMatchPatch();
-    const diffs = dmp.diff_main(this.textA, this.textB);
+    const textALower = this.textA.toLowerCase();
+    const textBLower = this.textB.toLowerCase();
+    const diffs = dmp.diff_main(textALower, textBLower);
     this.differences = diffs;
   }
 }
