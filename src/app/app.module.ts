@@ -27,6 +27,9 @@ import { EmailSearcherComponent } from './email-searcher/email-searcher.componen
 import { EmailComponent } from './email/email.component';
 import { EmailPopupComponent } from './email-popup/email-popup.component';
 import {MultiSelectModule} from "primeng/multiselect";
+import { TextFormatComponent } from './text-format/text-format.component';
+import { FormattedResultsComponent } from './formatted-results/formatted-results.component';
+import { FileContentComponent } from './file-content/file-content.component';
 
 
 
@@ -50,6 +53,9 @@ import {MultiSelectModule} from "primeng/multiselect";
     EmailSearcherComponent,
     EmailComponent,
     EmailPopupComponent,
+    TextFormatComponent,
+    FormattedResultsComponent,
+    FileContentComponent,
   ],
     imports: [
         BrowserModule,
