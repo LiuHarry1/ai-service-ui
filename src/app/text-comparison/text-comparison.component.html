@@ -1,0 +1,10 @@
+<div>
+  <textarea [(ngModel)]="textA" (input)="compareText()"></textarea>
+  <textarea [(ngModel)]="textB" (input)="compareText()"></textarea>
+</div>
+
+<div *ngFor="let diff of differences">
+  <span [ngClass]="{'diff-added': diff[0] === 1, 'diff-removed': diff[0] === -1}">
+    {{ diff[1] }}
+  </span>
+</div>

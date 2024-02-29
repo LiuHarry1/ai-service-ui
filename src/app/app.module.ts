@@ -30,6 +30,7 @@ import {MultiSelectModule} from "primeng/multiselect";
 import { TextFormatComponent } from './text-format/text-format.component';
 import { FormattedResultsComponent } from './formatted-results/formatted-results.component';
 import { FileContentComponent } from './file-content/file-content.component';
+import { TextComparisonComponent } from './text-comparison/text-comparison.component';
 
 
 
@@ -56,6 +57,7 @@ import { FileContentComponent } from './file-content/file-content.component';
     TextFormatComponent,
     FormattedResultsComponent,
     FileContentComponent,
+    TextComparisonComponent,
   ],
     imports: [
         BrowserModule,

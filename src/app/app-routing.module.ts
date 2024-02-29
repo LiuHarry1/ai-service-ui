@@ -19,6 +19,7 @@ import {EmailComponent} from "./email/email.component";
 import {TextFormatComponent} from "./text-format/text-format.component";
 import {FormattedResultsComponent} from "./formatted-results/formatted-results.component";
 import {FileContentComponent} from "./file-content/file-content.component";
+import {TextComparisonComponent} from "./text-comparison/text-comparison.component";
 
 
 const routes: Routes = [
@@ -41,6 +42,8 @@ const routes: Routes = [
   { path: 'text-format', component: TextFormatComponent },
   { path: 'formatted-results', component: FormattedResultsComponent },
   { path: 'file-content/:filename', component: FileContentComponent }, // Define route for file content
+  {path : 'text-comparison', component: TextComparisonComponent},
+
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];
