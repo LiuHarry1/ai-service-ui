@@ -19,7 +19,7 @@ export class ExamplesComponent {
     { title: 'English To French Translation', description: 'This is the eight example.', category: 'Seq2Seq' , id :'7', hovered:false , link:'/translation'},
     { title: 'Anomaly Detection', description: 'This is the eight example.', category: 'Tranditional ML' , id :'8', hovered:false , link:'/anomaly-detection'},
     { title: 'PROD Issue Email Searcher', description: 'This is the eight example.', category: 'Sentence Similarity' , id :'9', hovered:false , link:'/email-searcher'},
-    { title: 'Text Format', description: 'This is the ten example.', category: 'Seq2Seq' , id :'10', hovered:false , link:'/text-format'},
+    { title: 'Text Format', description: 'This is the ten example.', category: 'Seq2Seq' , id :'10', hovered:false , link:'/text-formatter'},
 
     { title: 'Text Summarization', description: 'This is the seven example.', category: 'Seq2Seq', id :'11' , hovered:false , link:'/summarize'},
 

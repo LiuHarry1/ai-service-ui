@@ -1,3 +1,7 @@
+.page{
+  /*background-color: #f4f4f4;*/
+
+}
 .container {
   max-width: 80%;
   margin: 0 auto;
@@ -12,8 +16,8 @@
 
 label {
   display: block;
-  font-weight: bold;
   margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 textarea {

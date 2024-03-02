@@ -1,19 +1,20 @@
 <!-- formatted-results.component.html -->
+<div class = "container">
+  <button (click)="refreshResults()">Refresh</button>
 
-<button (click)="refreshResults()">Refresh</button>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of formattedResults" >
+      <td (click)="openFileContent(result.name)">{{ result.name }}</td>
+      <td>{{ result.created_date }}</td>
+    </tr>
+    </tbody>
+  </table>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Created Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let result of formattedResults" >
-    <td (click)="openFileContent(result.name)">{{ result.name }}</td>
-    <td>{{ result.created_date }}</td>
-  </tr>
-  </tbody>
-</table>
-
+</div>
