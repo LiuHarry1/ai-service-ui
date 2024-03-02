@@ -27,10 +27,11 @@ import { EmailSearcherComponent } from './email-searcher/email-searcher.componen
 import { EmailComponent } from './email/email.component';
 import { EmailPopupComponent } from './email-popup/email-popup.component';
 import {MultiSelectModule} from "primeng/multiselect";
-import { TextFormatComponent } from './text-format/text-format.component';
-import { FormattedResultsComponent } from './formatted-results/formatted-results.component';
-import { FileContentComponent } from './file-content/file-content.component';
-import { TextComparisonComponent } from './text-comparison/text-comparison.component';
+import { TextFormatComponent } from './text-formatter/text-format/text-format.component';
+import { FormattedResultsComponent } from './text-formatter/formatted-results/formatted-results.component';
+import { FileContentComponent } from './text-formatter/file-content/file-content.component';
+import { TextComparisonComponent } from './text-formatter/text-comparison/text-comparison.component';
+import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 
 
 
@@ -58,6 +59,7 @@ import { TextComparisonComponent } from './text-comparison/text-comparison.compo
     FormattedResultsComponent,
     FileContentComponent,
     TextComparisonComponent,
+    TextFormatterComponent,
   ],
     imports: [
         BrowserModule,

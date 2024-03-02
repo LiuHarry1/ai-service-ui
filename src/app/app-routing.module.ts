@@ -16,10 +16,11 @@ import {TranslationComponent} from "./translation/translation.component";
 import {EmailLabelingComponent} from "./email-labeling/email-labeling.component";
 import {EmailSearcherComponent} from "./email-searcher/email-searcher.component"
 import {EmailComponent} from "./email/email.component";
-import {TextFormatComponent} from "./text-format/text-format.component";
-import {FormattedResultsComponent} from "./formatted-results/formatted-results.component";
-import {FileContentComponent} from "./file-content/file-content.component";
-import {TextComparisonComponent} from "./text-comparison/text-comparison.component";
+import {TextFormatComponent} from "./text-formatter/text-format/text-format.component";
+import {FormattedResultsComponent} from "./text-formatter/formatted-results/formatted-results.component";
+import {FileContentComponent} from "./text-formatter/file-content/file-content.component";
+import {TextComparisonComponent} from "./text-formatter/text-comparison/text-comparison.component";
+import {TextFormatterComponent} from "./text-formatter/text-formatter.component";
 
 
 const routes: Routes = [
@@ -39,10 +40,17 @@ const routes: Routes = [
   { path: 'email_labeling', component: EmailLabelingComponent },
   { path: 'email-searcher', component: EmailSearcherComponent },
   { path: 'email', component: EmailComponent },
-  { path: 'text-format', component: TextFormatComponent },
-  { path: 'formatted-results', component: FormattedResultsComponent },
+  // { path: 'text-format', component: TextFormatComponent },
+  // { path: 'formatted-results', component: FormattedResultsComponent },
   { path: 'file-content/:filename', component: FileContentComponent }, // Define route for file content
-  {path : 'text-comparison', component: TextComparisonComponent},
+  // {path : 'text-comparison', component: TextComparisonComponent},
+  {path : 'text-formatter', component: TextFormatterComponent,
+  children:[
+    { path: '', redirectTo: 'text-format', pathMatch: 'full' },
+    { path: 'text-format', component: TextFormatComponent },
+    { path: 'formatted-results', component: FormattedResultsComponent },
+    {path : 'text-comparison/:filename', component: TextComparisonComponent},
+  ]},
 
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },

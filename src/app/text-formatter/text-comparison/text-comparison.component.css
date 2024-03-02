@@ -1,0 +1,56 @@
+/* Container for textareas */
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 内部 div 样式 */
+.container div {
+  width: 49%; /* 您可以调整宽度 */
+  padding: 10px;
+
+}
+
+/* Style for the textareas */
+.container textarea {
+  width: 100%; /* Adjust width as needed */
+  height: 250px; /* Adjust height as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.diff-container{
+  padding: 10px;
+  /*border: 1px solid #ccc;*/
+  /*border-radius: 5px;*/
+  margin:10px;
+}
+
+.origin-text-container .formatted-text-container{
+  display: flex;
+  flex-direction: column; /* 让内容垂直排列 */
+}
+
+/* Position the first textarea on the left */
+.textarea-container textarea:first-child {
+  margin-right: 10px; /* Adjust spacing between textareas */
+}
+
+
+.diff-added {
+  background-color: #d4edda; /* Light green background for added text */
+  color: #155724; /* Dark green text color for added text */
+}
+
+.diff-removed {
+  background-color: #f8d7da; /* Light red background for removed text */
+  color: #721c24; /* Dark red text color for removed text */
+}
+
+.diff-unchanged {
+  background-color: transparent; /* Transparent background for unchanged text */
+  color: inherit; /* Inherit text color for unchanged text */
+}

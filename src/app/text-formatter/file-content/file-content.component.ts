@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { prompt_engineering_host } from '../app-config';
+import { prompt_engineering_host } from '../../app-config';
 
 @Component({
   selector: 'app-file-content',
@@ -13,6 +13,7 @@ import { prompt_engineering_host } from '../app-config';
 export class FileContentComponent implements OnInit {
   filename: string = '';
   fileContent: string = '';
+  formatted_result: any = {'raw_text':"", "formatted_text":""};
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -28,7 +29,7 @@ export class FileContentComponent implements OnInit {
   fetchFileContent() {
     this.http.post(prompt_engineering_host + `/text/format_result/${this.filename}`, {}).subscribe((content) => {
       console.log('File Content:', content);
-      this.fileContent = content.toString();
+      this.formatted_result = content
     });
   }
 }
