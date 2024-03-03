@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let result of formattedResults" >
-      <td (click)="openFileContent(result.name)">{{ result.name }}</td>
+      <td (click)="openFileContent(result.name)" class="hoverable">{{ result.name }}</td>
       <td>{{ result.created_date }}</td>
     </tr>
     </tbody>

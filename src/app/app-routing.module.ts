@@ -21,6 +21,8 @@ import {FormattedResultsComponent} from "./text-formatter/formatted-results/form
 import {FileContentComponent} from "./text-formatter/file-content/file-content.component";
 import {TextComparisonComponent} from "./text-formatter/text-comparison/text-comparison.component";
 import {TextFormatterComponent} from "./text-formatter/text-formatter.component";
+import {Llama2Component} from "./llama2/llama2.component";
+import {CompletionComponent} from "./llama2/completion/completion.component";
 
 
 const routes: Routes = [
@@ -52,6 +54,10 @@ const routes: Routes = [
     {path : 'text-comparison/:filename', component: TextComparisonComponent},
   ]},
 
+  {path: 'llama2', component: Llama2Component, children:[
+      { path: '', redirectTo: 'completion', pathMatch: 'full' },
+      { path: 'completion', component: CompletionComponent },
+    ]},
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
 ];

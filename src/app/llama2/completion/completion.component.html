@@ -1,0 +1,21 @@
+<!-- text-format.component.html -->
+<div class = "page">
+  <div class = "container">
+    <div>
+      <textarea id="text" [(ngModel)]="text"  placeholder="say something ..." ></textarea>
+    </div>
+    <div>
+        <button (click)="submitText()">Submit</button>
+    </div>
+  </div>
+  <div class="completion" *ngIf="completion">
+    <p>Completion: {{ completion }}</p>
+  </div>
+
+</div>
+
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
+</div>
+

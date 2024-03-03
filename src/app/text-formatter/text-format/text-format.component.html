@@ -6,11 +6,11 @@
       <textarea id="text" [(ngModel)]="text"></textarea>
     </div>
     <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="name">
+      <label for="name">File Name:</label>
+      <div style = "color:red">Note: To check it later, please provide a unique name like eventId or ...</div>
+      <input type="text" id="name" [(ngModel)]="fileName">
     </div>
     <button (click)="submitText()">Format</button>
-
 
   </div>
 

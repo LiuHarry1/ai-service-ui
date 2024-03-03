@@ -1,0 +1,57 @@
+.menu-container {
+  margin-left: calc(10%);
+}
+
+.menu-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Choose the desired font-family */
+  font-weight: bold;
+  /*font-weight: bold;*/
+}
+
+.menu-container ul li {
+  display: inline-block;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.menu-container ul li:hover {
+  background-color: #f4f4f4;
+
+}
+
+.menu-container ul li.active {
+  color: #007bff;
+  border-bottom: 1px solid #007bff;
+}
+
+.menu-container ul li.active:hover {
+  /*background-color: transparent;*/
+}
+
+.menu-container ul li::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  /*background-color: #007bff;*/
+  transition: width 0.3s; /* Add transition for smooth animation */
+}
+
+.menu-container ul li.active::after {
+  width: 100%;
+}
+
+/* Remove border-bottom from anchor tag */
+.menu-container ul li a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Add a line to separate menu from router-outlet */
+.separator-line {
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}

@@ -32,6 +32,8 @@ import { FormattedResultsComponent } from './text-formatter/formatted-results/fo
 import { FileContentComponent } from './text-formatter/file-content/file-content.component';
 import { TextComparisonComponent } from './text-formatter/text-comparison/text-comparison.component';
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
+import { Llama2Component } from './llama2/llama2.component';
+import { CompletionComponent } from './llama2/completion/completion.component';
 
 
 
@@ -60,6 +62,8 @@ import { TextFormatterComponent } from './text-formatter/text-formatter.componen
     FileContentComponent,
     TextComparisonComponent,
     TextFormatterComponent,
+    Llama2Component,
+    CompletionComponent,
   ],
     imports: [
         BrowserModule,

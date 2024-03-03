@@ -1,11 +1,11 @@
 <div class="container">
   <div class = "origin-text-container">
     <div style="text-align: center; width: 100%">Original Text</div>
-  <textarea [(ngModel)]="textA" (input)="compareText()"></textarea>
+  <textarea [(ngModel)]="textA" (input)="compareText()" readonly></textarea>
   </div>
   <div class = "formatted-text-container">
     <div  style ="text-align: center; width: 100%">Formatted Text</div>
-  <textarea [(ngModel)]="textB" (input)="compareText()"></textarea>
+  <textarea [(ngModel)]="textB" (input)="compareText()" style="font-size: 14px"></textarea>
   </div>
 </div>
 
