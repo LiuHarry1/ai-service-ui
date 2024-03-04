@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, SecurityContext} from '@angular/core';
 import { DiffMatchPatch } from 'diff-match-patch-ts';
 import {prompt_engineering_host} from "../../app-config";
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -16,8 +17,13 @@ export class TextComparisonComponent {
   filename: string = '';
   differences: Array<any> = [];
   formatted_result: any = {'raw_text':"", "formatted_text":""};
+  dmp: any;
+  diffText: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+
+  constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
+    this.dmp = new DiffMatchPatch();
+  }
 
 
   ngOnInit() {
@@ -28,6 +34,7 @@ export class TextComparisonComponent {
       this.fetchFileContent();
 
     });
+
   }
 
   fetchFileContent() {
@@ -36,15 +43,19 @@ export class TextComparisonComponent {
       this.formatted_result = content;
       this.textA =this.formatted_result.raw_text;
       this.textB = this.formatted_result.formatted_text;
-      this.compareText()
+      this.compareTextold()
     });
   }
 
-  compareText() {
+  compareTextold() {
     const dmp = new DiffMatchPatch();
     const textALower = this.textA.toLowerCase();
     const textBLower = this.textB.toLowerCase();
-    const diffs = dmp.diff_main(textALower, textBLower);
-    this.differences = diffs;
+    const diff = dmp.diff_main(textALower, textBLower);
+
+    dmp.diff_cleanupSemantic(diff);
+
+    const htmlString = dmp.diff_prettyHtml(diff);
+    this.diffText = this.sanitizer.bypassSecurityTrustHtml(htmlString);
   }
 }

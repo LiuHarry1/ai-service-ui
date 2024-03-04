@@ -1,18 +1,25 @@
 <div class="container">
   <div class = "origin-text-container">
     <div style="text-align: center; width: 100%">Original Text</div>
-  <textarea [(ngModel)]="textA" (input)="compareText()" readonly></textarea>
+  <textarea [(ngModel)]="textA" (input)="compareTextold()"></textarea>
   </div>
   <div class = "formatted-text-container">
     <div  style ="text-align: center; width: 100%">Formatted Text</div>
-  <textarea [(ngModel)]="textB" (input)="compareText()" style="font-size: 14px"></textarea>
+  <textarea [(ngModel)]="textB" (input)="compareTextold()" style="font-size: 14px"></textarea>
   </div>
 </div>
 
 <h3 style="text-align: center; width: 100%"> The following are the difference between those two texts</h3>
 
-<div *ngFor="let diff of differences" class = "diff-container">
-  <span [ngClass]="{'diff-added': diff[0] === 1, 'diff-removed': diff[0] === -1}">
-    {{ diff[1] }}
-  </span>
+<!--<div *ngFor="let diff of differences" class = "diff-container">-->
+<!--  <span [ngClass]="{'diff-added': diff[0] === 1, 'diff-removed': diff[0] === -1}">-->
+<!--    {{ diff[1] }}-->
+<!--  </span>-->
+<!--</div>-->
+
+
+<div class="diff-panel">
+  <pre [innerHTML]="diffText"></pre>
 </div>
+
+

@@ -54,3 +54,17 @@
   background-color: transparent; /* Transparent background for unchanged text */
   color: inherit; /* Inherit text color for unchanged text */
 }
+
+.comparison-container {
+  display: flex;
+}
+
+.text-area {
+  flex: 1;
+  height: 300px;
+}
+
+.diff-html {
+  white-space: pre-wrap;
+}
+
