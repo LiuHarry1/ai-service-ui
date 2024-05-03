@@ -16,12 +16,18 @@ export class CompletionComponent {
   showCompletion: boolean = false;
   isLoading: boolean = false;
 
+  llmNames: any[] = [
+    { label: 'llama2', value: 'llama2' },
+    { label: 'llama3', value: 'llama3' },
+  ];
+  llmName: string = "llama2"
+
   constructor(private http: HttpClient) { }
 
 
   submitText(){
     this.isLoading = true;
-    this.http.post(prompt_engineering_host+'/llama/completion', { prompt: this.text}).subscribe((response: any) => {
+    this.http.post(prompt_engineering_host+'/llama/completion', { prompt: this.text, llm_name: this.llmName}).subscribe((response: any) => {
       console.info("Success...", response);
       if (response && response.completion) {
         this.completion = response.completion;

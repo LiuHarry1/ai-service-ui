@@ -47,6 +47,14 @@ button:hover {
   padding: 10px;
 }
 
+.right_container{
+  position: fixed;
+  top: 100px;
+  left: 90%;
+  width: 10%;
+  /*height: 20%;*/
+}
+
 .loading-indicator {
   position: fixed;
   top: 0;

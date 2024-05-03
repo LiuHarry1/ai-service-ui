@@ -4,6 +4,9 @@
     <div>
       <textarea id="text" [(ngModel)]="text"  placeholder="say something ..." ></textarea>
     </div>
+    <div class = "right_container">
+      <p-dropdown class="custom-dd" [options]="llmNames" [(ngModel)]="llmName"  ></p-dropdown>
+    </div>
     <div>
         <button (click)="submitText()">Submit</button>
     </div>
