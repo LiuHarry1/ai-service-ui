@@ -1,18 +1,25 @@
 <!-- text-format.component.html -->
 <div class = "page">
-  <div class = "container">
+  <div class = "left_container"></div>
+  <div class = "center_container">
     <div>
       <textarea id="text" [(ngModel)]="text"  placeholder="say something ..." ></textarea>
-    </div>
-    <div class = "right_container">
-      <p-dropdown class="custom-dd" [options]="llmNames" [(ngModel)]="llmName"  ></p-dropdown>
     </div>
     <div>
         <button (click)="submitText()">Submit</button>
     </div>
+
+    <div class="completion" *ngIf="completion">
+      <!--<p>{{ completion }}</p>-->
+      <pre>{{ completion }}</pre>
+      <!--<textarea [(ngModel)]="completion" ></textarea>-->
+    </div>
   </div>
-  <div class="completion" *ngIf="completion">
-    <p>{{ completion }}</p>
+
+  <div class = "right_container">
+    <div >
+      <p-dropdown class="custom-dd" [options]="llmNames" [(ngModel)]="llmName"  ></p-dropdown>
+    </div>
   </div>
 
 </div>

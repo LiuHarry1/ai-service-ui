@@ -1,22 +1,27 @@
 .page{
   /*background-color: #f4f4f4;*/
-  width: 80%;
+  display : flex;
   margin: 0 auto;
   padding: 20px;
 }
-.container {
 
-
-
-
-  /*background-color: #f4f4f4;*/
+.center_container{
+  width: 80%;
   border-radius: 10px;
 }
 
-.container div {
+.center_container div{
   margin-bottom: 15px;
 }
 
+.left_container{
+  width: 10%;
+
+}
+.right_container{
+  width: 10%;
+  margin: 10px;
+}
 
 textarea {
   width: 100%;
@@ -47,13 +52,6 @@ button:hover {
   padding: 10px;
 }
 
-.right_container{
-  position: fixed;
-  top: 100px;
-  left: 90%;
-  width: 10%;
-  /*height: 20%;*/
-}
 
 .loading-indicator {
   position: fixed;

@@ -31,6 +31,7 @@ export class CompletionComponent {
       console.info("Success...", response);
       if (response && response.completion) {
         this.completion = response.completion;
+
         this.showCompletion = true;
 
       }
