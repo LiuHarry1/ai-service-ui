@@ -52,6 +52,53 @@ button:hover {
   padding: 10px;
 }
 
+/*:host ::ng-deep markdown code {*/
+/*  display: block;*/
+/*  padding: 10px;*/
+/*  background-color: #f4f4f4;*/
+/*  border-radius: 4px;*/
+/*  font-family: monospace;*/
+/*  font-size: 14px;*/
+/*  overflow-x: auto;*/
+/*  line-height: 1.5;*/
+/*  border: 1px solid #ccc;*/
+/*}*/
+
+::ng-deep markdown pre code {
+/*  display: block ;
+  padding: 10px ;
+  background-color: #f4f4f4 ;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  line-height: 1.5;
+  border: 1px solid #ccc;*/
+  display: block;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  line-height: 1.6;
+  border: 1px solid #ddd;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep markdown ul li code{
+  font-weight: 600;
+  font-family: Consolas, monospace;
+  color: #0d0d0d
+}
+
+::ng-deep markdown p code{
+  font-weight: 600;
+  font-family: Consolas, monospace;
+  color: #0d0d0d
+}
+
 
 .loading-indicator {
   position: fixed;
