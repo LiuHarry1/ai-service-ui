@@ -34,7 +34,7 @@ import { TextComparisonComponent } from './text-formatter/text-comparison/text-c
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 import { Llama2Component } from './llama2/llama2.component';
 import { CompletionComponent } from './llama2/completion/completion.component';
-
+import { MarkdownModule } from 'ngx-markdown';
 
 
 
@@ -76,7 +76,8 @@ import { CompletionComponent } from './llama2/completion/completion.component';
         DropdownModule,
         MatDialogModule,
         InputTextModule,
-        MultiSelectModule
+        MultiSelectModule,
+        MarkdownModule.forRoot()
     ],
   bootstrap: [AppComponent]
 })

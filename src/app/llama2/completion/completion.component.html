@@ -11,8 +11,9 @@
 
     <div class="completion" *ngIf="completion">
       <!--<p>{{ completion }}</p>-->
-      <pre>{{ completion }}</pre>
+      <!--<pre>{{ completion }}</pre>-->
       <!--<textarea [(ngModel)]="completion" ></textarea>-->
+      <markdown [data]="completion"></markdown>
     </div>
   </div>
 
