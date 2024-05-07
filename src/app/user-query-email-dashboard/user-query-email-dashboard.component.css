@@ -1,0 +1,64 @@
+.page{
+  /*background-color: #f4f4f4;*/
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header{
+  font-weight: 600;
+  font-family: Consolas, monospace;
+  font-size: 27px;
+  text-align: center;
+
+}
+
+.description {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Add hover effect to rows */
+::ng-deep .main-table .p-datatable .p-datatable-tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.container{
+
+}
+
+/* Main Table */
+.main-table {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; /* Center the table horizontally */
+}
+
+::ng-deep .main-table  .p-datatable{
+  display: inline-block; /* Display the table as inline-block */
+  width: 700px; /* Set the width of the table */
+}
+
+/* Main Table Header */
+::ng-deep .main-table .p-datatable .p-datatable-thead > tr > th {
+  background-color: #f0f0f0;
+}
+
+
+/* Details Table */
+.details-table {
+  margin-top: 20px;
+}
+
+/* Details Table Header */
+::ng-deep  .details-table .p-datatable .p-datatable-thead > tr > th {
+  background-color: #f0f0f0;
+}
+
+/* Details Table Rows */
+::ng-deep .details-table .p-datatable .p-datatable-tbody tr:hover {
+  background-color: #f5f5f5;
+}

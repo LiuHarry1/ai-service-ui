@@ -23,6 +23,8 @@ import {TextComparisonComponent} from "./text-formatter/text-comparison/text-com
 import {TextFormatterComponent} from "./text-formatter/text-formatter.component";
 import {Llama2Component} from "./llama2/llama2.component";
 import {CompletionComponent} from "./llama2/completion/completion.component";
+import {UserQueryEmailDashboardComponent} from "./user-query-email-dashboard/user-query-email-dashboard.component";
+
 
 
 const routes: Routes = [
@@ -46,12 +48,15 @@ const routes: Routes = [
   // { path: 'formatted-results', component: FormattedResultsComponent },
   { path: 'file-content/:filename', component: FileContentComponent }, // Define route for file content
   // {path : 'text-comparison', component: TextComparisonComponent},
+  { path: 'user-query-email-dashboard', component: UserQueryEmailDashboardComponent },
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },
     { path: 'text-format', component: TextFormatComponent },
     { path: 'formatted-results', component: FormattedResultsComponent },
     {path : 'text-comparison/:filename', component: TextComparisonComponent},
+
+
   ]},
 
   {path: 'llama2', component: Llama2Component, children:[

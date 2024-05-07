@@ -35,6 +35,8 @@ import { TextFormatterComponent } from './text-formatter/text-formatter.componen
 import { Llama2Component } from './llama2/llama2.component';
 import { CompletionComponent } from './llama2/completion/completion.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { UserQueryEmailDashboardComponent } from './user-query-email-dashboard/user-query-email-dashboard.component';
+import {TableModule} from "primeng/table";
 
 
 
@@ -64,21 +66,23 @@ import { MarkdownModule } from 'ngx-markdown';
     TextFormatterComponent,
     Llama2Component,
     CompletionComponent,
+    UserQueryEmailDashboardComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        ButtonModule,
-        AutoCompleteModule,
-        DropdownModule,
-        MatDialogModule,
-        InputTextModule,
-        MultiSelectModule,
-        MarkdownModule.forRoot()
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    AutoCompleteModule,
+    DropdownModule,
+    MatDialogModule,
+    InputTextModule,
+    MultiSelectModule,
+    MarkdownModule.forRoot(),
+    TableModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

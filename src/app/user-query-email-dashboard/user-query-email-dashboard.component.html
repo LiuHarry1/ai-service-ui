@@ -1,0 +1,49 @@
+<div class ="page">
+  <div class = "header">User Query Email Dashboard</div>
+  <p class="description">Weekly User Query Emails</p>
+  <div class = "container">
+
+    <div class="main-table">
+
+      <p-table [value]="userQueryData" >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Category Name</th>
+            <th>Count</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr [pSelectableRow]="row" (click)="rowClick(row)">
+            <td>{{ row.category_name }}</td>
+            <td>{{ row.count }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class="details-table" *ngIf="showDetails">
+    <p class="description">Details for {{ selectedRow?.category_name }}</p>
+    <p-table [value]="detailsData">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>User Name</th>
+          <th>Receive Time</th>
+          <th>Email Subject</th>
+          <th>Email Content</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-row>
+        <tr>
+          <td>{{ row.user }}</td>
+          <td>{{ row.receive_time }}</td>
+          <td>{{ row.email_subject }}</td>
+          <td>{{ row.email_content }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <div class = "footer"></div>
+
+</div>
+
