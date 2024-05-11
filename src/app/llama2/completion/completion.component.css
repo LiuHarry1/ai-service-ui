@@ -1,3 +1,4 @@
+
 .page{
   /*background-color: #f4f4f4;*/
   display : flex;
@@ -6,7 +7,7 @@
 }
 
 .center_container{
-  width: 80%;
+  width: 73%;
   border-radius: 10px;
 }
 
@@ -15,12 +16,16 @@
 }
 
 .left_container{
-  width: 10%;
+  width: 7%;
 
 }
 .right_container{
-  width: 10%;
-  margin: 10px;
+  width: 20%;
+
+  margin-left: 20px;
+  padding: 0 20px 20px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 textarea {
@@ -50,30 +55,22 @@ button:hover {
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 10px;
+  word-wrap: break-word;
+  overflow: auto;
 }
 
-/*:host ::ng-deep markdown code {*/
-/*  display: block;*/
-/*  padding: 10px;*/
-/*  background-color: #f4f4f4;*/
-/*  border-radius: 4px;*/
-/*  font-family: monospace;*/
-/*  font-size: 14px;*/
-/*  overflow-x: auto;*/
-/*  line-height: 1.5;*/
-/*  border: 1px solid #ccc;*/
-/*}*/
+.prompt_container{
+  margin-top: 10px;
+}
+
+::ng-deep .prompt_container .p-dropdown{
+  width: 220px;
+  margin-top : 10px;
+}
+
+
 
 ::ng-deep markdown pre code {
-/*  display: block ;
-  padding: 10px ;
-  background-color: #f4f4f4 ;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 14px;
-  overflow-x: auto;
-  line-height: 1.5;
-  border: 1px solid #ccc;*/
   display: block;
   padding: 10px;
   background-color: #f0f0f0;

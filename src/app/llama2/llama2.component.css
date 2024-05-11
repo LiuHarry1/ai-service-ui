@@ -1,5 +1,5 @@
 .menu-container {
-  margin-left: calc(10%);
+  margin-left: calc(8%);
 }
 
 .menu-container ul {
@@ -53,5 +53,5 @@
 /* Add a line to separate menu from router-outlet */
 .separator-line {
   border-top: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }

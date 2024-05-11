@@ -5,21 +5,82 @@
     <div>
       <textarea id="text" [(ngModel)]="text"  placeholder="say something ..." ></textarea>
     </div>
+
     <div>
-        <button (click)="submitText()">Submit</button>
+      <button (click)="submitText()">Submit</button>
     </div>
 
     <div class="completion" *ngIf="completion">
       <!--<p>{{ completion }}</p>-->
-      <!--<pre>{{ completion }}</pre>-->
+<!--      <pre>{{ completion }}</pre>-->
       <!--<textarea [(ngModel)]="completion" ></textarea>-->
-      <markdown [data]="completion"></markdown>
+      <markdown [data] = "completion"></markdown>
     </div>
   </div>
 
   <div class = "right_container">
-    <div >
+    <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center" >
+      <label>Model</label>
       <p-dropdown class="custom-dd" [options]="llmNames" [(ngModel)]="llmName"  ></p-dropdown>
+    </div>
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>Temperature</label>
+         <input type="text" pInputText [(ngModel)]="temperature" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+      <div>
+          <p-slider [(ngModel)]="temperature" class="w-full"  [min] ="0" [max] = "2"  [step]="0.01"/>
+      </div>
+    </div>
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>Top P</label>
+        <input type="text" pInputText [(ngModel)]="top_p" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+      <div>
+        <p-slider [(ngModel)]="top_p" class="w-full"  [min] ="0" [max] = "1"  [step]="0.01"/>
+      </div>
+    </div>
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>Top K</label>
+        <input type="text" pInputText [(ngModel)]="top_k" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+      <div>
+        <p-slider [(ngModel)]="top_k" class="w-full"  [min] ="0" [max] = "200"  [step]="1"/>
+      </div>
+    </div>
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>N Predict</label>
+        <input type="text" pInputText [(ngModel)]="n_predict" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>Presence Penalty</label>
+        <input type="text" pInputText [(ngModel)]="presence_penalty" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+      <div>
+        <p-slider [(ngModel)]="presence_penalty" class="w-full"  [min] ="0" [max] = "2"  [step]="0.01"/>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; justify-content: space-between; margin: 10px 0; align-items: center">
+        <label>Frequency Penalty</label>
+        <input type="text" pInputText [(ngModel)]="frequency_penalty" class="w-full mb-3" style = "width:90px; height:40px"/>
+      </div>
+      <div>
+        <p-slider [(ngModel)]="frequency_penalty" class="w-full"  [min] ="0" [max] = "2"  [step]="0.01"/>
+      </div>
+    </div>
+
+    <div class = "prompt_container">
+      <label>Prompt Templates</label>
+      <br>
+      <p-dropdown  optionLabel ="title" [options]="prompts" [(ngModel)]="prompt" (onChange)="getPrompt(prompt)"  ></p-dropdown>
     </div>
   </div>
 
@@ -29,4 +90,7 @@
 <div *ngIf="isLoading" class="loading-indicator">
   Loading...
 </div>
+
+
+
 
