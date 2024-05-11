@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {ai_similar_email_finder_host} from "../app-config";
+import {host} from "../app-config";
 import {EmailPopupComponent} from "../email-popup/email-popup.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Table} from "primeng/table";
@@ -17,7 +17,7 @@ export class UserQueryEmailDashboardComponent implements OnInit {
   selectedRow: any;
   isLoading: boolean = false;
   inputData: any = {};
-    selected_email_id: string;
+  selected_email_id: string = "";
   showDetails: boolean = false; // Flag to control details table visibility
     labelDialog: boolean =false;
     searchValue: string = ''
@@ -52,7 +52,7 @@ export class UserQueryEmailDashboardComponent implements OnInit {
 
 
   loadData() {
-    this.http.post<any>(ai_similar_email_finder_host+'/get_user_query_emails', { from_date: this.fromDate, to_date: this.toDate }).subscribe((result) => {
+    this.http.post<any>(host+'/get_user_query_emails', { from_date: this.fromDate, to_date: this.toDate }).subscribe((result) => {
       this.userQueryData = result;
     });
   }
@@ -61,7 +61,7 @@ export class UserQueryEmailDashboardComponent implements OnInit {
     console.info("clicked row:"+ row)
     this.selectedRow = row;
     this.showDetails = true; // Show details table
-    this.http.post<any>(ai_similar_email_finder_host+'/get_user_emails_by_category', { category_name: row.category_name, from_date: this.fromDate, to_date: this.toDate }).subscribe((details) => {
+    this.http.post<any>(host+'/get_user_emails_by_category', { category_name: row.category_name, from_date: this.fromDate, to_date: this.toDate }).subscribe((details) => {
       this.detailsData = details;
     });
   }
@@ -73,7 +73,7 @@ export class UserQueryEmailDashboardComponent implements OnInit {
     console.info("inputdata", this.inputData)
     this.isLoading = true;
     // this.http.post<any>(host+`/get_email`, this.inputData)
-    this.http.post<any>(ai_similar_email_finder_host+`/get_html_email_v2`, this.inputData)
+    this.http.post<any>(host+`/get_html_email_v2`, this.inputData)
         .subscribe(data => {
           console.info("invoking search method", data)
           email['whole_email_chain']= data.wholeEmailchain;
@@ -108,7 +108,7 @@ export class UserQueryEmailDashboardComponent implements OnInit {
     save(){
         console.log("saving email_id :"+this.selected_email_id+" as " + this.selected_category_name)
 
-        this.http.post<any>(ai_similar_email_finder_host+'/label_email', { pk_email_id: this.selected_email_id,  category_name:this.selected_category_name }).subscribe((result) => {
+        this.http.post<any>(host+'/label_email', { pk_email_id: this.selected_email_id,  category_name:this.selected_category_name }).subscribe((result) => {
             console.log("The result of saving labeled data : "+result);
         }, error => {
             console.error('Error occurred:', error);

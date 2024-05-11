@@ -48,7 +48,7 @@ const routes: Routes = [
   // { path: 'formatted-results', component: FormattedResultsComponent },
   { path: 'file-content/:filename', component: FileContentComponent }, // Define route for file content
   // {path : 'text-comparison', component: TextComparisonComponent},
-  { path: 'user-query-email-dashboard', component: UserQueryEmailDashboardComponent },
+  { path: 'user-email-dashboard', component: UserQueryEmailDashboardComponent },
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },

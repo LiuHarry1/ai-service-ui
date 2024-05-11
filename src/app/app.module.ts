@@ -37,6 +37,9 @@ import { CompletionComponent } from './llama2/completion/completion.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { UserQueryEmailDashboardComponent } from './user-query-email-dashboard/user-query-email-dashboard.component';
 import {TableModule} from "primeng/table";
+import {CalendarModule} from "primeng/calendar";
+import {DialogModule} from "primeng/dialog";
+import {SliderModule} from "primeng/slider";
 
 
 
@@ -81,7 +84,10 @@ import {TableModule} from "primeng/table";
     InputTextModule,
     MultiSelectModule,
     MarkdownModule.forRoot(),
-    TableModule
+    TableModule,
+    CalendarModule,
+    DialogModule,
+    SliderModule
   ],
   bootstrap: [AppComponent]
 })
