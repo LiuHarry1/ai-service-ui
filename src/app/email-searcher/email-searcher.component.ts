@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild, AfterViewChecked, OnInit } from '@ang
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { host } from '../app-config';
+import { ai_similar_email_finder_host } from '../app-config';
 import {MatDialog} from "@angular/material/dialog";
 import {EmailPopupComponent} from "../email-popup/email-popup.component";
 
@@ -89,7 +89,7 @@ export class EmailSearcherComponent {
     this.isQueried=true
     this.searchResults = []
     this.isLoading = true;
-    this.http.get<any[]>(host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data) => {
       console.info("invoking search method", data);
       this.searchResults = data;
       this.isLoading = false;
@@ -125,7 +125,7 @@ export class EmailSearcherComponent {
     this.inputData['pk_email_id'] = `${email['pk_email_id']}`
     console.info("inputdata", this.inputData)
     this.isLoading = true;
-    this.http.post<any>(host+`/get_email`, this.inputData)
+    this.http.post<any>(ai_similar_email_finder_host+`/get_email`, this.inputData)
       .subscribe(data => {
         console.info("invoking search method", data)
         email['whole_email_chain']= data.wholeEmailchain;
@@ -158,7 +158,7 @@ export class EmailSearcherComponent {
     this.isQueried=true
     this.searchResults = []
     this.isLoading = true;
-    this.http.get<any[]>(host + `/email_search?query=${this.query}&query_type=email_subject`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject`).subscribe((data) => {
       console.info("invoking search method", data);
       this.searchResults = data;
       this.isLoading = false;
@@ -168,7 +168,7 @@ export class EmailSearcherComponent {
       this.isLoading = false;
     });
 
-    this.http.get<any[]>(host + `/get_key_words?text=${this.query}`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/get_key_words?text=${this.query}`).subscribe((data) => {
       console.info("invoking get_key_words method", data);
       this.keyWords = data;
       this.selectedKeyWords = []
@@ -179,7 +179,7 @@ export class EmailSearcherComponent {
 
   }
   getRecentQueries(): void {
-    this.http.get<string[]>(host + '/get_recent_queries').subscribe(
+    this.http.get<string[]>(ai_similar_email_finder_host + '/get_recent_queries').subscribe(
       queries => {
         this.recentQueries = queries;
       },
@@ -194,7 +194,7 @@ export class EmailSearcherComponent {
   }
 
   getEmailTimeRange(): void {
-    this.http.get<string[]>(host + '/get_email_range').subscribe(
+    this.http.get<string[]>(ai_similar_email_finder_host + '/get_email_range').subscribe(
       result => {
         this.emailTimeRange = result;
 

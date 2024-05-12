@@ -1,7 +1,7 @@
 import {Component, ElementRef, ViewChild, AfterViewChecked, OnInit, Inject, AfterContentInit} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import {host} from "../app-config";
+import {ai_similar_email_finder_host} from "../app-config";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -37,22 +37,22 @@ export class EmailPopupComponent implements AfterViewChecked{
   }
 
   downloadFile() {
-    console.info(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    console.info(ai_similar_email_finder_host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
 
     const data = {"email_id":this.emailData['pk_email_id']}
 
     this.isLoading = true
-    this.downloadFileUrl(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    this.downloadFileUrl(ai_similar_email_finder_host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
     this.isLoading = false
   }
 
   downloadFile_old() {
-    console.info(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    console.info(ai_similar_email_finder_host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
 
     const data = {"email_id":this.emailData['pk_email_id']}
 
     this.isLoading = true
-    this.http.post(host+'/email_searcher_post/download', data, { responseType: 'blob' }).subscribe(response => {
+    this.http.post(ai_similar_email_finder_host+'/email_searcher_post/download', data, { responseType: 'blob' }).subscribe(response => {
 
       const blob = new Blob([response], {type:'application/vnd.ms-outlook'});
 
@@ -68,12 +68,12 @@ export class EmailPopupComponent implements AfterViewChecked{
   }
 
   downloadFile_old1() {
-    console.info(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
+    console.info(ai_similar_email_finder_host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'])
 
     const data = {"email_id":this.emailData['pk_email_id']}
 
     this.isLoading = true
-    this.http.get(host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'], { responseType: 'blob' }).subscribe(response => {
+    this.http.get(ai_similar_email_finder_host+'/email_searcher/download?email_id='+this.emailData['pk_email_id'], { responseType: 'blob' }).subscribe(response => {
 
       const blob = new Blob([response], {type:'application/vnd.ms-outlook'});
 
