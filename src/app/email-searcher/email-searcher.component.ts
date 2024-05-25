@@ -32,6 +32,7 @@ export class EmailSearcherComponent {
   selectedComponents: string[] = [];
   keyWords: any[] = []
   selectedKeyWords: string[] = []
+  aiDraftEmail: any;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
@@ -98,8 +99,8 @@ export class EmailSearcherComponent {
       console.error('Error occurred:', error);
       this.isLoading = false;
     });
-  }
 
+  }
 
   isComponnentHighlighted(component: string): boolean {
     return this.selectedComponents.includes(component);
@@ -116,7 +117,7 @@ export class EmailSearcherComponent {
 
   ngOnInit() {
     this.getRecentQueries();
-    this.getEmailTimeRange()
+    // this.getEmailTimeRange()
   }
 
 
@@ -167,6 +168,17 @@ export class EmailSearcherComponent {
       this.searchResults = data;
       this.isLoading = false;
 
+      console.info('searchedEmails:'+this.searchResults)
+      const searchedEmails = [];
+      for (let i = 0; i < this.searchResults.length; i++) {
+        searchedEmails.push({
+          pk_email_id: this.searchResults[i].pk_email_id,
+          score: this.searchResults[i].score
+        });
+      }
+
+      this.ai_generated_draft_email(searchedEmails);
+
     }, error => {
       console.error('Error occurred:', error);
       this.isLoading = false;
@@ -180,9 +192,21 @@ export class EmailSearcherComponent {
       console.error('Error occurred in getting key word:', error);
     });
 
-
-
   }
+
+  ai_generated_draft_email(searchedEmails: any){
+    this.http.post<any>(ai_similar_email_finder_host+`/ai_generated_draft_email`, {'searchedEmails':searchedEmails})
+      .subscribe(data => {
+        console.info("invoking ai_generating_draft_email", data)
+        this.aiDraftEmail = data;
+
+      }, error => {
+        console.error('Error occurred:', error);
+
+      });
+  }
+
+
   getRecentQueries(): void {
     this.http.get<string[]>(ai_similar_email_finder_host + '/get_recent_queries').subscribe(
       queries => {
