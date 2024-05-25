@@ -1,53 +1,59 @@
 <div class = "page">
 
-    <div class = "header_wapper" >
-      <div class = "header_title"><img style = "height:50px; width:100px" src = "assets/email_searcher.png" alt="Email Searcher"/></div>
-      <div>  <p-dropdown class="custom-dd" [options]="queryTypes" [(ngModel)]="queryType"  ></p-dropdown></div>
-      <div class="search-form">
-        <div class="search-form-dev">
-          <form (submit)="search()">
-            <div class="suggestion-container">
-              <input type= "text" name="query" class="user-input" [(ngModel)]="query" placeholder="Paste or Type a user query"   autocomplete="off" />
-           <!--   <input pInputText type="text"  class="user-input"  placeholder="Paste or Type a user query" [(ngModel)]="query"  />-->
-            </div>
-            <div class = "search-area">
-              <!--<button class = "send-button" type="submit">Search</button>-->
-             <p-button type="submit"  label="Search"></p-button>
-            </div>
-          </form>
+  <div class = "header_wapper" >
+    <div class = "header_title"><img style = "height:50px; width:100px" src = "assets/email_searcher.png" alt="Email Searcher"/></div>
+    <div>  <p-dropdown class="custom-dd" [options]="queryTypes" [(ngModel)]="queryType"  ></p-dropdown></div>
+    <div class="search-form">
+      <div class="search-form-dev">
+        <form (submit)="search()">
+          <div class="suggestion-container">
+            <input type= "text" name="query" class="p-inputtext" [(ngModel)]="query" placeholder="Paste or Type a user query"  >
+            <!--   <input pInputText type="text"  class="user-input"  placeholder="Paste or Type a user query" [(ngModel)]="query"  />-->
+          </div>
+          <div class = "search-area" style="justify-content: space-between">
+            <!--<button class = "send-button" type="submit">Search</button>-->
+            <p-button type="submit"  label="Search"></p-button>
+
+          </div>
+
+        </form>
+      </div>
+      <div>
+        <div class="toggle-arrows" (click)="toggleAdditionalOptions()">
+          <i class="fa fa-angle-down" *ngIf="!additionalOptionsVisible"></i>
+          <i class="fa fa-angle-up" *ngIf="additionalOptionsVisible"></i>
         </div>
-        <div>
-          <div class="toggle-arrows" (click)="toggleAdditionalOptions()">
-            <i class="fa fa-angle-down" *ngIf="!additionalOptionsVisible"></i>
-            <i class="fa fa-angle-up" *ngIf="additionalOptionsVisible"></i>
+        <!-- 其他按钮 -->
+        <div class="additional-options" *ngIf="additionalOptionsVisible">
+          <div class="button-list">
+            <button *ngFor="let componentName of ComponentNames; let i = index"
+                    (click)="handleComponentButtonClick(componentName, i)"
+                    [class.highlight]="isComponnentHighlighted(componentName)"
+                    class="custom-button">{{ componentName }}</button>
+
           </div>
-          <!-- 其他按钮 -->
-          <div class="additional-options" *ngIf="additionalOptionsVisible">
+          <div>
             <div class="button-list">
-              <button *ngFor="let componentName of ComponentNames; let i = index"
-                      (click)="handleComponentButtonClick(componentName, i)"
-                      [class.highlight]="isComponnentHighlighted(componentName)"
-                      class="custom-button">{{ componentName }}</button>
+              <button *ngFor="let keyword of keyWords; let i = index"
+                      (click)="handleKeyWordClick(keyword, i)"
+                      [class.highlight]="isKeyWordHighlighted(keyword)"
+                      class="custom-button">{{ keyword }}</button>
 
             </div>
-            <div>
-              <div class="button-list">
-                <button *ngFor="let keyword of keyWords; let i = index"
-                        (click)="handleKeyWordClick(keyword, i)"
-                        [class.highlight]="isKeyWordHighlighted(keyword)"
-                        class="custom-button">{{ keyword }}</button>
-
-              </div>
-            </div>
-
           </div>
+
         </div>
       </div>
     </div>
-  <div class = "main">
-<!--    <div class="left_container" style = "display: None">-->
+    <div style="margin-left: 150px">
 
-<!--    </div>-->
+      <a [routerLink] ="['/user-email-dashboard']" target="_blank"> User Email Dashboard</a>
+    </div>
+  </div>
+  <div class = "main">
+    <div class="left_container" style = "display: None">
+
+    </div>
     <div class="container">
 
 
@@ -56,7 +62,7 @@
           <li *ngFor="let result of searchResults"  >
             <div><strong (click)="openEmailPopup(result)" class = "email-subject">{{result['email_subject']}}</strong></div>
             <p class="addtional-email-info"><strong>Match Score</strong>: {{result['score']}}, <strong>Received Time</strong>: {{result['received_time']}}, <strong>Send By</strong>: {{result['user']}} </p>
-            <p class="email-content"> {{result['email_content']}}</p>
+            <p class="email-content"> {{truncateQuery(result['email_content'], 420) }}</p>
           </li>
         </ul>
         <div *ngIf="searchResults.length === 0 && isQueried ">
@@ -76,7 +82,7 @@
       <h4>Recent User Queries</h4>
       <ul class="recent-queries">
         <li *ngFor="let query of recentQueries" (click)="searchByQuery(query)">
-          {{ truncateQuery(query, 10) }}
+          {{ truncateQuery(query, 120) }}
         </li>
       </ul>
     </div>
