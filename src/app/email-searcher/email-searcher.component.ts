@@ -23,14 +23,14 @@ export class EmailSearcherComponent {
   queryTypes: any[] = [
     { label: 'Subject', value: 'email_subject' },
     { label: 'Body', value: 'email_content' },
-   /* { label: 'UniversalSentenceEncoder', value: 'UniversalSentenceEncoder_Model' },*/
+    /* { label: 'UniversalSentenceEncoder', value: 'UniversalSentenceEncoder_Model' },*/
     { label: 'Both', value: 'both' },
   ];
   queryType: string = 'email_content';
   additionalOptionsVisible: boolean = false;
-  ComponentNames: string[] = ['announcement', 'Position', 'Alert', 'EC','Payment', 'posting']; // Replace with your list of button names
+  ComponentNames: string[] = ['Announcement', 'EP', 'Alert', 'EC','Payment', 'Settlement','UI', 'Feeds', 'Env', 'Reengineering']; // Replace with your list of button names
   selectedComponents: string[] = [];
-  keyWords: any[] = ['CMP','USER','Isin']
+  keyWords: any[] = []
   selectedKeyWords: string[] = []
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
@@ -125,7 +125,8 @@ export class EmailSearcherComponent {
     this.inputData['pk_email_id'] = `${email['pk_email_id']}`
     console.info("inputdata", this.inputData)
     this.isLoading = true;
-    this.http.post<any>(ai_similar_email_finder_host+`/get_email`, this.inputData)
+    // this.http.post<any>(host+`/get_email`, this.inputData)
+    this.http.post<any>(ai_similar_email_finder_host+`/get_html_email_v2`, this.inputData)
       .subscribe(data => {
         console.info("invoking search method", data)
         email['whole_email_chain']= data.wholeEmailchain;
@@ -133,7 +134,8 @@ export class EmailSearcherComponent {
         // Handle the prediction result as needed
         this.isLoading = false;
         const dialogRef = this.dialog.open(EmailPopupComponent, {
-          width: '600px',
+          width: '90%',
+          height: '90%',
           data: email
         });
 
@@ -158,7 +160,9 @@ export class EmailSearcherComponent {
     this.isQueried=true
     this.searchResults = []
     this.isLoading = true;
-    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject`).subscribe((data) => {
+    this.selectedComponents = []
+    this.selectedKeyWords = []
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=${this.queryType}`).subscribe((data) => {
       console.info("invoking search method", data);
       this.searchResults = data;
       this.isLoading = false;
@@ -175,6 +179,7 @@ export class EmailSearcherComponent {
     }, error => {
       console.error('Error occurred in getting key word:', error);
     });
+
 
 
   }
@@ -214,7 +219,6 @@ export class EmailSearcherComponent {
       return query;
     }
   }
-
 
 
 }
