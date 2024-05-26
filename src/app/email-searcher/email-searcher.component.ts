@@ -201,6 +201,9 @@ export class EmailSearcherComponent {
   }
 
   ai_generated_draft_email(searchedEmails: any){
+    if (!this.enableAi){
+      return ;
+    }
     this.aiDraftEmail = {'message':'AI is trying to generate draft email for you.....'}
     this.http.post<any>(ai_similar_email_finder_host+`/ai_generated_draft_email`, {'searchedEmails':searchedEmails})
       .subscribe(data => {
@@ -210,7 +213,6 @@ export class EmailSearcherComponent {
       }, error => {
         this.aiDraftEmail = null
         console.error('Error occurred:', error);
-
       });
   }
 
