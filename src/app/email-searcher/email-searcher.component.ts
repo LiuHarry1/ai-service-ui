@@ -33,6 +33,7 @@ export class EmailSearcherComponent {
   keyWords: any[] = []
   selectedKeyWords: string[] = []
   aiDraftEmail: any;
+  enableAi: boolean = false;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
@@ -116,8 +117,13 @@ export class EmailSearcherComponent {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.enableAi = params['enable_ai'] === 'true';
+    });
+
     this.getRecentQueries();
     // this.getEmailTimeRange()
+
   }
 
 

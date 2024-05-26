@@ -55,7 +55,7 @@
 
     </div>
     <div class="container">
-      <div *ngIf="aiDraftEmail" >
+      <div *ngIf="aiDraftEmail && enableAi" >
         <h4 *ngIf = "aiDraftEmail['has_generated_email'] =='true'">AI-Generated Draft Email </h4>
         <div style = "border: 2px solid #f5f5f5; border-radius: 10px; background-color: #f5f5f5; margin: 0">
           <pre style="font-family: Arial">{{aiDraftEmail['message']}}</pre>
