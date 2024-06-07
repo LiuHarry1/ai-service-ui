@@ -14,7 +14,6 @@ import {EmailPopupComponent} from "../email-popup/email-popup.component";
 export class EmailSearcherComponent {
 
   query: string = '';
-  searchResults: any[] = [];
   inputData: any = {};
   isLoading: boolean = false;
   recentQueries: string[] = [];
@@ -34,12 +33,13 @@ export class EmailSearcherComponent {
   selectedKeyWords: string[] = []
   aiDraftEmail: any;
   enableAi: boolean = false;
+  highlySimilarEmails: any[] = [];
+  lowSimilarEmails: any[] = []
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer,  private route: ActivatedRoute,
               public dialog: MatDialog) {
 
   }
-
 
   handleKeyWordClick(keyword: string, index: number) {
     console.log(`Button "${keyword}" clicked`);
@@ -85,15 +85,18 @@ export class EmailSearcherComponent {
 
   advanced_search(){
     if (this.query.trim() === '') {
-      this.searchResults = [];
+      this.highlySimilarEmails = [];
+      this.lowSimilarEmails = []
       return;
     }
     this.isQueried=true
-    this.searchResults = []
+    this.highlySimilarEmails = [];
+    this.lowSimilarEmails = []
     this.isLoading = true;
-    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data: any) => {
       console.info("invoking search method", data);
-      this.searchResults = data;
+      this.highlySimilarEmails= data["highly_similar_emails"]
+      this.lowSimilarEmails = data["low_similar_emails"]
       this.isLoading = false;
 
     }, error => {
@@ -114,6 +117,14 @@ export class EmailSearcherComponent {
 
   toggleAdditionalOptions() {
     this.additionalOptionsVisible = !this.additionalOptionsVisible;
+    // extract key words for current user query
+    this.http.get<any[]>(ai_similar_email_finder_host + `/get_key_words?text=${this.query}`).subscribe((data) => {
+      console.info("invoking get_key_words method", data);
+      this.keyWords = data;
+      this.selectedKeyWords = []
+    }, error => {
+      console.error('Error occurred in getting key word:', error);
+    });
   }
 
   ngOnInit() {
@@ -122,7 +133,7 @@ export class EmailSearcherComponent {
     });
 
     this.getRecentQueries();
-    // this.getEmailTimeRange()
+    this.getEmailTimeRange()
 
   }
 
@@ -161,25 +172,28 @@ export class EmailSearcherComponent {
 
   search(): void {
     if (this.query.trim() === '') {
-      this.searchResults = [];
+      this.highlySimilarEmails = [];
+      this.lowSimilarEmails = []
       return;
     }
     this.isQueried=true
-    this.searchResults = []
+    this.highlySimilarEmails = []
+    this.lowSimilarEmails = []
     this.isLoading = true;
     this.selectedComponents = []
     this.selectedKeyWords = []
-    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=${this.queryType}`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search_v2?query=${this.query}&query_type=${this.queryType}`).subscribe((data:any) => {
       console.info("invoking search method", data);
-      this.searchResults = data;
-      this.isLoading = false;
 
-      console.info('searchedEmails:'+this.searchResults)
+      this.isLoading = false;
+      this.highlySimilarEmails= data["highly_similar_emails"]
+      this.lowSimilarEmails = data["low_similar_emails"]
+
       const searchedEmails = [];
-      for (let i = 0; i < this.searchResults.length; i++) {
+      for (let i = 0; i < this.highlySimilarEmails.length; i++) {
         searchedEmails.push({
-          pk_email_id: this.searchResults[i].pk_email_id,
-          score: this.searchResults[i].score
+          pk_email_id: this.highlySimilarEmails[i].pk_email_id,
+          score: this.highlySimilarEmails[i].score
         });
       }
 
@@ -190,22 +204,17 @@ export class EmailSearcherComponent {
       this.isLoading = false;
     });
 
-    this.http.get<any[]>(ai_similar_email_finder_host + `/get_key_words?text=${this.query}`).subscribe((data) => {
-      console.info("invoking get_key_words method", data);
-      this.keyWords = data;
-      this.selectedKeyWords = []
-    }, error => {
-      console.error('Error occurred in getting key word:', error);
-    });
-
   }
 
   ai_generated_draft_email(searchedEmails: any){
     if (!this.enableAi){
       return ;
     }
+    if (searchedEmails.length ==0){
+      return ;
+    }
     this.aiDraftEmail = {'message':'AI is trying to generate draft email for you.....'}
-    this.http.post<any>(ai_similar_email_finder_host+`/ai_generated_draft_email`, {'searchedEmails':searchedEmails})
+    this.http.post<any>(ai_similar_email_finder_host+`/ai_generated_draft_email`, {'searchedEmails':searchedEmails, 'user_query':this.query})
       .subscribe(data => {
         console.info("invoking ai_generating_draft_email", data)
         this.aiDraftEmail = data;

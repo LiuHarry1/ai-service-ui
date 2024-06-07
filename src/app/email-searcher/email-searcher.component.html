@@ -63,15 +63,31 @@
         </div>
       </div>
 
-      <div *ngIf="searchResults" >
+      <div *ngIf="highlySimilarEmails   && isQueried" >
+        <div style = "font-size: 21px; font-weight: 400; line-height: 28px; display: flex; justify-content: center">High Similar Emails</div>
+
+        <div *ngIf="highlySimilarEmails.length === 0 && isQueried " style = "color: red">
+          <ul class="search-results" > <li> No results found</li></ul>
+        </div>
         <ul class="search-results" >
-          <li *ngFor="let result of searchResults"  >
+          <li *ngFor="let result of highlySimilarEmails"  >
             <div><strong (click)="openEmailPopup(result)" class = "email-subject">{{result['email_subject']}}</strong></div>
             <p class="addtional-email-info"><strong>Match Score</strong>: {{result['score']}}, <strong>Received Time</strong>: {{result['received_time']}}, <strong>Send By</strong>: {{result['user']}} </p>
             <p class="email-content"> {{truncateQuery(result['email_content'], 420) }}</p>
           </li>
         </ul>
-        <div *ngIf="searchResults.length === 0 && isQueried ">
+
+      </div>
+      <div *ngIf="lowSimilarEmails && isQueried" >
+        <div style = "font-size: 21px; font-weight: 400; line-height: 28px; display: flex; justify-content: center">Low Similar Emails</div>
+        <ul class="search-results" >
+          <li *ngFor="let result of lowSimilarEmails"  >
+            <div><strong (click)="openEmailPopup(result)" class = "email-subject">{{result['email_subject']}}</strong></div>
+            <p class="addtional-email-info"><strong>Match Score</strong>: {{result['score']}}, <strong>Received Time</strong>: {{result['received_time']}}, <strong>Send By</strong>: {{result['user']}} </p>
+            <p class="email-content"> {{truncateQuery(result['email_content'], 420) }}</p>
+          </li>
+        </ul>
+        <div *ngIf="lowSimilarEmails.length === 0 && isQueried ">
           <p>No results found</p>
         </div>
       </div>
@@ -85,12 +101,12 @@
 
     </div>
     <div class = "right_container">
-        <h4>Recent User Queries</h4>
-        <ul class="recent-queries">
-          <li *ngFor="let query of recentQueries" (click)="searchByQuery(query)">
-            {{ truncateQuery(query, 120) }}
-          </li>
-        </ul>
+      <h4>Recent User Queries</h4>
+      <ul class="recent-queries">
+        <li *ngFor="let query of recentQueries" (click)="searchByQuery(query)">
+          {{ truncateQuery(query, 120) }}
+        </li>
+      </ul>
 
     </div>
   </div>
