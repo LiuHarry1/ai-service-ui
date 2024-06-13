@@ -40,6 +40,7 @@ import {TableModule} from "primeng/table";
 import {CalendarModule} from "primeng/calendar";
 import {DialogModule} from "primeng/dialog";
 import {SliderModule} from "primeng/slider";
+import { OrderFoodChatbotComponent } from './order-food-chatbot/order-food-chatbot.component';
 
 
 
@@ -70,6 +71,7 @@ import {SliderModule} from "primeng/slider";
     Llama2Component,
     CompletionComponent,
     UserQueryEmailDashboardComponent,
+    OrderFoodChatbotComponent,
   ],
   imports: [
     BrowserModule,

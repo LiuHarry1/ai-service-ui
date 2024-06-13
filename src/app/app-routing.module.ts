@@ -24,7 +24,7 @@ import {TextFormatterComponent} from "./text-formatter/text-formatter.component"
 import {Llama2Component} from "./llama2/llama2.component";
 import {CompletionComponent} from "./llama2/completion/completion.component";
 import {UserQueryEmailDashboardComponent} from "./user-query-email-dashboard/user-query-email-dashboard.component";
-
+import {OrderFoodChatbotComponent} from "./order-food-chatbot/order-food-chatbot.component";
 
 
 const routes: Routes = [
@@ -49,6 +49,7 @@ const routes: Routes = [
   { path: 'file-content/:filename', component: FileContentComponent }, // Define route for file content
   // {path : 'text-comparison', component: TextComparisonComponent},
   { path: 'user-email-dashboard', component: UserQueryEmailDashboardComponent },
+  {path: 'order-food-chatbot', component: OrderFoodChatbotComponent},
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },

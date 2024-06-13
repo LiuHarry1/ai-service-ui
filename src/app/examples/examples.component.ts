@@ -21,8 +21,8 @@ export class ExamplesComponent {
     { title: 'PROD Issue Email Searcher', description: 'This is the eight example.', category: 'Sentence Similarity' , id :'9', hovered:false , link:'/email-searcher'},
     { title: 'Text Formatter', description: 'This is the ten example.', category: 'LLM' , id :'10', hovered:false , link:'/text-formatter'},
     { title: 'llama2', description: 'This is the eleven example.', category: 'LLM' , id :'11', hovered:false , link:'/llama2'},
-
-    { title: 'Text Summarization', description: 'This is the twelve example.', category: 'Seq2Seq', id :'12' , hovered:false , link:'/summarize'},
+    { title: 'Order food chatbot', description: 'This is the twelve example.', category: 'LLM' , id :'12', hovered:false , link:'/order-food-chatbot'},
+    { title: 'Text Summarization', description: 'This is the thirteen example.', category: 'Seq2Seq', id :'13' , hovered:false , link:'/summarize'},
 
 
 
