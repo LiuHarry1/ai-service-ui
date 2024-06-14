@@ -25,6 +25,7 @@ import {Llama2Component} from "./llama2/llama2.component";
 import {CompletionComponent} from "./llama2/completion/completion.component";
 import {UserQueryEmailDashboardComponent} from "./user-query-email-dashboard/user-query-email-dashboard.component";
 import {OrderFoodChatbotComponent} from "./order-food-chatbot/order-food-chatbot.component";
+import {ChatbotComponent} from "./llama2/chatbot/chatbot.component";
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   {path: 'llama2', component: Llama2Component, children:[
       { path: '', redirectTo: 'completion', pathMatch: 'full' },
       { path: 'completion', component: CompletionComponent },
+      { path: 'chatbot', component: ChatbotComponent },
     ]},
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },
