@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="top heading">
+    JIRA Assistant
+  </div>
+  <div class="middle">
+    <div class="input-section">
+      <div class="p-field">
+        <textarea id="input" rows="8" pInputTextarea [(ngModel)]="userInput" placeholder="Enter what JIRA you want to create..."></textarea>
+      </div>
+      <div class="p-field">
+        <button pButton type="button" label="Generate Details" (click)="onSubmit()"></button>
+      </div>
+    </div>
+    <div *ngIf="submitted"  class="output-section">
+
+        <div class="generated-item bordered">
+          <div class="generated-item-title">
+            <div class="generated-label">Summary:</div>
+            <div class="copy-container">
+              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(summary)"></button>
+            </div>
+          </div>
+          <div class="generated-content">
+            <p >{{ summary }}</p>
+          </div>
+        </div>
+        <div class="generated-item bordered">
+          <div class="generated-item-title">
+            <div class="generated-label">Description:</div>
+            <div class="copy-container">
+              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(description)"></button>
+            </div>
+          </div>
+          <div class="generated-content">
+            <p >{{ description }}</p>
+          </div>
+        </div>
+        <div class="generated-item bordered">
+          <div class="generated-item-title">
+            <div class="generated-label">Acceptance Criteria:</div>
+            <div class="copy-container">
+              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(acceptanceCriteria)"></button>
+            </div>
+          </div>
+          <div class="generated-content">
+            <p >{{ acceptanceCriteria }}</p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <div class="footer">
+    <p>&copy; 2024 Task Analyzer</p>
+  </div>
+</div>
+
+
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
+</div>
