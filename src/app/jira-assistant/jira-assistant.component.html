@@ -8,7 +8,7 @@
         <textarea id="input" rows="8" pInputTextarea [(ngModel)]="userInput" placeholder="Enter what JIRA you want to create..."></textarea>
       </div>
       <div class="p-field">
-        <button pButton type="button" label="Generate Details" (click)="onSubmit()"></button>
+        <button pButton type="button" label="Generate" (click)="onSubmit()"></button>
       </div>
     </div>
     <div *ngIf="submitted"  class="output-section">
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="generated-content">
-            <p >{{ summary }}</p>
+            <markdown  [data] = "summary" ></markdown>
           </div>
         </div>
         <div class="generated-item bordered">
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="generated-content">
-            <p >{{ description }}</p>
+            <markdown  [data] = "description" ></markdown>
           </div>
         </div>
         <div class="generated-item bordered">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="generated-content">
-            <p >{{ acceptanceCriteria }}</p>
+            <markdown  [data] = "acceptanceCriteria" ></markdown>
           </div>
         </div>
 

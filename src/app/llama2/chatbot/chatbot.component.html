@@ -29,16 +29,12 @@
   </div>
 
   <div class = "chat-foot" >
-
-    <div >
-      <form (submit)="sendMessage()">
-        <div style = "display: flex">
-          <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   autocomplete="off"/>
-          <button class="send-button" >Send</button>
+        <div>
+          <textarea class="user-input" name="userMessage"  rows="3" [(ngModel)]="userMessage" placeholder="Type your message..."></textarea>
         </div>
-
-      </form>
-    </div>
+        <div>
+          <button pButton type="button"  (click)="sendMessage()">Send</button>
+        </div>
   </div>
 
 </div>

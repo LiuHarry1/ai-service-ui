@@ -144,6 +144,11 @@
 
 }
 
+textarea {
+  width: 100%;
+  resize: vertical;
+  font-size: 17px
+}
 
 .selected {
   background-color: #f0f0f0; /* Highlight color */
