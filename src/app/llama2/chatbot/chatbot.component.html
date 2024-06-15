@@ -1,0 +1,50 @@
+
+
+<div class="chat-container">
+  <div class="chat-header">
+    chatbot
+  </div>
+  <div #chatArea class="chat-area">
+
+
+
+    <!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
+    <div *ngFor="let message of chatMessages"  style = "display: flex; justify-content: space-between">
+      <div class="chat_left" style="flex-grow: 1; flex:8">
+        <ng-container *ngIf="message.type === 'user'" >
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
+        </ng-container>
+        <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
+        </ng-container>
+        <div   [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}" style="flex-grow: 1" >
+          <!--  <div [innerHTML]="message.text" style = "word-break:break-word"> </div>-->
+          <markdown [data] = "message.text"></markdown>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class = "chat-foot" >
+
+    <div >
+      <form (submit)="sendMessage()">
+        <div style = "display: flex">
+          <input class="user-input" name="userMessage" placeholder="Type your message..." [(ngModel)]="userMessage"   autocomplete="off"/>
+          <button class="send-button" >Send</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
+</div>
+
+
