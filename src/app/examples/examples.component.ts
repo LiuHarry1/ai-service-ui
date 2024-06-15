@@ -22,7 +22,8 @@ export class ExamplesComponent {
     { title: 'Text Formatter', description: 'This is the ten example.', category: 'LLM' , id :'10', hovered:false , link:'/text-formatter'},
     { title: 'llama2', description: 'This is the eleven example.', category: 'LLM' , id :'11', hovered:false , link:'/llama2'},
     { title: 'Order food chatbot', description: 'This is the twelve example.', category: 'LLM' , id :'12', hovered:false , link:'/order-food-chatbot'},
-    { title: 'Text Summarization', description: 'This is the thirteen example.', category: 'Seq2Seq', id :'13' , hovered:false , link:'/summarize'},
+    { title: 'JIRA Assistant', description: 'Help generate JIRA related information', category: 'LLM' , id :'13', hovered:false , link:'/jira-assistant'},
+    { title: 'Text Summarization', description: 'This is the fourteen example.', category: 'Seq2Seq', id :'14' , hovered:false , link:'/summarize'},
 
 
 

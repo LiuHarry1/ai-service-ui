@@ -42,6 +42,8 @@ import {DialogModule} from "primeng/dialog";
 import {SliderModule} from "primeng/slider";
 import { OrderFoodChatbotComponent } from './order-food-chatbot/order-food-chatbot.component';
 import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
+import { JiraAssistantComponent } from './jira-assistant/jira-assistant.component';
+import {CardModule} from "primeng/card";
 
 
 
@@ -74,6 +76,7 @@ import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
     UserQueryEmailDashboardComponent,
     OrderFoodChatbotComponent,
     ChatbotComponent,
+    JiraAssistantComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
     TableModule,
     CalendarModule,
     DialogModule,
-    SliderModule
+    SliderModule,
+    CardModule
   ],
   bootstrap: [AppComponent]
 })

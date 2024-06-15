@@ -26,7 +26,7 @@ import {CompletionComponent} from "./llama2/completion/completion.component";
 import {UserQueryEmailDashboardComponent} from "./user-query-email-dashboard/user-query-email-dashboard.component";
 import {OrderFoodChatbotComponent} from "./order-food-chatbot/order-food-chatbot.component";
 import {ChatbotComponent} from "./llama2/chatbot/chatbot.component";
-
+import {JiraAssistantComponent} from "./jira-assistant/jira-assistant.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -51,6 +51,7 @@ const routes: Routes = [
   // {path : 'text-comparison', component: TextComparisonComponent},
   { path: 'user-email-dashboard', component: UserQueryEmailDashboardComponent },
   {path: 'order-food-chatbot', component: OrderFoodChatbotComponent},
+  { path: 'jira-assistant', component: JiraAssistantComponent },
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },
