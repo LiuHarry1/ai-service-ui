@@ -29,10 +29,22 @@
   </div>
 
   <div class = "chat-foot" >
-        <div>
-          <textarea class="user-input" name="userMessage"  rows="3" [(ngModel)]="userMessage" placeholder="Type your message..."></textarea>
-        </div>
-        <div>
+    <!-- <div>
+     <textarea class="user-input" name="userMessage"  rows="1" [(ngModel)]="userMessage" placeholder="Type your message..."></textarea>
+        </div>-->
+      <div>
+
+       <textarea
+         rows="1"
+         cols="30"
+         pInputTextarea
+         [autoResize]="true"
+         placeholder="Type your message here..."
+         (keydown)="handleKeyDown($event)"
+         [(ngModel)]="userMessage">
+      </textarea>
+      </div>
+        <div style="display: flex; justify-content: right">
           <button pButton type="button"  (click)="sendMessage()">Send</button>
         </div>
   </div>

@@ -40,6 +40,7 @@ import {TableModule} from "primeng/table";
 import {CalendarModule} from "primeng/calendar";
 import {DialogModule} from "primeng/dialog";
 import {SliderModule} from "primeng/slider";
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { OrderFoodChatbotComponent } from './order-food-chatbot/order-food-chatbot.component';
 import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
 import { JiraAssistantComponent } from './jira-assistant/jira-assistant.component';
@@ -95,6 +96,7 @@ import {CardModule} from "primeng/card";
     CalendarModule,
     DialogModule,
     SliderModule,
+    InputTextareaModule,
     CardModule
   ],
   bootstrap: [AppComponent]

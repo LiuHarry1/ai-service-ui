@@ -55,12 +55,17 @@ export class ChatbotComponent {
     } catch (err) {}
   }
 
-  onThumbsUpClick(message: any) {
-    console.log('Thumbs up clicked for the bot message: ', message.text);
-  }
-
-  onThumbsDownClick(message: any) {
-    console.log('Thumbs down clicked for the bot message: ', message.text);
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      if (event.shiftKey) {
+        // Allow new line
+        return;
+      } else {
+        // Prevent the default behavior of Enter key to avoid adding a new line
+        event.preventDefault();
+        this.sendMessage();
+      }
+    }
   }
 
 
