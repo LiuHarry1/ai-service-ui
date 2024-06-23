@@ -39,3 +39,5 @@ https://nodejs.org/en
 
 npm install diff-match-patch-ts
 
+git  remote set-url origin git@github.com:LiuHarry1/ai-service-ui.git
+

@@ -1,0 +1,58 @@
+
+
+<div class="chat-container">
+  <div class="chat-header">
+    Function Calling Robot
+  </div>
+  <div #chatArea class="chat-area">
+
+
+
+    <!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
+    <div *ngFor="let message of chatMessages"  style = "display: flex; justify-content: space-between">
+      <div class="chat_left" style="flex-grow: 1; flex:8">
+        <ng-container *ngIf="message.type === 'user'" >
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/user.svg" alt="User:"/></div>
+        </ng-container>
+        <ng-container *ngIf="message.type === 'bot'" style = "word-break:break-word">
+          <div class = "indented-div"> <img style = "height: 25px" src = "assets/bot.svg" alt="Bot:"/></div>
+        </ng-container>
+        <div   [ngClass]="{'user-bubble': message.type === 'user', 'bot-bubble': message.type === 'bot'}" style="flex-grow: 1" >
+          <!--  <div [innerHTML]="message.text" style = "word-break:break-word"> </div>-->
+          <markdown [data] = "message.text"></markdown>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class = "chat-foot" >
+    <!-- <div>
+     <textarea class="user-input" name="userMessage"  rows="1" [(ngModel)]="userMessage" placeholder="Type your message..."></textarea>
+        </div>-->
+      <div>
+
+       <textarea
+         rows="1"
+         cols="30"
+         pInputTextarea
+         [autoResize]="true"
+         placeholder="Type your message here..."
+         (keydown)="handleKeyDown($event)"
+         [(ngModel)]="userMessage">
+      </textarea>
+      </div>
+        <div style="display: flex; justify-content: right">
+          <button pButton type="button"  (click)="sendMessage()">Send</button>
+        </div>
+  </div>
+
+</div>
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
+</div>
+
+

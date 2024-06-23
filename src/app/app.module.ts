@@ -44,6 +44,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { OrderFoodChatbotComponent } from './order-food-chatbot/order-food-chatbot.component';
 import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
 import { JiraAssistantComponent } from './jira-assistant/jira-assistant.component';
+import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {CardModule} from "primeng/card";
 
 
@@ -78,6 +79,7 @@ import {CardModule} from "primeng/card";
     OrderFoodChatbotComponent,
     ChatbotComponent,
     JiraAssistantComponent,
+    FunctionCallingRobotComponent,
   ],
   imports: [
     BrowserModule,
