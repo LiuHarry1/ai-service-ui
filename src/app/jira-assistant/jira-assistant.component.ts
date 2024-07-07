@@ -39,8 +39,11 @@ export class JiraAssistantComponent {
       this.summary =  data.summary
       this.description = data.description
       this.acceptanceCriteria = data.acceptanceCriteria
+      this.developmentRequired = data.developmentRequired
+      this.storyPoint = data.storyPoint
       this.isLoading = false
       this.submitted = true;
+      console.info("storyPoint," + this.storyPoint + "developmentRequried, "+ this.developmentRequired)
     });
   }
 
