@@ -13,7 +13,12 @@ export class JiraAssistantComponent {
   summary: string = '';
   description: string = '';
   acceptanceCriteria: string = '';
+  developmentRequired: string = 'true'
   submitted: boolean = false;
+  isEditingSummary: boolean = false;
+  isEditingDescription: boolean = false;
+  isEditingAcceptanceCriteria: boolean =false;
+  storyPoint: string = '3'
 
   isLoading: boolean = false;
 
@@ -23,9 +28,11 @@ export class JiraAssistantComponent {
   }
 
   onSubmit() {
+    console.info("onSubmit...")
+
     // Here you would call your LLM service
     // For example, assume a function generateDetails(input: string) returns an object with summary, description, and acceptanceCriteria
-
+    this.isLoading = true
     this.http.post<any>(prompt_engineering_host+'/generate-jira-message', { user_input: this.userInput}).subscribe(response => {
       console.info(response)
       const data = response.jira_message
@@ -37,7 +44,24 @@ export class JiraAssistantComponent {
     });
   }
 
+  editSummary() {
+    this.isEditingSummary = true;
+  }
 
+  toggleEdit(field: string) {
+    switch (field) {
+      case 'summary':
+        this.isEditingSummary = !this.isEditingSummary;
+        console.info("toggle Edit" + this.isEditingSummary)
+        break;
+      case 'description':
+        this.isEditingDescription = !this.isEditingDescription;
+        break;
+      case 'acceptanceCriteria':
+        this.isEditingAcceptanceCriteria = !this.isEditingAcceptanceCriteria;
+        break;
+    }
+  }
 
   copyToClipboard(text: string) {
     navigator.clipboard.writeText(text).then(() => {

@@ -13,39 +13,78 @@
     </div>
     <div *ngIf="submitted"  class="output-section">
 
-        <div class="generated-item bordered">
+        <div class="generated-item bordered" (dblclick)="toggleEdit('summary')">
           <div class="generated-item-title">
             <div class="generated-label">Summary:</div>
             <div class="copy-container">
               <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(summary)"></button>
             </div>
           </div>
-          <div class="generated-content">
+          <div class="generated-content" *ngIf="!isEditingSummary">
             <markdown  [data] = "summary" ></markdown>
           </div>
+          <div class="generated-content" *ngIf="isEditingSummary">
+            <textarea pInputTextarea rows="4" [(ngModel)]="summary" (focusout)="toggleEdit('summary')"></textarea>
+          </div>
         </div>
-        <div class="generated-item bordered">
+
+
+        <div class="generated-item bordered" (dblclick)="toggleEdit('description')">
           <div class="generated-item-title">
             <div class="generated-label">Description:</div>
             <div class="copy-container">
               <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(description)"></button>
+
             </div>
           </div>
-          <div class="generated-content">
+          <div class="generated-content" *ngIf="!isEditingDescription">
             <markdown  [data] = "description" ></markdown>
           </div>
+          <div class="generated-content" *ngIf="isEditingDescription">
+            <textarea pInputTextarea rows="4" [(ngModel)]="description" (focusout)="toggleEdit('description')"></textarea>
+          </div>
         </div>
-        <div class="generated-item bordered">
+        <div class="generated-item bordered" (dblclick)="toggleEdit('acceptanceCriteria')">
           <div class="generated-item-title">
             <div class="generated-label">Acceptance Criteria:</div>
             <div class="copy-container">
               <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(acceptanceCriteria)"></button>
+
             </div>
           </div>
-          <div class="generated-content">
+          <div class="generated-content" *ngIf="!isEditingAcceptanceCriteria">
             <markdown  [data] = "acceptanceCriteria" ></markdown>
           </div>
+          <div class="generated-content" *ngIf="isEditingAcceptanceCriteria">
+            <textarea pInputTextarea rows="4" [(ngModel)]="acceptanceCriteria" (focusout)="toggleEdit('acceptanceCriteria')"></textarea>
+          </div>
         </div>
+
+      <div class="generated-item bordered">
+        <div class="generated-item-title">
+          <div class="generated-label">Development Required:</div>
+          <div class="copy-container">
+            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(developmentRequired)"></button>
+
+          </div>
+        </div>
+        <div class="generated-content">
+          <markdown  [data] = "developmentRequired" ></markdown>
+        </div>
+      </div>
+
+      <div class="generated-item bordered">
+        <div class="generated-item-title">
+          <div class="generated-label">Story Point:</div>
+          <div class="copy-container">
+            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(storyPoint)"></button>
+
+          </div>
+        </div>
+        <div class="generated-content">
+          <markdown  [data] = "storyPoint" ></markdown>
+        </div>
+      </div>
 
     </div>
   </div>
