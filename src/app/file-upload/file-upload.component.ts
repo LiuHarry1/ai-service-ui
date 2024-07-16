@@ -19,14 +19,15 @@ export class FileUploadComponent {
 
   uploadFiles(): void {
     if (this.selectedFiles) {
-      const formData: FormData = new FormData();
+      const formData1: FormData = new FormData();
+      let sourceSystemId = "11"
 
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        formData.append('file', this.selectedFiles[i], this.selectedFiles[i].name);
-      }
+      formData1.append('sourceSystemId', sourceSystemId);
+      formData1.append('file[]', "file1");
 
-      this.http.post("http://localhost:8088/aspen/gateway/eureka-client/upload2", formData).subscribe(
+      this.http.post("http://localhost:8088/aspen/gateway/eureka-client/test2", formData1).subscribe(
         (response: any) => {
+          console.info("response" + response)
           this.message = response;
         },
         (error) => {
@@ -34,6 +35,26 @@ export class FileUploadComponent {
           this.message = 'Could not upload the files!';
         }
       );
+
+
+      const formData: FormData = new FormData();
+
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        formData.append('file[]', this.selectedFiles[i], this.selectedFiles[i].name);
+
+      }
+
+      // formData.append('sourceSystemId', sourceSystemId);
+      // this.http.post("http://localhost:8088/aspen/gateway/eureka-client/upload2", formData).subscribe(
+      //   (response: any) => {
+      //     console.info("response" + response)
+      //     this.message = response;
+      //   },
+      //   (error) => {
+      //     console.log(error);
+      //     this.message = 'Could not upload the files!';
+      //   }
+      // );
     }
   }
 }
