@@ -46,6 +46,7 @@ import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
 import { JiraAssistantComponent } from './jira-assistant/jira-assistant.component';
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {CardModule} from "primeng/card";
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -80,6 +81,7 @@ import {CardModule} from "primeng/card";
     ChatbotComponent,
     JiraAssistantComponent,
     FunctionCallingRobotComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
