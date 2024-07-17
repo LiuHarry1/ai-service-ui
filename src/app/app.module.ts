@@ -22,6 +22,7 @@ import { FaqNewComponent } from './faq-new/faq-new.component';
 import { AnomalyDetectionComponent } from './anomaly-detection/anomaly-detection.component';
 import {TranslationComponent} from './translation/translation.component'
 import {DropdownModule} from "primeng/dropdown";
+import { ReactiveFormsModule } from '@angular/forms';
 import { EmailLabelingComponent } from './email-labeling/email-labeling.component';
 import { EmailSearcherComponent } from './email-searcher/email-searcher.component';
 import { EmailComponent } from './email/email.component';
@@ -47,6 +48,7 @@ import { JiraAssistantComponent } from './jira-assistant/jira-assistant.componen
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {CardModule} from "primeng/card";
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ExceptionSolverComponent } from './exception-solver/exception-solver.component';
 
 
 
@@ -82,6 +84,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     JiraAssistantComponent,
     FunctionCallingRobotComponent,
     FileUploadComponent,
+    ExceptionSolverComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     DialogModule,
     SliderModule,
     InputTextareaModule,
-    CardModule
+    CardModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,55 @@
+<!-- exception-form.component.html -->
+<div class="container">
+  <p-card header="Exception Solver">
+    <form [formGroup]="exceptionForm" (ngSubmit)="onSubmit()">
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="exceptionStack">Exception Stack:</label>
+          <textarea
+            id="exceptionStack"
+            formControlName="exceptionStack"
+            class="p-inputtextarea"
+            rows="10"
+            required
+            pInputTextarea
+          ></textarea>
+        </div>
+        <div formArrayName="codeSnippets">
+          <div *ngFor="let snippet of codeSnippets.controls; let i = index" [formGroupName]="i" class="snippet-card">
+            <p-card header="Code Snippet {{i + 1}}">
+              <div class="p-field">
+                <label for="description">Description:</label>
+                <input
+                  id="description"
+                  formControlName="description"
+                  class="p-inputtext"
+                  required
+                />
+              </div>
+              <div class="p-field">
+                <label for="code">Code:</label>
+                <textarea
+                  id="code"
+                  formControlName="code"
+                  class="p-inputtextarea"
+                  pInputTextarea
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button pButton type="button" icon="pi pi-times" label="Remove" class="p-button-danger" (click)="removeCodeSnippet(i)"></button>
+            </p-card>
+          </div>
+        </div>
+        <button pButton type="button" icon="pi pi-plus" label="Add Code Snippet" class="p-button-secondary" (click)="addCodeSnippet()"></button>
+        <button pButton type="submit" icon="pi pi-check" label="Submit" class="p-button-primary"></button>
+      </div>
+    </form>
+    <div *ngIf="result">
+      <h3>Fixed Code:</h3>
+      <pre>{{ result.fixedCode }}</pre>
+      <h3>Root Cause:</h3>
+      <p>{{ result.rootCause }}</p>
+    </div>
+  </p-card>
+</div>

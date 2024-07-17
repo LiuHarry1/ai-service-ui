@@ -29,6 +29,7 @@ import {ChatbotComponent} from "./llama2/chatbot/chatbot.component";
 import {JiraAssistantComponent} from "./jira-assistant/jira-assistant.component";
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {FileUploadComponent} from "./file-upload/file-upload.component";
+import {ExceptionSolverComponent} from "./exception-solver/exception-solver.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -56,6 +57,8 @@ const routes: Routes = [
   { path: 'jira-assistant', component: JiraAssistantComponent },
   {path: 'function-calling-robot', component: FunctionCallingRobotComponent},
   {path: 'file-upload', component: FileUploadComponent},
+  {path: 'exception-solver', component: ExceptionSolverComponent},
+
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },
