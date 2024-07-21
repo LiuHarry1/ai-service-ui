@@ -8,14 +8,14 @@
           <div class="left-container">
             <div class="p-field">
               <label >Problem Description:</label>
-              <textarea id="problemDescription" formControlName="problemDescription"  class="p-inputtextarea" rows="7" required pInputTextarea></textarea>
+              <textarea id="problemDescription" formControlName="problemDescription"  class="p-inputtextarea" rows="7" pInputTextarea></textarea>
             </div>
             <div class="p-field">
               <label>Environment Information:</label>
-              <input id="environmentInformation"  formControlName="environmentInformation" class="p-inputtext" required/>
+              <input id="environmentInformation"  formControlName="environmentInformation" class="p-inputtext"/>
             </div>
             <div class="p-field">
-              <label for="exceptionStack">Exception Stack:</label>
+              <label for="exceptionStack">Exception Stack or Error:</label>
               <textarea id="exceptionStack" formControlName="exceptionStack" class="p-inputtextarea" rows="7" required pInputTextarea></textarea>
             </div>
           </div>
@@ -24,11 +24,11 @@
               <h3>Code Snippet {{i + 1}}</h3>
                 <div class="p-field">
                   <label for="description">Description:</label>
-                  <input id="description" formControlName="description" class="p-inputtext" required/>
+                  <input id="description" formControlName="description" class="p-inputtext"/>
                 </div>
                 <div class="p-field">
                   <label for="code">Code:</label>
-                  <textarea id="code" formControlName="code" class="p-inputtextarea" pInputTextarea rows="5" required></textarea>
+                  <textarea id="code" formControlName="code" class="p-inputtextarea" pInputTextarea rows="5"></textarea>
                 </div>
                 <button pButton type="button" icon="pi pi-times" label="Remove" class="p-button-danger" (click)="removeCodeSnippet(i)"></button>
 
@@ -44,4 +44,8 @@
     </div>
   </div>
 
+</div>
+
+<div *ngIf="isLoading" class="loading-indicator">
+  Loading...
 </div>
