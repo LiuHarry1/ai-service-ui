@@ -8,24 +8,40 @@ body {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 85%;
+  margin: 0 auto;
+  /*padding: 20px;*/
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.container-header{
+  color: black; /* Set text color */
+  background-color: #ececf1;
+  text-align: center;
+  padding: 10px;
+  /*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); !* Add a subtle shadow *!*/
+  border-bottom: 1px solid #ccc; /* Add a border at the bottom */
+  font-size: 35px; /* Adjust the font size as needed */
+}
+
 .flex-container {
-  /*display: flex;*/
-  /*flex-direction: row;*/
+  display: flex;
+  flex-direction: row;
   gap: 20px; /* Space between the columns */
   margin-bottom: 20px;
 }
 
-.exception-stack, .code-snippets {
+.left-container, .right-container {
   flex: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
+
 }
+
+
 
 .p-field {
   margin-bottom: 20px;
@@ -39,7 +55,7 @@ body {
 
 .p-inputtextarea, .p-inputtext {
   width: 100%;
-  padding: 10px;
+  /*padding: 10px;*/
   border-radius: 4px;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -58,19 +74,6 @@ body {
   /*border-radius: 4px;*/
   padding: 10px;
 }
-
-/*.snippet-card .p-card-header {*/
-/*  background-color: #007ad9;*/
-/*  color: #fff;*/
-/*  border-bottom: 1px solid #ddd;*/
-/*  border-radius: 4px 4px 0 0;*/
-/*  padding: 10px;*/
-/*  font-size: 1.1em;*/
-/*}*/
-
-/*.snippet-card .p-field {*/
-/*  margin-bottom: 15px;*/
-/*}*/
 
 .p-button {
   margin-top: 10px;
@@ -95,4 +98,40 @@ body {
 .p-button-secondary:hover,
 .p-button-danger:hover {
   opacity: 0.9;
+}
+
+.container-middle{
+  padding: 10px;
+}
+
+::ng-deep markdown pre code {
+  display: block;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  line-height: 1.6;
+  border: 1px solid #ddd;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep markdown ul li code{
+  font-weight: 600;
+  font-family: Consolas, monospace;
+  color: #0d0d0d
+}
+
+::ng-deep markdown p code{
+  font-weight: 600;
+  font-family: Consolas, monospace;
+  color: #0d0d0d
+}
+
+.result{
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
 }

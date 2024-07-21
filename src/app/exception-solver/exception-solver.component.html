@@ -1,35 +1,47 @@
 <div class="container">
-  <p-card header="Exception Solver">
-    <form [formGroup]="exceptionForm" (ngSubmit)="onSubmit()">
-      <div class="flex-container">
-        <div class="exception-stack p-field">
-          <label for="exceptionStack">Exception Stack:</label>
-          <textarea id="exceptionStack" formControlName="exceptionStack" class="p-inputtextarea" rows="7" required pInputTextarea></textarea>
-        </div>
-        <div class="code-snippets" formArrayName="codeSnippets">
-          <div *ngFor="let snippet of codeSnippets.controls; let i = index" [formGroupName]="i" class="snippet-card">
-            <p-card header="Code Snippet {{i + 1}}">
-              <div class="p-field">
-                <label for="description">Description:</label>
-                <input id="description" formControlName="description" class="p-inputtext" required/>
-              </div>
-              <div class="p-field">
-                <label for="code">Code:</label>
-                <textarea id="code" formControlName="code" class="p-inputtextarea" pInputTextarea rows="5" required></textarea>
-              </div>
-              <button pButton type="button" icon="pi pi-times" label="Remove" class="p-button-danger" (click)="removeCodeSnippet(i)"></button>
-            </p-card>
+  <div class="container-header">
+    Code Exception Solver
+  </div>
+  <div class = "container-middle">
+      <form [formGroup]="exceptionForm" (ngSubmit)="onSubmit()">
+        <div class="flex-container">
+          <div class="left-container">
+            <div class="p-field">
+              <label >Problem Description:</label>
+              <textarea id="problemDescription" formControlName="problemDescription"  class="p-inputtextarea" rows="7" required pInputTextarea></textarea>
+            </div>
+            <div class="p-field">
+              <label>Environment Information:</label>
+              <input id="environmentInformation"  formControlName="environmentInformation" class="p-inputtext" required/>
+            </div>
+            <div class="p-field">
+              <label for="exceptionStack">Exception Stack:</label>
+              <textarea id="exceptionStack" formControlName="exceptionStack" class="p-inputtextarea" rows="7" required pInputTextarea></textarea>
+            </div>
           </div>
-          <button pButton type="button" icon="pi pi-plus" label="Add Code Snippet" class="p-button-secondary" (click)="addCodeSnippet()"></button>
+          <div class="right-container" formArrayName="codeSnippets">
+            <div *ngFor="let snippet of codeSnippets.controls; let i = index" [formGroupName]="i" class="snippet-card">
+              <h3>Code Snippet {{i + 1}}</h3>
+                <div class="p-field">
+                  <label for="description">Description:</label>
+                  <input id="description" formControlName="description" class="p-inputtext" required/>
+                </div>
+                <div class="p-field">
+                  <label for="code">Code:</label>
+                  <textarea id="code" formControlName="code" class="p-inputtextarea" pInputTextarea rows="5" required></textarea>
+                </div>
+                <button pButton type="button" icon="pi pi-times" label="Remove" class="p-button-danger" (click)="removeCodeSnippet(i)"></button>
+
+            </div>
+            <button pButton type="button" icon="pi pi-plus" label="Add Code Snippet" class="p-button-secondary" (click)="addCodeSnippet()"></button>
+          </div>
         </div>
-      </div>
-      <button pButton type="submit" icon="pi pi-check" label="Submit" class="p-button-primary"></button>
-    </form>
-    <div *ngIf="result">
-      <h3>Fixed Code:</h3>
-      <pre>{{ result.fixedCode }}</pre>
-      <h3>Root Cause:</h3>
-      <p>{{ result.rootCause }}</p>
+        <button pButton type="submit" icon="pi pi-check" label="Submit" class="p-button-primary"></button>
+      </form>
+
+    <div class = "result"  *ngIf="result">
+      <markdown  [data] = "result"></markdown>
     </div>
-  </p-card>
+  </div>
+
 </div>

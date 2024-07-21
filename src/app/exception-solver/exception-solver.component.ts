@@ -1,5 +1,5 @@
 // exception-form.component.ts
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import {prompt_engineering_host} from "../app-config";
@@ -11,13 +11,16 @@ import {prompt_engineering_host} from "../app-config";
 })
 export class ExceptionSolverComponent {
   exceptionForm: FormGroup;
-  result: any;
+  result: any ;
 
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.exceptionForm = this.fb.group({
-      exceptionStack: ['', Validators.required],
+      exceptionStack: [''],
+      problemDescription: ['',Validators.required],
+      environmentInformation: [''],
       codeSnippets: this.fb.array([this.createCodeSnippet()])
     });
+
   }
 
   get codeSnippets() {
@@ -43,8 +46,10 @@ export class ExceptionSolverComponent {
     if (this.exceptionForm.valid) {
       this.http.post<any>(prompt_engineering_host+'/fix-exception', this.exceptionForm.value)
         .subscribe(response => {
-          this.result = response;
+          console.info("response:"+response)
+          this.result = response.data;
         });
     }
   }
+
 }
