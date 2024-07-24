@@ -1,0 +1,124 @@
+<!-- src/app/user-cases/user-cases.component.html -->
+<div class="p-grid">
+  <div class="p-col-12">
+    <p-tabView>
+      <!-- Good User Cases Tab -->
+      <p-tabPanel header="Good User Cases">
+        <p-table
+          [value]="getGoodUserCases()"
+          [paginator]="true"
+          [rows]="5"
+          [loading]="loading"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th></th>
+              <th>User Input</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-case>
+            <tr (click)="toggleRow(case)">
+              <td>
+                <i
+                  class="pi"
+                  [ngClass]="{
+                    'pi-chevron-down': case.expanded,
+                    'pi-chevron-right': !case.expanded
+                  }"
+                ></i>
+              </td>
+              <td>{{ case.userInput }}</td>
+            </tr>
+            <!-- Expanded Row -->
+            <tr *ngIf="case.expanded">
+              <td colspan="2">
+                <div class="details-container" [@detailExpand]="case.expanded ? 'expanded' : 'collapsed'">
+                  <div class="detail-item">
+                    <span class="detail-label">Summary:</span>
+                    <span>{{ case.summary }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Description:</span>
+                    <span>{{ case.description }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Acceptance Criteria:</span>
+                    <span>{{ case.acceptanceCriteria }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Development Required:</span>
+                    <span>{{ case.developmentRequired }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Story Point:</span>
+                    <span>{{ case.storyPoint }}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+      <!-- Bad User Cases Tab -->
+      <p-tabPanel header="Bad User Cases">
+        <p-table
+          [value]="getBadUserCases()"
+          [paginator]="true"
+          [rows]="5"
+          [loading]="loading"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th></th>
+              <th>User Input</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-case>
+            <tr (click)="toggleRow(case)">
+              <td>
+                <i
+                  class="pi"
+                  [ngClass]="{
+                    'pi-chevron-down': case.expanded,
+                    'pi-chevron-right': !case.expanded
+                  }"
+                ></i>
+              </td>
+              <td>{{ case.userInput }}</td>
+            </tr>
+            <!-- Expanded Row -->
+            <tr *ngIf="case.expanded">
+              <td colspan="2">
+                <div class="details-container" [@detailExpand]="case.expanded ? 'expanded' : 'collapsed'">
+                  <div class="detail-item">
+                    <span class="detail-label">Summary:</span>
+                    <span>{{ case.summary }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Description:</span>
+                    <span>{{ case.description }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Acceptance Criteria:</span>
+                    <span>{{ case.acceptanceCriteria }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Development Required:</span>
+                    <span>{{ case.developmentRequired }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Story Point:</span>
+                    <span>{{ case.storyPoint }}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>

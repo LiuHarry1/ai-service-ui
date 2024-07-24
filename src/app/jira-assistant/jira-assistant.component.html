@@ -84,11 +84,30 @@
           {{storyPoint}}
         </div>
       </div>
-
+      <!-- Thumbs Up and Thumbs Down Section -->
+      <div class="feedback-section">
+        <p>Was this generated content helpful?</p>
+        <button
+          class="thumbs-button thumbs-up"
+          (click)="onThumbsUp()"
+          pButton
+          type="button"
+          icon="pi pi-thumbs-up"
+          label="Good Practice"
+        ></button>
+        <button
+          class="thumbs-button thumbs-down"
+          (click)="onThumbsDown()"
+          pButton
+          type="button"
+          icon="pi pi-thumbs-down"
+          label="Bad Practice"
+        ></button>
+      </div>
     </div>
   </div>
   <div class="footer">
-    <p> AI model can make mistakes. please check import info. </p>
+    <p>AI model can make mistakes. please check important info.</p>
   </div>
 </div>
 

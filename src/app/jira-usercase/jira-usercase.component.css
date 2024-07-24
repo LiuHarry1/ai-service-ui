@@ -1,0 +1,109 @@
+/* src/app/user-cases/user-cases.component.css */
+
+/* Container for the entire component */
+.p-grid {
+  margin-top: 30px;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for each tab */
+.p-col-12 {
+  width: 90%;
+}
+
+/* TabView styling */
+p-tabView {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+p-tabPanel {
+  border: none;
+  padding: 20px;
+}
+
+/* Table styling */
+p-table {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Header styling */
+p-table thead th {
+  background-color: #f0f4f8;
+  color: #333333;
+  text-align: left;
+  padding: 12px 15px;
+  font-weight: bold;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Row styling */
+p-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+p-table tbody tr:hover {
+  background-color: #eef1f5;
+}
+
+p-table tbody td {
+  padding: 10px 15px;
+  color: #555555;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Styling for expanded row */
+.details-container {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Detail item styling */
+.detail-item {
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #333333;
+  margin-right: 5px;
+}
+
+/* Animation for row expansion */
+.expansion-panel {
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+/* Transition effect for expanded row */
+.expand-enter, .expand-leave-to {
+  max-height: 0;
+  padding: 0;
+}
+
+.expand-enter-to, .expand-leave {
+  max-height: 400px;
+  padding: 10px;
+}
+
+/* Loader styling */
+.p-table .p-datatable-loading-overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+}

@@ -48,6 +48,8 @@ import { JiraAssistantComponent } from './jira-assistant/jira-assistant.componen
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {CardModule} from "primeng/card";
 import { ExceptionSolverComponent } from './exception-solver/exception-solver.component';
+import { JiraUsercaseComponent } from './jira-usercase/jira-usercase.component';
+import {TabViewModule} from "primeng/tabview";
 
 
 
@@ -83,6 +85,7 @@ import { ExceptionSolverComponent } from './exception-solver/exception-solver.co
     JiraAssistantComponent,
     FunctionCallingRobotComponent,
     ExceptionSolverComponent,
+    JiraUsercaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +106,8 @@ import { ExceptionSolverComponent } from './exception-solver/exception-solver.co
     SliderModule,
     InputTextareaModule,
     CardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabViewModule
   ],
   bootstrap: [AppComponent]
 })

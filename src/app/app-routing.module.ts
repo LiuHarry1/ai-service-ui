@@ -27,6 +27,7 @@ import {UserQueryEmailDashboardComponent} from "./user-query-email-dashboard/use
 import {OrderFoodChatbotComponent} from "./order-food-chatbot/order-food-chatbot.component";
 import {ChatbotComponent} from "./llama2/chatbot/chatbot.component";
 import {JiraAssistantComponent} from "./jira-assistant/jira-assistant.component";
+import {JiraUsercaseComponent} from "./jira-usercase/jira-usercase.component";
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {ExceptionSolverComponent} from "./exception-solver/exception-solver.component";
 
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'user-email-dashboard', component: UserQueryEmailDashboardComponent },
   {path: 'order-food-chatbot', component: OrderFoodChatbotComponent},
   { path: 'jira-assistant', component: JiraAssistantComponent },
+  {path: 'jira-usercase', component: JiraUsercaseComponent},
   {path: 'function-calling-robot', component: FunctionCallingRobotComponent},
   {path: 'exception-solver', component: ExceptionSolverComponent},
 

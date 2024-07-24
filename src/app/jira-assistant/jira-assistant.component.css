@@ -113,6 +113,34 @@ textarea {
 
 }
 
+.feedback-section {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.thumbs-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.thumbs-up:hover {
+  background-color: #218838;
+}
+
+.thumbs-down {
+  background-color: #dc3545;
+}
+
+.thumbs-down:hover {
+  background-color: #c82333;
+}
+
 
 
 .loading-indicator {

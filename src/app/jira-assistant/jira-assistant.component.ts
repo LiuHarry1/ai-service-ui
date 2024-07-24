@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {prompt_engineering_host} from "../app-config";
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
@@ -72,5 +72,48 @@ export class JiraAssistantComponent {
     }).catch(err => {
       console.error('Could not copy text: ', err);
     });
+  }
+
+  onThumbsUp() {
+    // alert('Thank you for your feedback! You liked this as a good practice.');
+    this.saveFeedback('good');
+  }
+
+  // Handle thumbs-down button click
+  onThumbsDown() {
+    // alert('Thank you for your feedback! You marked this as a bad practice.');
+    this.saveFeedback('bad');
+  }
+
+  // Save feedback (this is a placeholder function)
+  saveFeedback(feedback: string) {
+    const data = {
+      userInput: this.userInput,
+      summary: this.summary,
+      description: this.description,
+      acceptanceCriteria: this.acceptanceCriteria,
+      developmentRequired: this.developmentRequired,
+      storyPoint: this.storyPoint,
+      feedback: feedback
+    };
+
+    // Set the headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    // Make a POST request to the Python backend
+    this.http
+      .post(prompt_engineering_host+'/save-feedback', data, { headers: headers })
+      .subscribe(
+        (response) => {
+          console.log('Feedback saved:', response);
+          alert('Thank you for your feedback!');
+        },
+        (error) => {
+          console.error('Error saving feedback:', error);
+          alert('Failed to save feedback. Please try again later.');
+        }
+      );
   }
 }
