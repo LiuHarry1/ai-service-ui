@@ -2,7 +2,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f5f5f5;
 }
 
@@ -112,34 +112,116 @@ textarea {
   font-size: 16px; /* Adjust font size for content */
 
 }
+/* src/app/exception/exception.component.css */
 
-.feedback-section {
-  margin-top: 1rem;
+.feedback-section{
   text-align: center;
 }
 
-.thumbs-button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  margin: 0 0.5rem;
-  transition: background-color 0.3s;
+.feedback-section-container {
+  display: inline-flex; /* Inline flex for wrapping content only */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  gap: 10px; /* Space between elements */
+  padding: 1px 15px; /* Padding inside the border */
+  margin: 20px auto; /* Center the section horizontally */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-size: 16px; /* Text size for readability */
+  font-weight: 500; /* Slightly bolder text */
+  transition: border-color 0.3s; /* Smooth transition for hover effects */
+  position: relative; /* Position relative for the close button */
 }
 
-.thumbs-up:hover {
-  background-color: #218838;
+.feedback-section:hover {
+  border-color: #bbb; /* Darken border color on hover */
+}
+
+.feedback-text {
+  display: inline-block; /* Inline block for text alignment */
+  vertical-align: middle; /* Vertically align text in the middle */
+}
+
+.thumbs-button {
+  border: none; /* Remove default button border */
+  background: none; /* Transparent background */
+  font-size: 20px; /* Icon size */
+  cursor: pointer; /* Pointer cursor */
+  padding: 5px; /* Padding for click area */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.thumbs-button:hover {
+  background-color: #f0f0f0; /* Light grey hover background */
+  border-radius: 50%; /* Round shape on hover */
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.thumbs-up {
+  color: #28a745; /* Green color for thumbs up */
 }
 
 .thumbs-down {
-  background-color: #dc3545;
+  color: #dc3545; /* Red color for thumbs down */
 }
 
-.thumbs-down:hover {
-  background-color: #c82333;
+.close-button {
+  border: none; /* Remove default button border */
+  background: none; /* Transparent background */
+  font-size: 18px; /* Icon size for close button */
+  color: #888; /* Grey color for close button */
+  cursor: pointer; /* Pointer cursor for close button */
+  position: absolute; /* Absolute position within the section */
+  top: -8px; /* Adjust to align in the top right corner */
+  right: -8px; /* Adjust to align in the top right corner */
+  transition: color 0.3s; /* Smooth transition for hover */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+  background-color: #fff; /* Background color to contrast with border */
+  border-radius: 50%; /* Circular shape */
+  width: 24px; /* Set width for circle button */
+  height: 24px; /* Set height for circle button */
+  display: flex; /* Flexbox for centering icon */
+  justify-content: center; /* Center icon horizontally */
+  align-items: center; /* Center icon vertically */
 }
+
+.close-button:hover {
+  color: #444; /* Darken color on hover */
+  background-color: #f8f8f8; /* Change background color on hover */
+}
+
+
+/*.feedback-section {*/
+/*  margin-top: 1rem;*/
+/*  text-align: center;*/
+/*  border: 1px solid #ddd;*/
+
+/*}*/
+
+/*.thumbs-button {*/
+/*  background-color: #28a745;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  cursor: pointer;*/
+/*  padding: 0.5rem 1rem;*/
+/*  border-radius: 4px;*/
+/*  margin: 0 0.5rem;*/
+/*  transition: background-color 0.3s;*/
+/*}*/
+
+/*.thumbs-up:hover {*/
+/*  background-color: #218838;*/
+/*}*/
+
+/*.thumbs-down {*/
+/*  background-color: #dc3545;*/
+/*}*/
+
+/*.thumbs-down:hover {*/
+/*  background-color: #c82333;*/
+/*}*/
 
 
 

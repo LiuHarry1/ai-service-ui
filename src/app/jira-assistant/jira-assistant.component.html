@@ -84,27 +84,41 @@
           {{storyPoint}}
         </div>
       </div>
-      <!-- Thumbs Up and Thumbs Down Section -->
-      <div class="feedback-section">
-        <p>Was this generated content helpful?</p>
-        <button
-          class="thumbs-button thumbs-up"
-          (click)="onThumbsUp()"
-          pButton
-          type="button"
-          icon="pi pi-thumbs-up"
-          label="Good Practice"
-        ></button>
-        <button
-          class="thumbs-button thumbs-down"
-          (click)="onThumbsDown()"
-          pButton
-          type="button"
-          icon="pi pi-thumbs-down"
-          label="Bad Practice"
-        ></button>
+
+      <div class = "feedback-section">
+        <div class="feedback-section-container" *ngIf="showFeedback">
+          <span class="feedback-text">
+            Was this generated content helpful?
+          </span>
+          <button
+            class="thumbs-button thumbs-up p-button-rounded p-button-success"
+            (click)="onThumbsUp()"
+            pButton
+            type="button"
+            icon="pi pi-thumbs-up"
+          ></button>
+          <button
+            class="thumbs-button thumbs-down p-button-rounded p-button-danger"
+            (click)="onThumbsDown()"
+            pButton
+            type="button"
+            icon="pi pi-thumbs-down"
+          ></button>
+          <button
+            class="close-button p-button-rounded"
+            (click)="closeFeedbackSection()"
+            pButton
+            type="button"
+            icon="pi pi-times"
+          ></button>
+        </div>
+
       </div>
+
+
     </div>
+
+
   </div>
   <div class="footer">
     <p>AI model can make mistakes. please check important info.</p>

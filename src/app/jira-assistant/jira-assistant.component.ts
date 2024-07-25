@@ -14,11 +14,12 @@ export class JiraAssistantComponent {
   description: string = '';
   acceptanceCriteria: string = '';
   developmentRequired: string = 'true'
-  submitted: boolean = false;
+  submitted: boolean = true;
   isEditingSummary: boolean = false;
   isEditingDescription: boolean = false;
   isEditingAcceptanceCriteria: boolean =false;
   storyPoint: string = '3'
+  showFeedback: boolean = true; // Control the display of the feedback section
 
   isLoading: boolean = false;
 
@@ -87,6 +88,7 @@ export class JiraAssistantComponent {
 
   // Save feedback (this is a placeholder function)
   saveFeedback(feedback: string) {
+    this.showFeedback= false
     const data = {
       userInput: this.userInput,
       summary: this.summary,
@@ -116,4 +118,9 @@ export class JiraAssistantComponent {
         }
       );
   }
+  closeFeedbackSection() {
+    this.showFeedback = false; // Hide the feedback section when closed
+    console.log('Feedback Section Closed');
+  }
+
 }
