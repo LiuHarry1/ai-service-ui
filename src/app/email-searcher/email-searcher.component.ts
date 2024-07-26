@@ -93,7 +93,7 @@ export class EmailSearcherComponent {
     this.highlySimilarEmails = [];
     this.lowSimilarEmails = []
     this.isLoading = true;
-    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data: any) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/email_search_v2?query=${this.query}&query_type=email_subject&keyWords=${this.selectedKeyWords}&components=${this.selectedComponents}`).subscribe((data: any) => {
       console.info("invoking search method", data);
       this.highlySimilarEmails= data["highly_similar_emails"]
       this.lowSimilarEmails = data["low_similar_emails"]
@@ -118,7 +118,7 @@ export class EmailSearcherComponent {
   toggleAdditionalOptions() {
     this.additionalOptionsVisible = !this.additionalOptionsVisible;
     // extract key words for current user query
-    this.http.get<any[]>(ai_similar_email_finder_host + `/get_key_words?text=${this.query}`).subscribe((data) => {
+    this.http.get<any[]>(ai_similar_email_finder_host + `/get_key_words_by_embedding_model?text=${this.query}`).subscribe((data) => {
       console.info("invoking get_key_words method", data);
       this.keyWords = data;
       this.selectedKeyWords = []
