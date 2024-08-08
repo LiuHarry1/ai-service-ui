@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card">
+    <h2 class="header">Function Definition Caller</h2>
+    <textarea
+      rows="10"
+      cols="50"
+      [(ngModel)]="functionDefinition"
+      placeholder="Enter function definition JSON here"
+      class="textarea"
+      pInputTextarea
+    ></textarea>
+
+    <div class="options">
+      <div class="checkbox-group">
+        <p-checkbox
+          name="model"
+          value="llama3"
+          label="Llama3"
+          [(ngModel)]="selectedModel"
+        ></p-checkbox>
+        <p-checkbox
+          name="model"
+          value="llama3.1"
+          label="Llama3.1"
+          [(ngModel)]="selectedModel"
+        ></p-checkbox>
+      </div>
+      <button
+        pButton
+        type="button"
+        label="Submit"
+        icon="pi pi-send"
+        class="submit-button"
+        (click)="submitFunctionDefinition()"
+      ></button>
+    </div>
+
+    <div class="response-container" *ngIf="response">
+      <h3>Response from Backend:</h3>
+      <pre>{{ response | json }}</pre>
+    </div>
+  </div>
+</div>

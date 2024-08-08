@@ -3,11 +3,11 @@
   <div class = "left_container"></div>
   <div class = "center_container">
     <div>
-      <textarea id="text" [(ngModel)]="text"  placeholder="say something ..." ></textarea>
+      <textarea id="text" [(ngModel)]="text"  placeholder="say something ..."  pInputTextarea></textarea>
     </div>
 
     <div>
-      <button (click)="submitText()">Submit</button>
+      <button pButton type="button" label="Submit" icon="pi pi-send" class="submit-button" (click)="submitText()"></button>
     </div>
 
     <div class="completion" *ngIf="completion">

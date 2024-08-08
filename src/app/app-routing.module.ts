@@ -30,6 +30,8 @@ import {JiraAssistantComponent} from "./jira-assistant/jira-assistant.component"
 import {JiraUsercaseComponent} from "./jira-usercase/jira-usercase.component";
 import {FunctionCallingRobotComponent} from "./function-calling-robot/function-calling-robot.component";
 import {ExceptionSolverComponent} from "./exception-solver/exception-solver.component";
+import {FunctionCallingComponent} from "./llama2/function-calling/function-calling.component"
+import {SimilarJiraSearcherComponent} from "./similar-jira-searcher/similar-jira-searcher.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -58,6 +60,8 @@ const routes: Routes = [
   {path: 'jira-usercase', component: JiraUsercaseComponent},
   {path: 'function-calling-robot', component: FunctionCallingRobotComponent},
   {path: 'exception-solver', component: ExceptionSolverComponent},
+  {path: 'exception-solver', component: ExceptionSolverComponent},
+  {path: 'similar-jira-searcher', component: SimilarJiraSearcherComponent},
 
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
@@ -73,6 +77,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'completion', pathMatch: 'full' },
       { path: 'completion', component: CompletionComponent },
       { path: 'chatbot', component: ChatbotComponent },
+      { path: 'function-calling', component: FunctionCallingComponent },
+
     ]},
 
   { path: '', redirectTo: '/examples', pathMatch: 'full' },

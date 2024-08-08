@@ -1,0 +1,315 @@
+.header_wapper{
+  border-bottom: 2px solid black;
+  border-color:  #f5f5f5;;
+  position: sticky;
+  top: 0;
+  /*background-color: #f5f5f5; !* Optional: Add background color to distinguish the fixed section *!*/
+  z-index: 100; /* Ensure it stays on top of other elements */
+  padding: 10px 0px; /* Optional: Add padding for better styling */
+  display: flex;
+  background:white;
+}
+.header_title{
+  font-size: 26px;
+  /*margin-left: 105px;*/
+  margin-left: 0px
+}
+
+.search-form {
+  /*position: sticky;*/
+  /*top: 100px;*/
+  /*background-color: #f5f5f5; !* Optional: Add background color to distinguish the fixed section *!*/
+  /*z-index: 100; !* Ensure it stays on top of other elements *!*/
+  /*padding: 10px 0px; !* Optional: Add padding for better styling *!*/
+  width:60%;
+  /*margin: 0 auto;*/
+  margin-left: 10px;
+}
+
+.search-form-dev{
+  margin-bottom: 10px
+}
+
+.search-form form{
+  display: flex;
+  justify-content: space-between
+}
+
+
+/* text-suggestion.component.css */
+.suggestion-container {
+  position: relative;
+  width: calc(100% - 110px);
+}
+
+.search-area{
+  margin-left: 10px;
+  /* width: 100px*/
+}
+
+
+/* Input field for user messages */
+.user-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /*outline: none;*/
+  font-size: 16px;
+  /*margin: 10px 10px 10px 0px*/
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s
+}
+.user-input:hover{
+  border: 1px solid #609af8 !important;
+}
+
+
+:host ::ng-deep .p-inputtext {
+  width: 100%;
+  height: 40px;
+}
+
+:host ::ng-deep .custom-dd .p-dropdown {
+  width: 165px;
+  height: 40px;
+  font-size: 10px;
+}
+
+:host ::ng-deep .p-button{
+  font-size:15px;
+  height: 40px;
+}
+
+
+:host ::ng-deep .p-multiSelect {
+  width: 115px;
+  height: 30px;
+  font-size: 5px;
+  border-radius: 20px;
+}
+
+
+/* Send button */
+.send-button {
+  width: 100%;
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: #303f9f;
+}
+
+
+
+
+.main{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.left_container{
+  /*height: 90vh;*/
+  /*min-height:90%;*/
+  /*width:20%;*/
+  position: absolute;
+  top: 100px;
+  left: 5px;
+  width: 19%;
+
+  margin: 0  0 20px 0  ;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-clip: content-box, padding-box;
+  border-radius: 10px;
+}
+
+/* Style for the entire FAQ system */
+.container {
+  /*max-width: 60%;*/
+  width:60%;
+  /*margin: 0 auto;*/
+  margin-left: calc(100px + 115px + 10px);;
+  /*padding: 20px;*/
+  font-family: Arial, sans-serif;
+  /*background-color: #f5f5f5;*/
+  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);*/
+  /*border-radius: 10px;*/
+}
+
+
+.addtional-email-info{
+  font-size: 12px;
+
+}
+
+
+
+/* Style for FAQ lists */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+  padding: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.email-subject{
+  /* This sets the initial bottom border to be transparent and 2px thick */
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease; /* Smooth transition effect */
+  color: #1a0dab; /* This is an example color similar to Google's search result links */
+  /* For font styles similar to Google search results, you can use sans-serif fonts */
+  font-family: Arial, sans-serif; /* Example of sans-serif font */
+  font-size: 16px; /* Example font size */
+
+}
+.email-subject:hover{
+  /*text-decoration: underline;*/
+  border-bottom: 2px solid black;
+  cursor: pointer; /* Change the cursor to a pointer (hand) */
+  border-color:  #1a0dab;;
+  color: #1a0dab;
+
+}
+
+
+.loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Your existing CSS styles */
+
+/* Style for the right container */
+.right_container {
+  position: absolute;
+  top: 200px;
+  left: calc(100% - 27%);
+  width: 25%;
+  padding: 20px;
+  margin-left: 20px;
+  border: 1px solid #f5f5f5;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  background-clip: content-box, padding-box;
+  border-radius: 10px;
+}
+
+.right_container h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.recent-queries {
+  list-style: none;
+  padding: 0;
+}
+
+.recent-queries li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer; /* Change the cursor to a pointer (hand) */
+  border-color:  #f5f5f5;
+}
+
+
+.recent-queries li:hover{
+  text-decoration: underline;
+}
+
+.announcement{
+  font-size: 14px;
+  color: red;
+  margin-left: 20%;
+
+}
+
+/* Toggle button style */
+.toggle-arrows {
+  cursor: pointer;
+  padding: 5px; /* Add padding to make it easier to click */
+}
+
+.toggle-arrows i {
+  margin-right: 5px;
+}
+
+/* Additional options panel style */
+.additional-options {
+  /*display: none; !* Initially hide the panel *!*/
+  padding: 10px; /* Add padding for better appearance */
+}
+
+.additional-options.visible {
+  display: block; /* Show the panel when visible class is applied */
+}
+
+/* You can add additional styles to customize the appearance of the additional options panel */
+.additional-options div {
+  margin-bottom: 5px; /* Add margin between each option */
+  cursor: pointer; /* Add pointer cursor to indicate clickable */
+}
+
+/* Style for the icons */
+.fa {
+  font-size: 20px; /* Adjust font size of icons */
+}
+
+
+.custom-button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #F6F7F8; /* Green */
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px; /* Adjust the value to change the roundness */
+}
+
+.custom-button:hover {
+  /*background-color: #555; !* Darker Green *!*/
+  color: #00AEEC
+}
+
+.custom-button.highlight {
+  background-color: rgb(232, 240, 254); /* Highlighted background color */
+  color: #00AEEC
+}
+
+.button-list {
+  /*text-align: center;*/
+}
+
+pre {
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

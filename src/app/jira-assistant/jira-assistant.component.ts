@@ -22,6 +22,7 @@ export class JiraAssistantComponent {
   showFeedback: boolean = true; // Control the display of the feedback section
 
   isLoading: boolean = false;
+  issueType: string = 'Task';
 
   constructor(
     private http: HttpClient
@@ -42,6 +43,7 @@ export class JiraAssistantComponent {
       this.acceptanceCriteria = data.acceptanceCriteria
       this.developmentRequired = data.developmentRequired
       this.storyPoint = data.storyPoint
+      this.issueType = data.issueType
       this.isLoading = false
       this.submitted = true;
       console.info("storyPoint," + this.storyPoint + "developmentRequried, "+ this.developmentRequired)

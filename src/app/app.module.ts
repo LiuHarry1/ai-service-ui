@@ -35,6 +35,7 @@ import { TextComparisonComponent } from './text-formatter/text-comparison/text-c
 import { TextFormatterComponent } from './text-formatter/text-formatter.component';
 import { Llama2Component } from './llama2/llama2.component';
 import { CompletionComponent } from './llama2/completion/completion.component';
+import { FunctionCallingComponent } from './llama2/function-calling/function-calling.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { UserQueryEmailDashboardComponent } from './user-query-email-dashboard/user-query-email-dashboard.component';
 import {TableModule} from "primeng/table";
@@ -50,6 +51,7 @@ import {CardModule} from "primeng/card";
 import { ExceptionSolverComponent } from './exception-solver/exception-solver.component';
 import { JiraUsercaseComponent } from './jira-usercase/jira-usercase.component';
 import {TabViewModule} from "primeng/tabview";
+import {SimilarJiraSearcherComponent} from './similar-jira-searcher/similar-jira-searcher.component'
 
 
 
@@ -86,6 +88,8 @@ import {TabViewModule} from "primeng/tabview";
     FunctionCallingRobotComponent,
     ExceptionSolverComponent,
     JiraUsercaseComponent,
+    FunctionCallingComponent,
+    SimilarJiraSearcherComponent
   ],
   imports: [
     BrowserModule,

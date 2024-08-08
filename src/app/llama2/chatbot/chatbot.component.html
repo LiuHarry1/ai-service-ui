@@ -5,10 +5,6 @@
     chatbot
   </div>
   <div #chatArea class="chat-area">
-
-
-
-    <!--    <div *ngFor="let message of chatMessages"  style = " flex-direction: column; display: flex;">-->
     <div *ngFor="let message of chatMessages"  style = "display: flex; justify-content: space-between">
       <div class="chat_left" style="flex-grow: 1; flex:8">
         <ng-container *ngIf="message.type === 'user'" >

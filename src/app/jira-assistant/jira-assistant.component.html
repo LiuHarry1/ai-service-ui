@@ -85,6 +85,19 @@
         </div>
       </div>
 
+      <div class="generated-item bordered">
+        <div class="generated-item-title">
+          <div class="generated-label">Issue Type:</div>
+          <div class="copy-container">
+            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(issueType)"></button>
+
+          </div>
+        </div>
+        <div class="generated-content">
+          {{issueType}}
+        </div>
+      </div>
+
       <div class = "feedback-section">
         <div class="feedback-section-container" *ngIf="showFeedback">
           <span class="feedback-text">
