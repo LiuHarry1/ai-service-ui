@@ -1,0 +1,53 @@
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.new-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 200px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
+
+li {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+}
+
+li button {
+  margin-left: 0.5rem;
+}

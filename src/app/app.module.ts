@@ -52,7 +52,9 @@ import { ExceptionSolverComponent } from './exception-solver/exception-solver.co
 import { JiraUsercaseComponent } from './jira-usercase/jira-usercase.component';
 import {TabViewModule} from "primeng/tabview";
 import {SimilarJiraSearcherComponent} from './similar-jira-searcher/similar-jira-searcher.component'
-
+import {FileUploadModule} from "primeng/fileupload";
+import { JiraGroupManagerComponent } from './jira-group-manager/jira-group-manager.component';
+import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.component';
 
 
 @NgModule({
@@ -89,7 +91,9 @@ import {SimilarJiraSearcherComponent} from './similar-jira-searcher/similar-jira
     ExceptionSolverComponent,
     JiraUsercaseComponent,
     FunctionCallingComponent,
-    SimilarJiraSearcherComponent
+    SimilarJiraSearcherComponent,
+    JiraGroupManagerComponent,
+    JiraGroupDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +115,8 @@ import {SimilarJiraSearcherComponent} from './similar-jira-searcher/similar-jira
     InputTextareaModule,
     CardModule,
     ReactiveFormsModule,
-    TabViewModule
+    TabViewModule,
+    FileUploadModule
   ],
   bootstrap: [AppComponent]
 })

@@ -32,6 +32,8 @@ import {FunctionCallingRobotComponent} from "./function-calling-robot/function-c
 import {ExceptionSolverComponent} from "./exception-solver/exception-solver.component";
 import {FunctionCallingComponent} from "./llama2/function-calling/function-calling.component"
 import {SimilarJiraSearcherComponent} from "./similar-jira-searcher/similar-jira-searcher.component";
+import {JiraGroupManagerComponent} from "./jira-group-manager/jira-group-manager.component";
+import {JiraGroupDetailComponent} from "./jira-group-detail/jira-group-detail.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -62,7 +64,8 @@ const routes: Routes = [
   {path: 'exception-solver', component: ExceptionSolverComponent},
   {path: 'exception-solver', component: ExceptionSolverComponent},
   {path: 'similar-jira-searcher', component: SimilarJiraSearcherComponent},
-
+  {path: 'jira-group-manager', component: JiraGroupManagerComponent},
+  {path: "jira-group-detail/:id", component: JiraGroupDetailComponent},
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },

@@ -1,0 +1,13 @@
+<h3>Jiras in "{{ group?.name }}"</h3>
+
+<ul>
+  <li *ngFor="let jira of group?.jiras">
+    {{ jira.jira_id }} - {{ jira.summary }}
+    <button (click)="removeJira(jira.jira_id)">Remove</button>
+  </li>
+</ul>
+
+<div>
+  <input #jiraId placeholder="Add Jira ID" />
+  <button (click)="addJira(jiraId.value)">Add Jira</button>
+</div>

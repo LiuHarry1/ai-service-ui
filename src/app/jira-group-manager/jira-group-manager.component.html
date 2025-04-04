@@ -1,0 +1,24 @@
+<h2>Jira Group Manager</h2>
+
+<div class="new-group">
+  <input [(ngModel)]="newGroupName" placeholder="New group name" />
+  <button (click)="createGroup()">Create Group</button>
+</div>
+
+<ul>
+  <li *ngFor="let group of jiraGroups">
+    <span>{{ group.name }}</span>
+    <button (click)="openEditDialog(group)">Edit</button>
+    <button (click)="deleteGroup(group.id)">Delete</button>
+    <button (click)="selectGroup(group)">View Jiras</button>
+  </li>
+</ul>
+
+<p-dialog [(visible)]="isDialogVisible" [modal]="true" [style]="{width: '300px'}">
+  <h2>Edit Group Name</h2>
+  <input pInputText [(ngModel)]="currentGroupName" placeholder="New Group Name" />
+  <p-footer>
+    <button pButton type="button" label="Cancel" (click)="closeDialog()"></button>
+    <button pButton type="button" label="Save" (click)="saveGroupName()"></button>
+  </p-footer>
+</p-dialog>
