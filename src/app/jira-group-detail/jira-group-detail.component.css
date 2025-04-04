@@ -1,62 +1,20 @@
-h3 {
-  text-align: center;
-  margin-top: 2rem;
-  color: #333;
+.jira-detail-wrapper {
+  width: 90%;
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  max-width: 600px;
-  margin: 1rem auto;
+::ng-deep .p-card .p-card-header {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-li {
-  background: #e8f4fd;
-  border: 1px solid #8ecae6;
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
+.p-inputgroup {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 6px;
+  gap: 0.5rem;
 }
 
-li button {
-  background-color: #dc3545;
-  border: none;
-  color: white;
-  padding: 0.3rem 0.75rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-li button:hover {
-  background-color: #a71d2a;
-}
-
-div input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 200px;
-}
-
-div button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 0.5rem;
-}
-
-div button:hover {
-  background-color: #218838;
-}
-
-div {
-  text-align: center;
-  margin-bottom: 2rem;
+.p-inputtext {
+  flex: 1;
 }

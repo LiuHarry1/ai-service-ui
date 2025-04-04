@@ -1,24 +1,76 @@
-<h2>Jira Group Manager</h2>
+<div>
 
-<div class="new-group">
-  <input [(ngModel)]="newGroupName" placeholder="New group name" />
-  <button (click)="createGroup()">Create Group</button>
+  <div class = "header">
+    <h2>Jira Group Manager</h2>
+  </div>
+  <div class = "container">
+    <div class="new-group">
+      <button pButton label="Create Group" icon="pi pi-plus" (click)="openCreateDialog()"></button>
+    </div>
+
+    <div style="width: 80%; margin: auto;">
+      <!-- Table with Pagination and Sorting -->
+
+        <p-table [value]="jiraGroups" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]"
+                 [filterDelay]="300" [globalFilterFields]="['name', 'description']">
+
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="description">
+              Description <p-sortIcon field="description"></p-sortIcon>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-group>
+          <tr>
+            <td>{{ group.name }}</td>
+            <td>{{ group.description }}</td>
+            <td>
+              <button pButton icon="pi pi-pencil" class="p-button-text" (click)="openEditDialog(group)"></button>
+              <button pButton icon="pi pi-trash" class="p-button-text" (click)="deleteGroup(group.id)"></button>
+              <button pButton label="View" class="p-button-sm" (click)="selectGroup(group)"></button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="caption">
+          <div class="p-d-flex p-jc-between">
+            <span>Displaying {{ jiraGroups.length }} Groups</span>
+
+            <!-- Global Search Filter -->
+            <input pInputText [(ngModel)]="globalFilter" placeholder="Global Search" style="width: 200px;" />
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <div class = "footer"></div>
 </div>
 
-<ul>
-  <li *ngFor="let group of jiraGroups">
-    <span>{{ group.name }}</span>
-    <button (click)="openEditDialog(group)">Edit</button>
-    <button (click)="deleteGroup(group.id)">Delete</button>
-    <button (click)="selectGroup(group)">View Jiras</button>
-  </li>
-</ul>
+<p-dialog [(visible)]="isDialogVisible" [modal]="true" [style]="{ width: '400px' }"
+          [header]="dialogMode === 'edit' ? 'Edit Group' : 'Create New Group'">
 
-<p-dialog [(visible)]="isDialogVisible" [modal]="true" [style]="{width: '300px'}">
-  <h2>Edit Group Name</h2>
-  <input pInputText [(ngModel)]="currentGroupName" placeholder="New Group Name" />
-  <p-footer>
-    <button pButton type="button" label="Cancel" (click)="closeDialog()"></button>
-    <button pButton type="button" label="Save" (click)="saveGroupName()"></button>
-  </p-footer>
+  <div class="dialog-form-container">
+    <div class="form-field">
+      <label for="groupName">Group Name</label>
+      <input id="groupName" type="text" pInputText [(ngModel)]="currentGroupName" />
+    </div>
+    <div class="form-field">
+      <label for="groupDesc">Group Description</label>
+      <textarea id="groupDesc" pInputTextarea rows="3" [(ngModel)]="currentGroupDescription"></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <div class="dialog-footer-buttons">
+      <button pButton label="Cancel" icon="pi pi-times" class="p-button-text" (click)="closeDialog()"></button>
+      <button pButton label="Save" icon="pi pi-check" (click)="saveGroup()"></button>
+    </div>
+  </ng-template>
 </p-dialog>

@@ -14,6 +14,7 @@ interface Jira {
 interface JiraGroup {
   id: number;
   name: string;
+  description: string;
   jiras: Jira[];
 }
 
@@ -25,45 +26,44 @@ interface JiraGroup {
 })
 export class JiraGroupManagerComponent {
   jiraGroups: JiraGroup[] = [];
-  newGroupName = '';
-  nextGroupId = 3;
+  nextGroupId = 7;
 
   isDialogVisible = false;
   currentGroupName = '';
+  currentGroupDescription = '';
   groupToEdit: JiraGroup | null = null;
+  dialogMode: 'create' | 'edit' = 'create';
+  globalFilter: string = '';  // This is used for global search
 
   constructor(private router: Router) {
     this.loadGroups();
   }
 
-
   loadGroups() {
     this.jiraGroups = [
-      { id: 1, name: 'Frontend Tasks', jiras: [{ jira_id: 'JIRA-101', summary: 'Fix navbar bug' }] },
-      { id: 2, name: 'Backend Tasks', jiras: [{ jira_id: 'JIRA-201', summary: 'Refactor API auth' }] }
+      { id: 1, name: 'Frontend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-101', summary: 'Fix navbar bug' }] },
+      { id: 2, name: 'Backend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-201', summary: 'Refactor API auth' }] },
+      { id: 3, name: 'Frontend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-101', summary: 'Fix navbar bug' }] },
+      { id: 4, name: 'Backend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-201', summary: 'Refactor API auth' }] },
+      { id: 5, name: 'Frontend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-101', summary: 'Fix navbar bug' }] },
+      { id: 6, name: 'Backend Tasks', description: 'Jira items for sprint 1', jiras: [{ jira_id: 'JIRA-201', summary: 'Refactor API auth' }] },
     ];
   }
 
-  createGroup() {
-    if (!this.newGroupName.trim()) return;
-    this.jiraGroups.push({ id: this.nextGroupId++, name: this.newGroupName, jiras: [] });
-    this.newGroupName = '';
-  }
-
-  deleteGroup(groupId: number) {
-    this.jiraGroups = this.jiraGroups.filter(g => g.id !== groupId);
-  }
-
-  selectGroup(group: JiraGroup) {
-    console.log(group);
-    this.router.navigate(['/jira-group-detail', group.id]);
-
+  openCreateDialog(): void {
+    this.dialogMode = 'create';
+    this.currentGroupName = '';
+    this.currentGroupDescription = '';
+    this.groupToEdit = null;
+    this.isDialogVisible = true;
   }
 
   openEditDialog(group: JiraGroup): void {
-    this.isDialogVisible = true;
+    this.dialogMode = 'edit';
     this.currentGroupName = group.name;
+    this.currentGroupDescription = group.description || '';
     this.groupToEdit = group;
+    this.isDialogVisible = true;
   }
 
   closeDialog(): void {
@@ -71,10 +71,32 @@ export class JiraGroupManagerComponent {
     this.groupToEdit = null;
   }
 
-  saveGroupName(): void {
-    if (this.groupToEdit && this.currentGroupName.trim()) {
-      this.groupToEdit.name = this.currentGroupName;
+  saveGroup(): void {
+    const name = this.currentGroupName.trim();
+    const description = this.currentGroupDescription.trim();
+
+    if (!name) return;
+
+    if (this.dialogMode === 'edit' && this.groupToEdit) {
+      this.groupToEdit.name = name;
+      this.groupToEdit.description = description;
+    } else if (this.dialogMode === 'create') {
+      this.jiraGroups.push({
+        id: this.nextGroupId++,
+        name,
+        description,
+        jiras: []
+      });
     }
+
     this.closeDialog();
+  }
+
+  deleteGroup(groupId: number) {
+    this.jiraGroups = this.jiraGroups.filter(g => g.id !== groupId);
+  }
+
+  selectGroup(group: JiraGroup) {
+    this.router.navigate(['/jira-group-detail', group.id]);
   }
 }

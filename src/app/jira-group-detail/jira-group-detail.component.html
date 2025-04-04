@@ -1,13 +1,29 @@
-<h3>Jiras in "{{ group?.name }}"</h3>
+<div *ngIf="group" class="jira-detail-wrapper">
+  <p-card header="{{ group.name }} - Jiras" styleClass="mb-3">
+    <p>{{ group.description }}</p>
 
-<ul>
-  <li *ngFor="let jira of group?.jiras">
-    {{ jira.jira_id }} - {{ jira.summary }}
-    <button (click)="removeJira(jira.jira_id)">Remove</button>
-  </li>
-</ul>
+    <div class="p-inputgroup mb-3">
+      <input pInputText [(ngModel)]="newJiraId" placeholder="Enter new Jira ID" />
+      <button pButton type="button" label="Add Jira" icon="pi pi-plus" (click)="addJira()"></button>
+    </div>
 
-<div>
-  <input #jiraId placeholder="Add Jira ID" />
-  <button (click)="addJira(jiraId.value)">Add Jira</button>
+    <p-table [value]="group.jiras" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Jira ID</th>
+          <th>Summary</th>
+          <th>Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-jira>
+        <tr>
+          <td>{{ jira.jira_id }}</td>
+          <td>{{ jira.summary }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-danger p-button-sm" (click)="removeJira(jira.jira_id)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
 </div>
