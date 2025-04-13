@@ -34,6 +34,7 @@ import {FunctionCallingComponent} from "./llama2/function-calling/function-calli
 import {SimilarJiraSearcherComponent} from "./similar-jira-searcher/similar-jira-searcher.component";
 import {JiraGroupManagerComponent} from "./jira-group-manager/jira-group-manager.component";
 import {JiraGroupDetailComponent} from "./jira-group-detail/jira-group-detail.component";
+import {FsdGeneratorComponent} from "./fsd-generator/fsd-generator.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path: 'similar-jira-searcher', component: SimilarJiraSearcherComponent},
   {path: 'jira-group-manager', component: JiraGroupManagerComponent},
   {path: "jira-group-detail/:id", component: JiraGroupDetailComponent},
+  {path: 'fsd-generator', component: FsdGeneratorComponent },
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },

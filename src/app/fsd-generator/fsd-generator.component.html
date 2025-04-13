@@ -1,0 +1,60 @@
+<div class="fsd-generator-container">
+  <!-- Header Input -->
+  <div class="fsd-header">
+    <span class="fsd-title">FSD Generator</span>
+    <div class="p-inputgroup fsd-input">
+      <input type="text" pInputText [(ngModel)]="functionName" placeholder="Enter function name..." />
+      <button pButton icon="pi pi-search" label="Fetch JIRAs" (click)="fetchJiras()"></button>
+    </div>
+  </div>
+
+  <!-- Ticket Table -->
+  <p-card *ngIf="jiraTickets.length > 0" header="Relevant JIRA Tickets" class="fsd-table-card">
+    <p-table
+      #table
+      [value]="jiraTickets"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="300"
+    >
+
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th>JIRA ID</th>
+          <th>Summary</th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-ticket let-i="rowIndex">
+        <tr>
+          <td>{{ ticket.id }}</td>
+          <td>{{ ticket.summary }}</td>
+          <td>
+            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="removeTicket(i)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+
+  <!-- Generate Button -->
+  <div class="fsd-generate">
+    <button pButton label="Generate FSD" icon="pi pi-file" [disabled]="jiraTickets.length === 0" (click)="generateFSD()"></button>
+  </div>
+
+  <!-- FSD Viewer -->
+  <p-card *ngIf="fsdMarkdown" header="Generated FSD" class="fsd-markdown-card">
+    <div id="fsd-pdf-content">
+      <markdown [data]="fsdMarkdown"></markdown>
+    </div>
+  </p-card>
+
+  <div class="fsd-save-actions" *ngIf="fsdMarkdown">
+    <button pButton icon="pi pi-download" label="Save as .md" class="p-button-text" (click)="saveAsMarkdown()"></button>
+   <!-- <button pButton icon="pi pi-file-pdf" label="Save as PDF" class="p-button-secondary" (click)="saveAsPDF()"></button>-->
+  </div>
+</div>

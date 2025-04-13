@@ -55,6 +55,9 @@ import {SimilarJiraSearcherComponent} from './similar-jira-searcher/similar-jira
 import {FileUploadModule} from "primeng/fileupload";
 import { JiraGroupManagerComponent } from './jira-group-manager/jira-group-manager.component';
 import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.component';
+import { FsdGeneratorComponent } from './fsd-generator/fsd-generator.component';
+import {PanelModule} from "primeng/panel";
+
 
 
 @NgModule({
@@ -93,7 +96,8 @@ import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.
     FunctionCallingComponent,
     SimilarJiraSearcherComponent,
     JiraGroupManagerComponent,
-    JiraGroupDetailComponent
+    JiraGroupDetailComponent,
+    FsdGeneratorComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,8 @@ import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.
     CardModule,
     ReactiveFormsModule,
     TabViewModule,
-    FileUploadModule
+    FileUploadModule,
+    PanelModule
   ],
   bootstrap: [AppComponent]
 })
