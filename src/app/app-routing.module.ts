@@ -35,6 +35,7 @@ import {SimilarJiraSearcherComponent} from "./similar-jira-searcher/similar-jira
 import {JiraGroupManagerComponent} from "./jira-group-manager/jira-group-manager.component";
 import {JiraGroupDetailComponent} from "./jira-group-detail/jira-group-detail.component";
 import {FsdGeneratorComponent} from "./fsd-generator/fsd-generator.component";
+import {FsdBrowserComponent} from "./fsd-browser/fsd-browser.component";
 
 const routes: Routes = [
   { path: 'examples', component: ExamplesComponent },
@@ -68,6 +69,7 @@ const routes: Routes = [
   {path: 'jira-group-manager', component: JiraGroupManagerComponent},
   {path: "jira-group-detail/:id", component: JiraGroupDetailComponent},
   {path: 'fsd-generator', component: FsdGeneratorComponent },
+  {path: 'fsd-browser', component: FsdBrowserComponent},
   {path : 'text-formatter', component: TextFormatterComponent,
   children:[
     { path: '', redirectTo: 'text-format', pathMatch: 'full' },

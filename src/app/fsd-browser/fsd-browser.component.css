@@ -1,0 +1,93 @@
+.fsd-container {
+  display: flex;
+  height: calc(100vh - 60px);
+overflow: hidden;
+  background-color: #f9f9f9;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.fsd-sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  overflow-y: auto;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.03);
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.fsd-function-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+li {
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, color 0.2s;
+
+&:hover {
+   background-color: #e6f0ff;
+   color: #004a99;
+ }
+
+&.active {
+   background-color: #007ad9;
+   color: white;
+   font-weight: 500;
+ }
+}
+}
+}
+
+.fsd-detail {
+  flex-grow: 1;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+
+::ng-deep p-card {
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.jira-links {
+  margin-bottom: 1rem;
+
+a {
+  color: #007ad9;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  transition: color 0.2s;
+
+&:hover {
+   color: #004a99;
+   text-decoration: underline;
+ }
+}
+}
+
+markdown {
+  background-color: #fff;
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+  color: #333;
+}
+}

@@ -3,7 +3,7 @@
   <div class="fsd-header">
     <span class="fsd-title">FSD Generator</span>
     <div class="p-inputgroup fsd-input">
-      <input type="text" pInputText [(ngModel)]="functionName" placeholder="Enter function name..." />
+      <input type="text" pInputText [(ngModel)]="functionName" placeholder="Enter function name..."   (keydown.enter)="fetchJiras()"/>
       <button pButton icon="pi pi-search" label="Fetch JIRAs" (click)="fetchJiras()"></button>
     </div>
   </div>

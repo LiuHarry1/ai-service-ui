@@ -1,0 +1,26 @@
+<div class="fsd-container">
+  <div class="fsd-sidebar">
+    <h3>Function List</h3>
+    <ul class="fsd-function-list">
+      <li *ngFor="let fsd of fsdList"
+          [class.active]="fsd === selectedFsd"
+          (click)="selectFsd(fsd)">
+        {{ fsd.functionName }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="fsd-detail" *ngIf="selectedFsd">
+    <p-card [header]="selectedFsd.functionName + ' (Last Updated: ' + selectedFsd.updatedAt + ')'">
+      <h4>Related JIRA Tickets:</h4>
+      <div class="jira-links">
+        <ng-container *ngFor="let id of selectedFsd.jiraIds; let last = last">
+          <a [href]="'https://your-jira-domain/browse/' + id" target="_blank"
+            rel="noopener noreferrer">{{ id }}
+          </a><span *ngIf="!last">, </span>
+        </ng-container>
+      </div>
+      <markdown [data]="selectedFsd.markdown"></markdown>
+    </p-card>
+  </div>
+</div>

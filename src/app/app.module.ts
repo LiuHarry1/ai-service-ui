@@ -57,6 +57,7 @@ import { JiraGroupManagerComponent } from './jira-group-manager/jira-group-manag
 import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.component';
 import { FsdGeneratorComponent } from './fsd-generator/fsd-generator.component';
 import {PanelModule} from "primeng/panel";
+import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
 
 
 
@@ -97,7 +98,8 @@ import {PanelModule} from "primeng/panel";
     SimilarJiraSearcherComponent,
     JiraGroupManagerComponent,
     JiraGroupDetailComponent,
-    FsdGeneratorComponent
+    FsdGeneratorComponent,
+    FsdBrowserComponent
   ],
   imports: [
     BrowserModule,
