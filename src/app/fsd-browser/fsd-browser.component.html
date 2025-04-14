@@ -1,26 +1,43 @@
-<div class="fsd-container">
-  <div class="fsd-sidebar">
-    <h3>Function List</h3>
-    <ul class="fsd-function-list">
-      <li *ngFor="let fsd of fsdList"
-          [class.active]="fsd === selectedFsd"
-          (click)="selectFsd(fsd)">
+<div class="fsd-browser">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Functions</h2>
+    <input type="text" pInputText [(ngModel)]="searchTerm" placeholder="Search..." />
+    <ul>
+      <li *ngFor="let fsd of filteredList()" [class.active]="fsd === selectedFsd" (click)="selectFsd(fsd)">
         {{ fsd.functionName }}
       </li>
     </ul>
-  </div>
+  </aside>
 
-  <div class="fsd-detail" *ngIf="selectedFsd">
-    <p-card [header]="selectedFsd.functionName + ' (Last Updated: ' + selectedFsd.updatedAt + ')'">
-      <h4>Related JIRA Tickets:</h4>
-      <div class="jira-links">
-        <ng-container *ngFor="let id of selectedFsd.jiraIds; let last = last">
-          <a [href]="'https://your-jira-domain/browse/' + id" target="_blank"
-            rel="noopener noreferrer">{{ id }}
-          </a><span *ngIf="!last">, </span>
-        </ng-container>
+  <!-- Detail Panel -->
+  <section class="detail-view" *ngIf="selectedFsd">
+    <div class="detail-header">
+      <div>
+        <h1>{{ selectedFsd.functionName }}</h1>
+        <p>Last updated: {{ selectedFsd.updatedAt | date: 'medium' }}</p>
       </div>
+      <button pButton [label]="editMode ? 'Cancel' : 'Edit'" (click)="toggleEditMode()" class="edit-btn"></button>
+    </div>
+
+    <div class="jira-links">
+      <span *ngFor="let id of selectedFsd.jiraIds">
+        <a [href]="'https://your-jira-url/browse/' + id" target="_blank">{{ id }}</a>
+      </span>
+    </div>
+
+    <!-- View Mode -->
+    <div class="markdown-wrapper" *ngIf="!editMode">
       <markdown [data]="selectedFsd.markdown"></markdown>
-    </p-card>
-  </div>
+    </div>
+
+    <!-- Edit Mode -->
+    <div class="markdown-editor" *ngIf="editMode">
+      <textarea [(ngModel)]="editableMarkdown"></textarea>
+      <div class="editor-actions">
+        <button pButton label="Save" icon="pi pi-save" (click)="saveMarkdown()"></button>
+        <button pButton label="Cancel" class="p-button-secondary" (click)="toggleEditMode()"></button>
+      </div>
+    </div>
+  </section>
 </div>

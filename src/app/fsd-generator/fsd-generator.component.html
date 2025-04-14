@@ -1,60 +1,77 @@
 <div class="fsd-generator-container">
+  <div class="top-bar">
+    <h1>FSD Generator</h1>
+    <button
+      pButton
+      label="Browse FSDs"
+      icon="pi pi-folder-open"
+      class="p-button-secondary"
+      (click)="goToBrowser()"
+    ></button>
+  </div>
   <!-- Header Input -->
-  <div class="fsd-header">
-    <span class="fsd-title">FSD Generator</span>
-    <div class="p-inputgroup fsd-input">
-      <input type="text" pInputText [(ngModel)]="functionName" placeholder="Enter function name..."   (keydown.enter)="fetchJiras()"/>
-      <button pButton icon="pi pi-search" label="Fetch JIRAs" (click)="fetchJiras()"></button>
-    </div>
+  <div class="input-group">
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="functionName"
+      placeholder="Enter Function Name"
+      (keyup.enter)="onFetchJira()"
+    />
+    <button
+      pButton
+      icon="pi pi-search"
+      label="Fetch JIRAs"
+      (click)="onFetchJira()"
+    ></button>
   </div>
 
-  <!-- Ticket Table -->
-  <p-card *ngIf="jiraTickets.length > 0" header="Relevant JIRA Tickets" class="fsd-table-card">
-    <p-table
-      #table
-      [value]="jiraTickets"
-      [paginator]="true"
-      [rows]="5"
-      [showCurrentPageReport]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="300"
-    >
+  <!-- JIRA Table -->
+  <p-table
+    [value]="jiraList"
+    [paginator]="true"
+    [rows]="5"
+    [filterDelay]="300"
+    [responsiveLayout]="'scroll'"
+  >
 
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Summary</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
 
-      <ng-template pTemplate="header">
-        <tr>
-          <th>JIRA ID</th>
-          <th>Summary</th>
-          <th>Action</th>
-        </tr>
-      </ng-template>
-
-      <ng-template pTemplate="body" let-ticket let-i="rowIndex">
-        <tr>
-          <td>{{ ticket.id }}</td>
-          <td>{{ ticket.summary }}</td>
-          <td>
-            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger" (click)="removeTicket(i)"></button>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-card>
+    <ng-template pTemplate="body" let-jira>
+      <tr>
+        <td>{{ jira.id }}</td>
+        <td>{{ jira.summary }}</td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-danger p-button-sm"
+            (click)="removeJira(jira)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 
   <!-- Generate Button -->
-  <div class="fsd-generate">
-    <button pButton label="Generate FSD" icon="pi pi-file" [disabled]="jiraTickets.length === 0" (click)="generateFSD()"></button>
+  <div class="action-bar">
+    <button pButton label="Generate FSD" icon="pi pi-cog" (click)="generateFsd()" [disabled]="jiraList.length === 0"></button>
   </div>
 
-  <!-- FSD Viewer -->
-  <p-card *ngIf="fsdMarkdown" header="Generated FSD" class="fsd-markdown-card">
-    <div id="fsd-pdf-content">
-      <markdown [data]="fsdMarkdown"></markdown>
+  <!-- FSD Markdown -->
+  <div *ngIf="generatedFsd" class="fsd-output">
+    <div class="fsd-header">
+      <h2>Generated FSD</h2>
+      <button pButton label="Save as PDF" icon="pi pi-download" (click)="saveAsMarkdown()"></button>
     </div>
-  </p-card>
-
-  <div class="fsd-save-actions" *ngIf="fsdMarkdown">
-    <button pButton icon="pi pi-download" label="Save as .md" class="p-button-text" (click)="saveAsMarkdown()"></button>
-   <!-- <button pButton icon="pi pi-file-pdf" label="Save as PDF" class="p-button-secondary" (click)="saveAsPDF()"></button>-->
+    <div id="fsd-markdown" class="markdown-wrapper">
+      <markdown [data]="generatedFsd"></markdown>
+    </div>
   </div>
 </div>

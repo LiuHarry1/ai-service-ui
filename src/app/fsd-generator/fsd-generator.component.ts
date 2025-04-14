@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,33 +10,43 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FsdGeneratorComponent {
   functionName = '';
-  jiraTickets: { id: string; summary: string }[] = [];
-  fsdMarkdown: string = '';
-  dummyTickets = [
-    { id: 'JIRA-101', summary: 'Add validation for login form' },
-    { id: 'JIRA-102', summary: 'Fix logout redirect issue' },
-    { id: 'JIRA-103', summary: 'Implement session timeout alert' },
-    { id: 'JIRA-104', summary: 'Refactor user auth module' },
-    { id: 'JIRA-105', summary: 'Add logging for failed logins' }
+  jiraList = [
+    { id: 'JIRA-101', summary: 'User login error on mobile' },
+    { id: 'JIRA-102', summary: 'Refactor password validation' },
+    { id: 'JIRA-103', summary: 'Add logging to signup flow' }
   ];
+  generatedFsd = '';
 
-  fetchJiras() {
-    this.jiraTickets = [...this.dummyTickets]; // Simulate backend response
-    this.fsdMarkdown = ''; // Clear previous output
+  constructor(private router: Router) {}
+
+  onFetchJira() {
+    // Placeholder: Use functionName to fetch relevant JIRA
+    console.log('Fetching JIRA for:', this.functionName);
+    // Simulate reload
   }
 
-  removeTicket(index: number) {
-    this.jiraTickets.splice(index, 1);
+  removeJira(jiraToRemove: any) {
+    this.jiraList = this.jiraList.filter(j => j.id !== jiraToRemove.id);
   }
 
-  generateFSD() {
-    // Simulate Markdown generation
-    const lines = this.jiraTickets.map(ticket => `- **${ticket.id}**: ${ticket.summary}`);
-    this.fsdMarkdown = `### Functional Spec for: \`${this.functionName}\`\n\n#### Based on JIRA Tickets:\n\n${lines.join('\n')}`;
+  generateFsd() {
+    this.generatedFsd = `
+### Functional Spec for ${this.functionName}
+
+**Related JIRAs**: ${this.jiraList.map(j => j.id).join(', ')}
+
+**Summary**:
+This FSD is based on the analysis of selected JIRA tickets. Below are the details...
+
+- ${this.jiraList.map(j => `**${j.id}** - ${j.summary}`).join('\n- ')}
+
+**Implementation Notes**:
+- Placeholder for technical requirements.
+`;
   }
 
   saveAsMarkdown() {
-    const blob = new Blob([this.fsdMarkdown], { type: 'text/markdown' });
+    const blob = new Blob([this.generatedFsd], { type: 'text/markdown' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -46,5 +56,7 @@ export class FsdGeneratorComponent {
   }
 
 
-
+  goToBrowser() {
+    this.router.navigate(['/fsd-browser']);
+  }
 }

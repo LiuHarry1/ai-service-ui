@@ -20,10 +20,34 @@ export class FsdBrowserComponent {
       markdown: '# createUserFlow\n\nHandles the new user onboarding flow.'
     }
   ];
+  editMode = false;
+  editableMarkdown = '';
+
+  searchTerm: string = '';
 
   selectedFsd: any = null;
 
   selectFsd(fsd: any) {
     this.selectedFsd = fsd;
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+    this.editableMarkdown = this.selectedFsd?.markdown || '';
+  }
+
+  saveMarkdown() {
+    if (this.selectedFsd) {
+      this.selectedFsd.markdown = this.editableMarkdown;
+      this.selectedFsd.updatedAt = new Date().toISOString();
+    }
+    this.editMode = false;
+  }
+
+  filteredList() {
+    if (!this.searchTerm) return this.fsdList;
+    return this.fsdList.filter(f =>
+      f.functionName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }
