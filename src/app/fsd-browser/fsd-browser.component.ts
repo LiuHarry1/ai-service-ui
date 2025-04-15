@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-fsd-browser',
   templateUrl: './fsd-browser.component.html',
-  styleUrls: ['./fsd-browser.component.css']
+  styleUrls: ['./fsd-browser.component.scss']
 })
 export class FsdBrowserComponent {
   fsdList = [
