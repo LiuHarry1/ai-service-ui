@@ -58,6 +58,7 @@ import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.
 import { FsdGeneratorComponent } from './fsd-generator/fsd-generator.component';
 import {PanelModule} from "primeng/panel";
 import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
+import {DividerModule} from "primeng/divider";
 
 
 
@@ -101,30 +102,31 @@ import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
     FsdGeneratorComponent,
     FsdBrowserComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    AutoCompleteModule,
-    DropdownModule,
-    MatDialogModule,
-    InputTextModule,
-    MultiSelectModule,
-    MarkdownModule.forRoot(),
-    TableModule,
-    CalendarModule,
-    DialogModule,
-    SliderModule,
-    InputTextareaModule,
-    CardModule,
-    ReactiveFormsModule,
-    TabViewModule,
-    FileUploadModule,
-    PanelModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        ButtonModule,
+        AutoCompleteModule,
+        DropdownModule,
+        MatDialogModule,
+        InputTextModule,
+        MultiSelectModule,
+        MarkdownModule.forRoot(),
+        TableModule,
+        CalendarModule,
+        DialogModule,
+        SliderModule,
+        InputTextareaModule,
+        CardModule,
+        ReactiveFormsModule,
+        TabViewModule,
+        FileUploadModule,
+        PanelModule,
+        DividerModule
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
