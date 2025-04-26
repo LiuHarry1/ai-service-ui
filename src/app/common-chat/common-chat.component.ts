@@ -9,6 +9,8 @@ export class CommonChatComponent {
   message: string = '';
   isSearchActive: boolean = false;
   isReasonActive: boolean = false;
+  isUploadDisabled = true;  // initially disabled
+  messages: string[] = []; // ✨ added
 
   @ViewChild('chatTextarea') textarea!: ElementRef;
 
@@ -45,15 +47,28 @@ export class CommonChatComponent {
     console.log('Reasoning for:', this.message);
   }
 
-  onSend() {
-    console.log('Send:', this.message);
-    this.message = ''; // Clear after send
-    this.isSearchActive = false;
-    this.isReasonActive = false;
-  }
 
   onUpload() {
     // Here you can open a file dialog or handle file upload logic
     console.log('Upload button clicked');
   }
+
+  onSend() {
+    if (this.message.trim()) {
+      this.messages.push(this.message.trim()); // ✨ add to chat messages
+    }
+    this.message = '';
+    this.isSearchActive = false;
+    this.isReasonActive = false;
+    setTimeout(() => this.scrollToBottom(), 100); // after new message
+  }
+
+  scrollToBottom() {
+    const container = document.querySelector('.chat-messages');
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }
+
+
 }
