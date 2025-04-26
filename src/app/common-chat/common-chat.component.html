@@ -1,18 +1,23 @@
-<div class="chat-container">
-  <!-- Chat messages -->
+<div class="sidebar-header-fixed">
+  BizProbChat
+</div>
+
+<div class="chat-container" id="chatMessagesContainer">
   <div class="chat-messages">
-    <div *ngFor="let msg of messages" class="chat-message">
-      {{ msg }}
+    <div *ngFor="let message of messages"
+         [ngClass]="{'chat-message': true, 'user': message.sender === 'user', 'bot': message.sender === 'bot'}">
+      {{ message.text }}
     </div>
   </div>
 
-<div class="chat-input-wrapper">
+
+  <div class="chat-input-wrapper">
   <div class="chat-input-box">
     <!-- Textarea input -->
     <textarea
       #chatTextarea
       (input)="onInput()"
-      [(ngModel)]="message"
+      [(ngModel)]="userInput"
       class="chat-textarea"
       placeholder="Send a message"
     ></textarea>
@@ -69,7 +74,7 @@
       </div>
 
       <!-- Right send button -->
-      <button class="send-button" (click)="onSend()">
+      <button class="send-button" (click)="sendMessage()">
         <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
           <path
             fill-rule="evenodd"

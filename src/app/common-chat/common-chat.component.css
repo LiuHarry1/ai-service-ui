@@ -159,16 +159,20 @@
   height: 100%;
   max-width: 800px;
   margin: 0 auto;
+  padding-bottom: 120px; /* space for input at bottom */
 }
 
 .chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px;
+
   background: #f9f9f9;
   border-radius: 12px;
   margin-bottom: 16px;
-  max-height: 500px; /* Adjust as you want */
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .chat-message {
@@ -183,4 +187,52 @@
 
 
 
+.chat-input-wrapper {
+  position: fixed; /* 👈 fix it */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px; /* keep some space above bottom */
+  padding: 0 16px;
+  background: #fff;
+  z-index: 10;
+}
 
+
+
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 12px;
+  word-wrap: break-word;
+
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: #dcf8c6; /* light green bubble */
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background-color: #f1f0f0; /* light gray bubble */
+}
+
+.sidebar-header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px; /* or whatever your sidebar width is */
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  z-index: 10;
+}
+
+.sidebar-content {
+  margin-top: 60px; /* push down your chat list so it doesn't overlap */
+}

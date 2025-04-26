@@ -10,9 +10,37 @@ export class CommonChatComponent {
   isSearchActive: boolean = false;
   isReasonActive: boolean = false;
   isUploadDisabled = true;  // initially disabled
-  messages: string[] = []; // ✨ added
+  messages: { sender: 'user' | 'bot', text: string }[] = [];
 
   @ViewChild('chatTextarea') textarea!: ElementRef;
+
+  @ViewChild('chatMessages') private chatMessagesContainer!: ElementRef;
+
+
+  userInput: string = '';
+
+  sendMessage() {
+    if (!this.userInput.trim()) {
+      return;
+    }
+
+    // Add user message
+    this.messages.push({ sender: 'user', text: this.userInput });
+
+    const userMessage = this.userInput; // store for later
+    this.userInput = '';
+
+    // Simulate bot reply after 1 second
+    setTimeout(() => {
+      this.messages.push({
+        sender: 'bot',
+        text: `You said: "${userMessage}". Here's a bot response!`
+      });
+      this.scrollToBottom()
+    }, 1000);
+    this.scrollToBottom()
+  }
+
 
 
   ngAfterViewInit() {
@@ -53,22 +81,20 @@ export class CommonChatComponent {
     console.log('Upload button clicked');
   }
 
-  onSend() {
-    if (this.message.trim()) {
-      this.messages.push(this.message.trim()); // ✨ add to chat messages
-    }
-    this.message = '';
-    this.isSearchActive = false;
-    this.isReasonActive = false;
-    setTimeout(() => this.scrollToBottom(), 100); // after new message
-  }
+
 
   scrollToBottom() {
-    const container = document.querySelector('.chat-messages');
-    if (container) {
-      container.scrollTop = container.scrollHeight;
-    }
+
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    }, 0);
+
   }
+
 
 
 }
