@@ -58,6 +58,7 @@ import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.
 import { FsdGeneratorComponent } from './fsd-generator/fsd-generator.component';
 import {PanelModule} from "primeng/panel";
 import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
+import { CommonChatComponent } from './common-chat/common-chat.component';
 
 
 
@@ -99,7 +100,8 @@ import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
     JiraGroupManagerComponent,
     JiraGroupDetailComponent,
     FsdGeneratorComponent,
-    FsdBrowserComponent
+    FsdBrowserComponent,
+    CommonChatComponent
   ],
   imports: [
     BrowserModule,
