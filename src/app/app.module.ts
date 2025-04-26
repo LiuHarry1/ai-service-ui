@@ -58,6 +58,7 @@ import { JiraGroupDetailComponent } from './jira-group-detail/jira-group-detail.
 import { FsdGeneratorComponent } from './fsd-generator/fsd-generator.component';
 import {PanelModule} from "primeng/panel";
 import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
+import {DividerModule} from "primeng/divider";
 import { CommonChatComponent } from './common-chat/common-chat.component';
 
 
@@ -125,7 +126,8 @@ import { CommonChatComponent } from './common-chat/common-chat.component';
     ReactiveFormsModule,
     TabViewModule,
     FileUploadModule,
-    PanelModule
+    PanelModule,
+    DividerModule
   ],
   bootstrap: [AppComponent]
 })
