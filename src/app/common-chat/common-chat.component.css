@@ -159,12 +159,11 @@
   height: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding-bottom: 120px; /* space for input at bottom */
+  padding-bottom: 140px; /* space for input at bottom */
 }
 
 .chat-messages {
 
-  background: #f9f9f9;
   border-radius: 12px;
   margin-bottom: 16px;
   padding: 16px;
@@ -220,20 +219,81 @@
   background-color: #f1f0f0; /* light gray bubble */
 }
 
-.sidebar-header-fixed {
-  position: fixed;
+.header {
+  position: sticky;       /* So it stays fixed at the top when scrolling */
   top: 0;
-  left: 0;
-  width: 260px; /* or whatever your sidebar width is */
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  padding-left: 16px;
-  z-index: 10;
+  font-weight: 50;       /* Semi-bold */
+  font-size: 1.25rem;     /* Larger font */
+  padding: 1rem 1.5rem;   /* Comfortable padding */
+  border-bottom: 1px solid #f1f0f0; /* subtle bottom border */
+  user-select: none;      /* Prevent text selection */
+  z-index: 10;            /* Make sure it stays above other sidebar content */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.05em; /* Slight letter spacing */
+  background-color:white;
 }
+
 
 .sidebar-content {
   margin-top: 60px; /* push down your chat list so it doesn't overlap */
 }
+
+
+.bot-typing {
+  font-size: 14px;
+  color: #999;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+
+.main-container {
+ /* display: flex;
+
+  margin: 0 auto;
+  height: 80vh;
+  border-radius: 8px;
+  overflow: hidden;*/
+}
+
+.chat-section {
+  /*flex: 2;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;*/
+}
+
+.jira-panel {
+  position: fixed; /* 👈 fix it */
+  top: 60px;
+  right: 10px;
+  padding: 16px;
+  background: #f7f9fc;
+  overflow-y: auto;
+  border-left: 1px solid #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  width:300px;
+  height:500px;
+}
+
+.jira-ids-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.jira-id-item {
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background: #e0e7ff;
+  transition: background-color 0.3s;
+}
+
+.jira-id-item:hover {
+  background-color: #a7b8ff;
+}
+
+
