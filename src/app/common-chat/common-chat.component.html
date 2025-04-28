@@ -10,9 +10,26 @@
         </div>
         <div *ngIf="isBotTyping" class="bot-typing">Bot is typing...</div>
       </div>
-      <div class="chat-input-wrapper">
+      <div class="chat-input-wrapper" [ngClass]="{ 'centered-input': messages.length === 0 }">
+        <!-- Note: only show when no messages yet -->
+        <div *ngIf="messages.length === 0" class="input-note">
+          <div class="welcome-title">👋 Welcome to BizProbChat!</div>
 
-      <div class="chat-input-box">
+          <div class="instructions">
+            <p>You can:</p>
+            <ul>
+              <li>💬 Start a general conversation by typing your message below.</li>
+              <li>🔎 Use&nbsp;<strong>Jira Search</strong>&nbsp;to solve business-related problems using connected Jira data.</li>
+              <li>🗂️ Create and manage&nbsp;<strong> Jira Groups </strong>&nbsp;to narrow your search scope and improve answer accuracy.</li>
+            </ul>
+            <p class="tip">
+              Tip: Selecting a smaller, focused Jira group will help the chatbot provide even more precise responses!
+            </p>
+          </div>
+        </div>
+
+
+        <div class="chat-input-box">
         <!-- Textarea input -->
         <textarea
           #chatTextarea
