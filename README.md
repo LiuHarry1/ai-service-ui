@@ -55,3 +55,5 @@ npm show ngx-markdown versions
 
 npm install ngx-markdown@17
 
+
+ng update @angular/cli@18 @angular/core@18
