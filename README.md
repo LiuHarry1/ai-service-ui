@@ -41,3 +41,17 @@ npm install diff-match-patch-ts
 
 git  remote set-url origin git@github.com:LiuHarry1/ai-service-ui.git
 
+to upgrade angular to 17.x
+
+npm install -g @angular/cli@18
+
+ng update @angular/cli @angular/core
+
+
+ng update @angular/cli@17 @angular/core@17
+
+npm show ngx-markdown versions
+
+
+npm install ngx-markdown@17
+
