@@ -204,7 +204,7 @@
 
 .chat-message {
   padding: 10px 14px;
-  border-radius: 12px;
+
   word-wrap: break-word;
 
 }
@@ -212,11 +212,14 @@
 .chat-message.user {
   align-self: flex-end;
   background-color: #dcf8c6; /* light green bubble */
+  border-radius: 12px;
 }
 
 .chat-message.bot {
   align-self: flex-start;
-  background-color: #f1f0f0; /* light gray bubble */
+  border: none;
+  /*background-color: #f1f0f0; !* light gray bubble *!*/
+
 }
 
 .header {

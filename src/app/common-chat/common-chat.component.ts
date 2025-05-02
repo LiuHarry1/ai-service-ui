@@ -90,7 +90,7 @@ export class CommonChatComponent implements AfterViewChecked {
 
     this.adjustHeight();// Reset textarea height
     this.focusTextarea(); // ✨ Focus back after sending
-    this.scrollToBottom()
+    // this.scrollToBottom()
 
     this.isBotTyping = true;
 
@@ -102,6 +102,7 @@ export class CommonChatComponent implements AfterViewChecked {
         text: `You said: "${userMessage}". Here's a bot response!`
       });
       this.scrollToBottom()
+      this.adjustHeight();// Reset textarea height
     }, 1000);
 
   }
@@ -175,17 +176,20 @@ export class CommonChatComponent implements AfterViewChecked {
   updateLastUserMessageHeight() {
     const container = this.chatMessages.nativeElement;
     const messages = container.querySelectorAll('.chat-message.user');
-
-    console.info("messages"+messages)
-    // Find the first 'user' message (newest)
-    for (let i = 0; i < messages.length; i++) {
-      const el = messages[i];
+    // console.info("--------messages"+messages.length)
+    if (messages.length>0){
+      const el = messages[messages.length-1];
+      // console.info("--------el:"+el)
       if (el.classList.contains('user')) {
         this.lastUserMsgHeight = el.offsetHeight;
-        console.info("lastUserMsgHeight"+this.lastUserMsgHeight)
-        break;
+
       }
+    }else{
+      this.lastUserMsgHeight =0;
     }
+
+    console.info("-------------lastUserMsgHeight："+this.lastUserMsgHeight)
+
   }
 
   getMinHeightStyle(msg: { sender: string , text:string}, index: number, total: number): { [key: string]: string } {
@@ -193,9 +197,9 @@ export class CommonChatComponent implements AfterViewChecked {
     if (index === total-1 && msg.sender === 'bot') {
       // Newest bot message (should come right after user)
 
-      const minHeight = window.innerHeight - this.lastUserMsgHeight - 250;
-      console.info("message:"+msg.text)
-      console.info("----minHeight"+`${minHeight}px`)
+      const minHeight = window.innerHeight - this.lastUserMsgHeight - 280;
+      // console.info("message:"+msg.text)
+      console.info("----minHeight："+`${minHeight}px`)
       return { 'min-height': `${minHeight}px` };
     }
     return {};
