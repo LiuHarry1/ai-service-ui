@@ -3,8 +3,8 @@
     <!-- Your existing chat-container -->
     <div class="header">BizProbChat</div>
     <div class="chat-container" id="chatMessagesContainer">
-      <div class="chat-messages">
-        <div *ngFor="let message of messages"
+      <div class="chat-messages" #chatMessages >
+        <div *ngFor="let message of messages ; let i = index ; let len = count" [ngStyle]="getMinHeightStyle(message, i, len)"
              [ngClass]="{'chat-message': true, 'user': message.sender === 'user', 'bot': message.sender === 'bot'}">
           {{ message.text }}
         </div>

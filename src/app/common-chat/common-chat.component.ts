@@ -1,11 +1,11 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-common-chat',
   templateUrl: './common-chat.component.html',
   styleUrls: ['./common-chat.component.css']
 })
-export class CommonChatComponent {
+export class CommonChatComponent implements AfterViewChecked {
   message: string = '';
   isSearchActive: boolean = false;
   isReasonActive: boolean = false;
@@ -25,13 +25,14 @@ export class CommonChatComponent {
 
   @ViewChild('chatTextarea') textarea!: ElementRef;
 
-  @ViewChild('chatMessages') private chatMessagesContainer!: ElementRef;
+  @ViewChild('chatMessages') private chatMessages!: ElementRef;
 
 
 
   userInput: string = '';
 
   isRightPanelOpen = false;
+  private lastUserMsgHeight = 0;
 
   openRightPanel() {
     this.isRightPanelOpen = true;
@@ -165,6 +166,39 @@ export class CommonChatComponent {
       });
     }, 0);
 
+  }
+
+  ngAfterViewChecked() {
+    this.updateLastUserMessageHeight();
+  }
+
+  updateLastUserMessageHeight() {
+    const container = this.chatMessages.nativeElement;
+    const messages = container.querySelectorAll('.chat-message.user');
+
+    console.info("messages"+messages)
+    // Find the first 'user' message (newest)
+    for (let i = 0; i < messages.length; i++) {
+      const el = messages[i];
+      if (el.classList.contains('user')) {
+        this.lastUserMsgHeight = el.offsetHeight;
+        console.info("lastUserMsgHeight"+this.lastUserMsgHeight)
+        break;
+      }
+    }
+  }
+
+  getMinHeightStyle(msg: { sender: string , text:string}, index: number, total: number): { [key: string]: string } {
+
+    if (index === total-1 && msg.sender === 'bot') {
+      // Newest bot message (should come right after user)
+
+      const minHeight = window.innerHeight - this.lastUserMsgHeight - 250;
+      console.info("message:"+msg.text)
+      console.info("----minHeight"+`${minHeight}px`)
+      return { 'min-height': `${minHeight}px` };
+    }
+    return {};
   }
 
 
