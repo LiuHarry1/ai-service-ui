@@ -57,3 +57,13 @@ npm install ngx-markdown@17
 
 
 ng update @angular/cli@18 @angular/core@18
+
+
+npm install primeng@17.18.15 --force
+
+ls node_modules/primeng/table
+
+
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
