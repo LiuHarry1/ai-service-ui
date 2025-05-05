@@ -37,8 +37,8 @@
        <textarea
          rows="1"
          cols="30"
-         pInputTextarea
-         [autoResize]="true"
+         pTextarea
+         cdkTextareaAutosize
          placeholder="Type your message here..."
          (keydown)="handleKeyDown($event)"
          [(ngModel)]="userMessage">

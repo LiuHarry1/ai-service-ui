@@ -67,3 +67,14 @@ ls node_modules/primeng/table
 rm -rf node_modules package-lock.json
 npm cache clean --force
 npm install
+
+change below to new
+import { InputTextareaModule } from 'primeng/inputtextarea';
+new
+import { TextareaModule } from 'primeng/textarea';
+
+replace pInputTextarea  with pTextarea
+replace [autoResize]="true" with cdkTextareaAutosize
+
+
+npm install primeng @primeng/themes

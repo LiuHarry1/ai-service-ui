@@ -19,7 +19,9 @@ export class ChatComponent implements AfterViewChecked, OnInit {
   selectedSuggestionIndex: number = -1;
 
   selectedCategory: string = 'general'; // Default category
-
+  value:any;
+  cities = [{name:"citya", value: "citya"}, {name:"cityb", value: "cityb"}];
+  selectedCity = "citia";
   constructor(
     private http: HttpClient,
     private sanitizer: DomSanitizer

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,ApplicationConfig } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,7 +42,7 @@ import {TableModule} from "primeng/table";
 import {CalendarModule} from "primeng/calendar";
 import {DialogModule} from "primeng/dialog";
 import {SliderModule} from "primeng/slider";
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { OrderFoodChatbotComponent } from './order-food-chatbot/order-food-chatbot.component';
 import { ChatbotComponent } from './llama2/chatbot/chatbot.component';
 import { JiraAssistantComponent } from './jira-assistant/jira-assistant.component';
@@ -60,6 +60,15 @@ import {PanelModule} from "primeng/panel";
 import { FsdBrowserComponent } from './fsd-browser/fsd-browser.component';
 import {DividerModule} from "primeng/divider";
 import { CommonChatComponent } from './common-chat/common-chat.component';
+
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
+// import Lara from '@primeng/themes/lara';
+// import Nora from '@primeng/themes/nora';
+import Material  from '@primeng/themes/material'
+import {MyPreset} from "./mytheme";
+import {Select} from "primeng/select";
 
 
 
@@ -103,26 +112,43 @@ import { CommonChatComponent } from './common-chat/common-chat.component';
         FsdBrowserComponent,
         CommonChatComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        ButtonModule,
-        AutoCompleteModule,
-        DropdownModule,
-        MatDialogModule,
-        InputTextModule,
-        MultiSelectModule,
-        MarkdownModule.forRoot(),
-        TableModule,
-        CalendarModule,
-        DialogModule,
-        SliderModule,
-        InputTextareaModule,
-        CardModule,
-        ReactiveFormsModule,
-        TabViewModule,
-        FileUploadModule,
-        PanelModule,
-        DividerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+    bootstrap: [AppComponent],
+  imports: [BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    AutoCompleteModule,
+    DropdownModule,
+    MatDialogModule,
+    InputTextModule,
+    MultiSelectModule,
+    MarkdownModule.forRoot(),
+    TableModule,
+    CalendarModule,
+    DialogModule,
+    SliderModule,
+    TextareaModule,
+    CardModule,
+    ReactiveFormsModule,
+    TabViewModule,
+    FileUploadModule,
+    PanelModule,
+    DividerModule, Select],
+    providers: [provideHttpClient(withInterceptorsFromDi()),
+          provideAnimationsAsync(),
+          providePrimeNG({
+            theme: {
+              // preset: Aura
+              // preset: Lara
+              // preset: Material
+              preset: MyPreset
+              // options: {
+              //   darkModeSelector: '.my-app-dark'
+              // }
+            }
+          })
+     ]
+    })
 export class AppModule { }
+

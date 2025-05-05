@@ -1,11 +1,17 @@
 
+<p-button label="Small" icon="pi pi-check" size="small" />
+<p-button label="Normal" icon="pi pi-check" />
+<p-button label="Large" icon="pi pi-check" size="large" />
+<input type="text" pInputText [(ngModel)]="value" />
+
+<p-select  [options]="['citi1', 'citi2']"  size="small" placeholder="Small" class="w-full md:w-56" />
+<p-select  [options]="['citi1', 'citi2']"  placeholder="Normal" class="w-full md:w-56" />
+<p-select  [options]="['citi1', 'citi2']"  size="large" placeholder="Large" class="w-full md:w-56" />
 
 <div class="chat-container">
   <div class="chat-header">
     ChatBot
-    <p-button label="Small" icon="pi pi-check" size="small" />
-    <p-button label="Normal" icon="pi pi-check" />
-    <p-button label="Large" icon="pi pi-check" size="large" />
+
   </div>
   <div #chatArea class="chat-area">
 
