@@ -22,14 +22,14 @@
     <h2>let's test it </h2>
 
     <h3>Source Sentence</h3>
-    <input [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
+    <input  pInputText  [(ngModel)]="sourceSentence" placeholder="Enter the source sentence"/>
 
     <h3>Sentences to Compare</h3>
     <ul>
       <li *ngFor="let sentence of sentencesToCompare; let i = index">
         <!-- Use one-way data binding with (ngModel) -->
         <!--  <input [(ngModel)]="sentencesToCompare[i]" placeholder="Enter a sentence to compare" />-->
-        <input [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
+        <input  pInputText  [ngModel]="sentence" (input)="onSentenceInput($event, i)"  (keyup.enter)="computeSimilarity()" placeholder="Enter a sentence to compare" />
       </li>
     </ul>
     <div class="button-container">
@@ -47,7 +47,7 @@
 
   </div>
     <div class="right_container">
-      <p-dropdown [options]="modelOptions" [(ngModel)]="modelName" placeholder="Model Name" [style]="{'width': '200px'}"></p-dropdown>
+      <p-select [options]="modelOptions" [(ngModel)]="modelName"  placeholder="select Model Name"></p-select>
     </div>
   </div>
 

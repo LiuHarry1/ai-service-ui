@@ -78,3 +78,5 @@ replace [autoResize]="true" with cdkTextareaAutosize
 
 
 npm install primeng @primeng/themes
+
+replace p-dropdown with p-select
