@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {prompt_engineering_host} from "../../app-config";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {Router} from "@angular/router";
 
 @Component({

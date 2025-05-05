@@ -2,7 +2,7 @@ import {Component, ElementRef, ViewChild, AfterViewChecked, OnInit, Inject, Afte
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {ai_similar_email_finder_host} from "../app-config";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-email-popup',

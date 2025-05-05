@@ -2,7 +2,7 @@ import {Component, SecurityContext} from '@angular/core';
 import { DiffMatchPatch } from 'diff-match-patch-ts';
 import {prompt_engineering_host} from "../../app-config";
 import {ActivatedRoute} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
 
 

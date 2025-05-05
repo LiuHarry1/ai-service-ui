@@ -1,7 +1,7 @@
 // email-categorization.component.ts
 
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { host } from '../app-config';
 import {ActivatedRoute} from "@angular/router";
 

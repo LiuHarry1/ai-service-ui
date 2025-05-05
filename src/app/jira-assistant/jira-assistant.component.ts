@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {prompt_engineering_host} from "../app-config";
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
