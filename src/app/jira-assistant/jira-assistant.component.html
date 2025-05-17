@@ -1,145 +1,203 @@
-<div class="container">
-  <div class="top heading">
-    JIRA Assistant
+<div class="jira-container">
+  <!-- Header -->
+  <div class="header">
+    <h2><i class="pi pi-ticket mr-2"></i>JIRA Assistant</h2>
   </div>
-  <div class="middle">
-    <div class="input-section">
-      <div class="p-field">
-        <textarea id="input" rows="8" pInputTextarea [(ngModel)]="userInput" placeholder="Enter what JIRA you want to create..."></textarea>
+
+  <!-- Main Input Card -->
+  <div >
+    <p-tabView>
+      <!-- Tab 1: Text -->
+      <p-tabPanel header="📝 Text">
+        <div class="form-grid">
+          <small>Describe the Jira issue you want to create.</small>
+          <textarea
+            pInputTextarea
+            rows="7"
+            [(ngModel)]="userInputText"
+            placeholder="e.g. Create validation for login attempts, add rate limiting..."
+          ></textarea>
+          <div class="action-row">
+            <button pButton label="Generate Jira" icon="pi pi-send" (click)="generateFromText()" class="p-button-primary"></button>
+          </div>
+        </div>
+      </p-tabPanel>
+
+      <!-- Tab 2: Image + Text -->
+      <p-tabPanel header="🖼️ Image + Text">
+        <div class="form-grid">
+          <small>Upload a screenshot with context about the issue.</small>
+          <p-fileUpload
+            mode="basic"
+            accept="image/*"
+            customUpload="true"
+            (uploadHandler)="onImageUpload($event)"
+            chooseLabel="Choose Image"
+            icon="pi pi-image"
+          ></p-fileUpload>
+
+          <textarea
+            pInputTextarea
+            rows="5"
+            [(ngModel)]="userInputImageText"
+            placeholder="Explain the screenshot or issue context..."
+          ></textarea>
+
+          <div class="action-row">
+            <button pButton label="Generate Jira" icon="pi pi-send" (click)="generateFromImageAndText()" class="p-button-primary"></button>
+          </div>
+        </div>
+      </p-tabPanel>
+
+      <!-- Tab 3: Email -->
+      <p-tabPanel header="📧 Email">
+        <div class="form-grid">
+          <small>Upload an email to extract the Jira details automatically.</small>
+          <p-fileUpload
+            mode="basic"
+            accept=".eml,.msg,.txt"
+            auto="true"
+            customUpload="true"
+            (onSelect)="onEmailUpload($event)"
+            chooseLabel="Choose Email File"
+            icon="pi pi-envelope"
+          ></p-fileUpload>
+
+          <div class="action-row">
+            <button pButton label="Generate Jira" icon="pi pi-send" (click)="generateFromEmail()" class="p-button-primary"></button>
+          </div>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+
+  <!-- Output Section -->
+  <div *ngIf="submitted" class="output-section">
+    <div class="generated-item bordered" (dblclick)="toggleEdit('summary')">
+      <div class="generated-item-title">
+        <div class="generated-label">Summary:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(summary)"></button>
+        </div>
       </div>
-      <div class="p-field">
-        <button pButton type="button" label="Generate" (click)="onSubmit()"></button>
+      <div class="generated-content" *ngIf="!isEditingSummary">
+        <markdown  [data] = "summary" ></markdown>
+      </div>
+      <div class="generated-content" *ngIf="isEditingSummary">
+        <textarea pInputTextarea rows="4" [(ngModel)]="summary" (focusout)="toggleEdit('summary')"></textarea>
       </div>
     </div>
-    <div *ngIf="submitted"  class="output-section">
-
-        <div class="generated-item bordered" (dblclick)="toggleEdit('summary')">
-          <div class="generated-item-title">
-            <div class="generated-label">Summary:</div>
-            <div class="copy-container">
-              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(summary)"></button>
-            </div>
-          </div>
-          <div class="generated-content" *ngIf="!isEditingSummary">
-            <markdown  [data] = "summary" ></markdown>
-          </div>
-          <div class="generated-content" *ngIf="isEditingSummary">
-            <textarea pInputTextarea rows="4" [(ngModel)]="summary" (focusout)="toggleEdit('summary')"></textarea>
-          </div>
-        </div>
 
 
-        <div class="generated-item bordered" (dblclick)="toggleEdit('description')">
-          <div class="generated-item-title">
-            <div class="generated-label">Description:</div>
-            <div class="copy-container">
-              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(description)"></button>
+    <div class="generated-item bordered" (dblclick)="toggleEdit('description')">
+      <div class="generated-item-title">
+        <div class="generated-label">Description:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(description)"></button>
 
-            </div>
-          </div>
-          <div class="generated-content" *ngIf="!isEditingDescription">
-            <markdown  [data] = "description" ></markdown>
-          </div>
-          <div class="generated-content" *ngIf="isEditingDescription">
-            <textarea pInputTextarea rows="4" [(ngModel)]="description" (focusout)="toggleEdit('description')"></textarea>
-          </div>
-        </div>
-        <div class="generated-item bordered" (dblclick)="toggleEdit('acceptanceCriteria')">
-          <div class="generated-item-title">
-            <div class="generated-label">Acceptance Criteria:</div>
-            <div class="copy-container">
-              <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(acceptanceCriteria)"></button>
-
-            </div>
-          </div>
-          <div class="generated-content" *ngIf="!isEditingAcceptanceCriteria">
-            <markdown  [data] = "acceptanceCriteria" ></markdown>
-          </div>
-          <div class="generated-content" *ngIf="isEditingAcceptanceCriteria">
-            <textarea pInputTextarea rows="4" [(ngModel)]="acceptanceCriteria" (focusout)="toggleEdit('acceptanceCriteria')"></textarea>
-          </div>
-        </div>
-
-      <div class="generated-item bordered">
-        <div class="generated-item-title">
-          <div class="generated-label">Development Required:</div>
-          <div class="copy-container">
-            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(developmentRequired)"></button>
-
-          </div>
-        </div>
-        <div class="generated-content">{{developmentRequired}}
         </div>
       </div>
+      <div class="generated-content" *ngIf="!isEditingDescription">
+        <markdown  [data] = "description" ></markdown>
+      </div>
+      <div class="generated-content" *ngIf="isEditingDescription">
+        <textarea pInputTextarea rows="4" [(ngModel)]="description" (focusout)="toggleEdit('description')"></textarea>
+      </div>
+    </div>
+    <div class="generated-item bordered" (dblclick)="toggleEdit('acceptanceCriteria')">
+      <div class="generated-item-title">
+        <div class="generated-label">Acceptance Criteria:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(acceptanceCriteria)"></button>
 
-      <div class="generated-item bordered">
-        <div class="generated-item-title">
-          <div class="generated-label">Story Point:</div>
-          <div class="copy-container">
-            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(storyPoint)"></button>
-
-          </div>
-        </div>
-        <div class="generated-content">
-          {{storyPoint}}
         </div>
       </div>
+      <div class="generated-content" *ngIf="!isEditingAcceptanceCriteria">
+        <markdown  [data] = "acceptanceCriteria" ></markdown>
+      </div>
+      <div class="generated-content" *ngIf="isEditingAcceptanceCriteria">
+        <textarea pInputTextarea rows="4" [(ngModel)]="acceptanceCriteria" (focusout)="toggleEdit('acceptanceCriteria')"></textarea>
+      </div>
+    </div>
 
-      <div class="generated-item bordered">
-        <div class="generated-item-title">
-          <div class="generated-label">Issue Type:</div>
-          <div class="copy-container">
-            <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(issueType)"></button>
+    <div class="generated-item bordered">
+      <div class="generated-item-title">
+        <div class="generated-label">Development Required:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(developmentRequired)"></button>
 
-          </div>
-        </div>
-        <div class="generated-content">
-          {{issueType}}
         </div>
       </div>
+      <div class="generated-content">{{developmentRequired}}
+      </div>
+    </div>
 
-      <div class = "feedback-section">
-        <div class="feedback-section-container" *ngIf="showFeedback">
+    <div class="generated-item bordered">
+      <div class="generated-item-title">
+        <div class="generated-label">Story Point:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(storyPoint)"></button>
+
+        </div>
+      </div>
+      <div class="generated-content">
+        {{storyPoint}}
+      </div>
+    </div>
+
+    <div class="generated-item bordered">
+      <div class="generated-item-title">
+        <div class="generated-label">Issue Type:</div>
+        <div class="copy-container">
+          <button class="copy-button" pButton type="button" icon="pi pi-copy" (click)="copyToClipboard(issueType)"></button>
+
+        </div>
+      </div>
+      <div class="generated-content">
+        {{issueType}}
+      </div>
+  </div>
+
+    <div class = "feedback-section">
+      <div class="feedback-section-container" *ngIf="showFeedback">
           <span class="feedback-text">
             Was this generated content helpful?
           </span>
-          <button
-            class="thumbs-button thumbs-up p-button-rounded p-button-success"
-            (click)="onThumbsUp()"
-            pButton
-            type="button"
-            icon="pi pi-thumbs-up"
-          ></button>
-          <button
-            class="thumbs-button thumbs-down p-button-rounded p-button-danger"
-            (click)="onThumbsDown()"
-            pButton
-            type="button"
-            icon="pi pi-thumbs-down"
-          ></button>
-          <button
-            class="close-button p-button-rounded"
-            (click)="closeFeedbackSection()"
-            pButton
-            type="button"
-            icon="pi pi-times"
-          ></button>
-        </div>
-
+        <button
+          class="thumbs-button thumbs-up p-button-rounded p-button-success"
+          (click)="onThumbsUp()"
+          pButton
+          type="button"
+          icon="pi pi-thumbs-up"
+        ></button>
+        <button
+          class="thumbs-button thumbs-down p-button-rounded p-button-danger"
+          (click)="onThumbsDown()"
+          pButton
+          type="button"
+          icon="pi pi-thumbs-down"
+        ></button>
+        <button
+          class="close-button p-button-rounded"
+          (click)="closeFeedbackSection()"
+          pButton
+          type="button"
+          icon="pi pi-times"
+        ></button>
       </div>
-
 
     </div>
 
 
+    <!-- Footer -->
+  <div class="footer-note">
+    <p><i class="pi pi-info-circle mr-1"></i>AI model can make mistakes. Please verify the generated info.</p>
   </div>
-  <div class="footer">
-    <p>AI model can make mistakes. please check important info.</p>
-  </div>
-</div>
 
-
-
-<div *ngIf="isLoading" class="loading-indicator">
-  Loading...
+  <!-- Loading -->
+  <p-dialog header="Generating Jira..." [(visible)]="isLoading" modal="true" closable="false">
+    <div class="p-d-flex p-jc-center">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem;"></i>
+    </div>
+  </p-dialog>
 </div>

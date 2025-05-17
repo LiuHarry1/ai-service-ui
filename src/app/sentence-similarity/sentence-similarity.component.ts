@@ -17,7 +17,7 @@ export class SentenceSimilarityComponent {
   showResults: boolean = false;
   similarityResults: { sentence: string; score: number }[] = [];
 
-  modelName: string = ''
+  modelName: string = 'tf_idf_model'
 
   modelOptions: any[] = [
     { label: 'tf idf', value: 'tf_idf_model' },

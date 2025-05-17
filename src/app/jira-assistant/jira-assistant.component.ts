@@ -29,6 +29,40 @@ export class JiraAssistantComponent {
   ) {
   }
 
+  userInputImageText: string = '';
+  userInputText: string = '';
+  uploadedImage: File | null = null;
+  uploadedEmail: File | null = null;
+
+
+  onImageUpload(event: any): void {
+    const file = event.files?.[0];
+    if (file) {
+      this.uploadedImage = file;
+      // Optional: provide feedback or preview
+      console.log("Image uploaded:", file.name);
+    }
+  }
+
+  onEmailUpload(event: any): void {
+    const file = event.files?.[0];
+    if (file) {
+      this.uploadedEmail = file;
+    }
+  }
+
+  generateFromText(): void {
+    this.isLoading = true;
+    // call your service logic using `this.userInputText`
+  }
+
+
+  generateFromEmail(): void {
+    this.isLoading = true;
+    // use `this.uploadedEmail`
+  }
+
+
   onSubmit() {
     console.info("onSubmit...")
 
@@ -77,6 +111,28 @@ export class JiraAssistantComponent {
     });
   }
 
+  generateFromImageAndText(): void {
+    if (!this.uploadedImage) {
+      alert("Please upload an image.");
+      return;
+    }
+
+    this.isLoading = true;
+
+    // Example: pass to service or extract text
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result as string;
+      // Send `base64` and `this.userInputImageText` to your AI service or API
+      console.log("Base64 image ready:", base64);
+      // Call your generation logic here
+      this.isLoading = false;
+      this.submitted = true;
+    };
+    reader.readAsDataURL(this.uploadedImage);
+  }
+
+
   onThumbsUp() {
     // alert('Thank you for your feedback! You liked this as a good practice.');
     this.saveFeedback('good');
@@ -124,5 +180,8 @@ export class JiraAssistantComponent {
     this.showFeedback = false; // Hide the feedback section when closed
     console.log('Feedback Section Closed');
   }
+
+
+
 
 }

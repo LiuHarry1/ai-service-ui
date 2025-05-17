@@ -1,72 +1,152 @@
-/* src/app/jira-assistant/jira-assistant.component.css */
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+/* Layout */
+.jira-container {
+  max-width: 1160px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #f9fafb;
+  font-family: "Segoe UI", Roboto, sans-serif;
 }
 
-.top {
-  background-color: white;
-  padding: 1rem;
+/* Header */
+.header {
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #eaeaea;
 }
 
-.heading {
-  font-size: 24px;
-  font-weight: bold;
+.header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-.middle {
-  flex: 1;
+/* Tabs */
+.p-tabview .p-tabview-nav {
+  border: none;
+  background: transparent;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-radius: 6px 6px 0 0;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  margin-right: 0.25rem;
+  font-weight: 500;
+}
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Input Card */
+.input-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+}
+
+/* Forms */
+.form-grid {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  /*justify-content: center;*/
+  gap: 1rem;
+  padding: 1rem 0;
 }
 
-.input-section {
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
-  height: 270px;
-  width: 1300px;
-  background-color: white;
-  border-radius: 4px;
-
+textarea,
+.p-inputtext {
+  font-size: 15px;
+  border-radius: 6px;
 }
 
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+small {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Button Row */
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* Output Section */
 .output-section {
-  padding: 1rem;
-  width: 1300px;
-  background-color: white;
-  border-radius: 4px;
-  margin: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.footer {
-  color: #7d7d7d;
-  /*background-color: #f5f5f5;*/
-  background-color: white;
-  text-align: center;
-  border-top: 1px solid #ddd;
+.generated-item {
+  border-bottom: 1px solid #eaeaea;
+  padding: 1rem 0;
 }
 
-.p-field {
-  margin-bottom: 1rem;
+.generated-item:last-child {
+  border-bottom: none;
 }
 
-textarea {
-  width: 100%;
-  resize: vertical;
-  font-size: 17px
-}
-
-.copy-container {
+.generated-item-title {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
+
+.generated-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.generated-content {
+  font-size: 15px;
+  color: #444;
+}
+
+/* Copy Buttons */
+.copy-button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+.footer-note {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 13px;
+  color: #888;
+}
+
+/* Loading Dialog */
+.p-dialog .p-dialog-content {
+  padding: 2rem !important;
+  text-align: center;
+}
+
+.loading-indicator i {
+  font-size: 2rem;
+}
+
+
 
 .copy-button {
   background-color: #007bff;
@@ -191,50 +271,3 @@ textarea {
   color: #444; /* Darken color on hover */
   background-color: #f8f8f8; /* Change background color on hover */
 }
-
-
-/*.feedback-section {*/
-/*  margin-top: 1rem;*/
-/*  text-align: center;*/
-/*  border: 1px solid #ddd;*/
-
-/*}*/
-
-/*.thumbs-button {*/
-/*  background-color: #28a745;*/
-/*  color: white;*/
-/*  border: none;*/
-/*  cursor: pointer;*/
-/*  padding: 0.5rem 1rem;*/
-/*  border-radius: 4px;*/
-/*  margin: 0 0.5rem;*/
-/*  transition: background-color 0.3s;*/
-/*}*/
-
-/*.thumbs-up:hover {*/
-/*  background-color: #218838;*/
-/*}*/
-
-/*.thumbs-down {*/
-/*  background-color: #dc3545;*/
-/*}*/
-
-/*.thumbs-down:hover {*/
-/*  background-color: #c82333;*/
-/*}*/
-
-
-
-.loading-indicator {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
